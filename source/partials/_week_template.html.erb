@@ -54,6 +54,13 @@
         <div class="text">
           <p><%= d.text %></p>
         </div>
+        <% elsif d.kind == "left_quote" || d.kind == "right_quote" %>
+          <div class="<%= d.kind %>">
+            <% if d.title.present? %>
+              <h2><%= d.title %></h2>
+            <% end %>
+            <p><%= d.text %></p>
+          </div>
       <% else %>
         <% if d.link.present?
           markdown_syntax_link = /\[([^\]]+)\]\(([^)]+)\)/.match(d.link.to_s)

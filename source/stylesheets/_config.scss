@@ -20,6 +20,10 @@ $play-icon-links: true;
   height: 31px;
 }
 
+figure.overlay action:after {
+	background: image-url($sponsor-logo) center no-repeat;
+}
+
 .svg-icon {
   &:hover { opacity: .8; transition: opacity .3s }
 }
@@ -27,6 +31,59 @@ $play-icon-links: true;
 // Border for images
 .lede, img {
   border-bottom: 4px solid $primary;
+}
+
+// Pull quotes styling
+// h2 is the quote
+.right_quote {
+	p { float: left; }
+	h2 {
+		float: right;
+	}
+}
+
+.left_quote {
+	p { float: right; }
+	h2 { 
+		float: left;
+	}
+}
+
+.right_quote, .left_quote {
+	margin: 2.5em 0;
+
+	&:before, &:after {
+		content: " ";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+
+	p {
+		font-family: $text-font;
+		color: $text;
+		width: 47%;
+		margin: 0;
+		@media (max-width: 30em) {
+			display: block;
+			width: 100%;
+			margin-top: 1em;
+		}
+	}
+
+	h2 {
+		font-family: $headline-font;
+		color: $primary;
+		font-size: $font-size * 1.5;
+		line-height: $line-height;
+		width: 47%;
+		@media (max-width: 30em) {
+			font-size: $font-size;
+			display: block;
+			width: 100%;
+		}
+	}
 }
 
 // Impression trackers should have no spacing

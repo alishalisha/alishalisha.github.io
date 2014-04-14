@@ -118,7 +118,6 @@ figure.left_quote, figure.right_quote {
 
 figure.overlay {
   @media (min-width: $figure-break) {
-    color: $background;
     &:before {
       content: "";
       display: block;
@@ -129,9 +128,6 @@ figure.overlay {
       right: 0;
       background-color: #333;
       background-color: rgba(#333, .5);
-    }
-    * {
-      color: $background;
     }
   }
 }

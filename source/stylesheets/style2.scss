@@ -12,6 +12,13 @@ $text-weight: normal;
 $font-size: 16px;
 $line-height: 1.5;
 
+// Add custom fonts here
+// @font-face {
+//   font-family: ;
+//   font-weight: ;
+//   src: image-url(" ");
+// }
+
 // Nav
 $nav-color: #fff;
 $nav-background: $primary;
@@ -23,20 +30,13 @@ $byline-sponsor-logo: "intel-logo-blue.png";
 
 @import "config";
 
-// Add custom fonts here
-// @font-face {
-//   font-family: ;
-//   font-weight: ;
-//   src: image-url(" ");
-// }
-
 @media (min-width: 50em) {
   figure.overlay {
     &:before {
       background: none;
     }
-    * {
-      color: #fcde02;
+    h3, .action {
+      color: $background;
     }
     p {
       color: white;
