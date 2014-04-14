@@ -2,9 +2,9 @@
   "cdn_host": "http://ea-cdn.voxmedia.com",
   "s3_bucket": "chorus-editorial-apps",
   "community": "theverge.com",
-  "url_prefix": "/sponsored/intel-future-is-now",
+  "url_prefix": "/sponsored/harmony-boilerplate",
   "build_type": "middleman",
-  "slug": "intel-future-is-now",
-  "id": 61,
-  "namespace": "intel-future-is-now"
+  "slug": "harmony-boilerplate",
+  "id": 95,
+  "namespace": "harmony-boilerplate"
 }
