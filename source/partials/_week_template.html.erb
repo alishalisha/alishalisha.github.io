@@ -4,7 +4,8 @@
 <article class="<%= slug == active_slug ? 'active' : 'hidden' %>"
          data-slug="<%=slug%>"
          data-index="<%=index%>"
-         data-url-for-section="<%=absolute_page_url%>">
+         data-url-for-section="<%=absolute_page_url%>"
+         data-page-title= "<%= page_title %>">
 
   <!-- Video -->
   <% # Figure out if there is a video here. %>
@@ -42,7 +43,7 @@
   <section class="content container">
     <% doc.each do |d| %>
       <%# THINGS TO SKIP, these do not go in the layout %>
-      <% if d.kind == "published" || d.kind == "video" || d.kind == "share_text" %>
+      <% if d.kind == "published" || d.kind == "video" || d.kind == "share_text" || d.kind == "page_title" %>
         <% next %>
       <% elsif d.kind == "impression" && d.image.present? %>
         <img class="pixel-tracker" data-src="<%= d.image %>" />
