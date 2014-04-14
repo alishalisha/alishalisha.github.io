@@ -1,0 +1,118 @@
+<% absolute_page_url = absolute_prefix + url_prefix + (slug == "week-0" ? '/' : slug) %>
+<% page_title = doc.detect{|row| row.kind == "video"}.try(:title) || '' %>
+
+<article class="<%= slug == active_slug ? 'active' : 'hidden' %>"
+         data-slug="<%=slug%>"
+         data-index="<%=index%>"
+         data-url-for-section="<%=absolute_page_url%>">
+
+  <!-- Video -->
+  <% # Figure out if there is a video here. %>
+  <% d = doc.detect{|row| row.kind == "video"} %>
+  <% if d.present? %>
+  <section class="lede video slider single">
+    <ul class="videos">
+      <li class="active">
+        <button class="overlay" style="background-image: url('<%= d.image %>')">
+          <h1><%= d.title %></h1>
+          <svg class="play-icon" viewBox="0 0 100 100"><use xlink:href="#play-button"></use></svg>
+        </button>
+        <div class="video-container" id="video-container-<%= index %>" data-video-index="<%= index %>" data-video-id="<%=d.text %>"></div>
+      </li>
+    </ul>
+
+    <div id="navigation">
+        <!-- Navigation -->
+      <a href="#" class="prev">
+        <svg class="prev" viewBox="0 0 30 126"><use xlink:href="#prev-arrow"></use></svg>
+      </a>
+      <a href="#" class="next">
+      <svg class="next" viewBox="0 0 30 126"><use xlink:href="#next-arrow"></use></svg>
+      </a>
+    </div>
+  </section>
+  <% end %>
+
+  <%# Get the share text of out this week %>
+  <% share_text = doc.detect{|row| row.kind == "share_text"}.try(:text) || default_share_text %>
+  <%= partial 'partials/social_share', :locals => {:share_text => share_text,
+                                                   :share_url => absolute_page_url} %>
+
+  <!-- Content -->
+  <section class="content container">
+    <% doc.each do |d| %>
+      <%# THINGS TO SKIP, these do not go in the layout %>
+      <% if d.kind == "published" || d.kind == "video" || d.kind == "share_text" %>
+        <% next %>
+      <% elsif d.kind == "impression" && d.image.present? %>
+        <img class="pixel-tracker" data-src="<%= d.image %>" />
+      <% elsif d.kind == "text" %>
+        <% if d.title.present? %>
+          <h2><%= d.title %></h2>
+        <% end %>
+        <div class="text">
+          <p><%= d.text %></p>
+        </div>
+      <% else %>
+        <% if d.link.present?
+          markdown_syntax_link = /\[([^\]]+)\]\(([^)]+)\)/.match(d.link.to_s)
+          if(!markdown_syntax_link.nil? && markdown_syntax_link.size == 3) # this is markdown syntax!
+            link_title = markdown_syntax_link[1]
+            link_href =  markdown_syntax_link[2]
+          else
+            link_title = "Read more about " + d.title.to_s + "..."
+            link_href = d.link.to_s
+          end
+           %>
+          <a href="<%= link_href %>">
+        <% end %>
+        <figure class="<%= d.kind %>">
+          <% if d.image.present? %>
+            <img src="<%= d.image %>" alt=" ">
+          <% end %>
+          <div class="figure-content">
+            <% if d.title.present? %>
+              <h3><%= d.title %></h3>
+            <% end %>
+            <% if d.text.present? %>
+              <p><%= d.text %></p>
+            <% end %>
+            <% if d.link.present? %>
+              <div class="action">
+                <svg class="inline-icon" viewBox="0 0 100 100"><use xlink:href="#play-button"></use></svg>
+                <%= link_title %>
+              </div>
+            <% end %>
+          </div>
+        </figure>
+        <% if d.link.present? %>
+          </a>
+        <% end %>
+      <% end %>
+    <% end %>
+  </section>
+
+  <% if index == 0 %>
+    <%# if we are in the first week we need to display the carousel here %>
+    <div class="more-videos container">
+      <h2>More Videos</h2>
+      <ul>
+      <% published_videos.each do |video| %>
+        <% if video[:slug] != "week-0" %>
+          <li class="thumbnail">
+            <a href="<%= absolute_prefix + url_prefix + (video[:slug] == "week-0" ? '/' : video[:slug])%>">
+              <button class="overlay" style="background-image: url('<%= video[:image] %>')" alt="<%= video[:text] %>">
+                <svg class="play-icon" viewBox="0 0 100 100">
+                  <use xlink:href="#play-button"></use>
+                </svg>
+              </button>
+              <h3><%= video[:text] %></h3>
+            </a>
+          </li>
+        <% end %>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+</article>

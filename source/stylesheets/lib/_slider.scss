@@ -1,0 +1,150 @@
+$prev-next-width: 30px;
+$prev-next-height: 126px;
+#navigation {
+  z-index:100000000;
+  position:absolute;
+  width:100%;
+  top: 40%;
+
+  @media (max-width: 40em) {
+    top: 38%;
+  }
+
+  @media (max-width: 30em) {
+    top: 30%;
+  }
+
+
+  a.prev, a.next {
+    width: $prev-next-width + 20;
+    position: absolute;
+    top: 40px;
+    bottom: 40px;
+    opacity: .6;
+    text-decoration: none;
+    @include transition(all .25s);
+    &:hover {
+      opacity: 1;
+      border-bottom: none;
+    }
+    svg {
+      fill: $nav-color;
+      position: absolute;
+      width: $prev-next-width;
+      height: $prev-next-height;
+      top: 50%;
+      @include transform(translateY(-50%));
+      margin: auto 10px;
+    }
+  }
+
+  a.next {
+    right: 0;
+  }
+}
+
+.play {
+  display: none;
+}
+
+
+$hover-offset: 5%;
+
+.slider {
+  width: 100%;
+  height: 0;
+  padding-bottom: percentage(9/16);
+  overflow: hidden;
+  position: relative;
+  z-index: 300;
+  ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  li {
+    display: block;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    height: 0;
+    padding-top: 56.25%;
+    width: 100%;
+    > * {
+      display: block;
+      position: absolute;
+      width: 100% !important;
+      height: 100% !important;
+      top: 0;
+      margin: 0;
+      padding: 0;
+    }
+    @include transition(all .5s);
+    @include transform(translateX(-100%));
+    &.active {
+      @include transform(translateX(0));
+    }
+    &.active ~ li {
+      @include transform(translateX(100%));
+    }
+  }
+  &.last li.first {
+    @include transform(translateX(100%));
+  }
+  .overlay {
+    z-index: 10000;
+    @include background-size(cover);
+    background-position: center;
+    border: none;
+    cursor: pointer;
+
+    &.hidden {
+      display:none;
+    }
+  }
+  h1 {
+    color: $nav-color;
+    font-size: 3em;
+    margin: 0 10%;
+    line-height: 1;
+    @media (min-width: 50em) {
+      font-size: 5em;
+    }
+    @media (min-width: 60em) {
+      font-size: 7em;
+    }
+    @media (min-width: 70em) {
+      font-size: 9em;
+    }
+    text-shadow: 0 0 6px rgba(#000, .75);
+  }
+  .play-icon {
+    color: $nav-color;
+    width: 100px;
+    height: 100px;
+    padding: 1em;
+    
+    @include filter(drop-shadow(0 0 6px rgba(#000, .75)));
+    @media (min-width: 30em) {
+      width: 125px;
+      height: 125px;
+    }
+    @media (min-width: 50em) {
+      width: 150px;
+      height: 150px;
+    }
+
+    &:hover {
+      opacity: .7;
+    }
+  }
+  &.single {
+    a.prev, a.next {}
+  }
+}
+
+.play-button__stroke {
+  stroke-width: 5px;
+}

@@ -1,0 +1,33 @@
+$m: content__social;
+
+.#{$m} {
+  font-size: .8em;
+}
+
+.#{$m}__icon {
+  width: 1em;
+  height: 1em;
+}
+
+.#{$m}__link:hover {
+  border: none;
+}
+
+.#{$m}__icon.twitter {
+  fill: #00a0d1;
+}
+.#{$m}__icon.facebook {
+  fill: #3b5998;
+}
+.#{$m}__icon.googleplus {
+  fill: #db4a39;
+}
+
+.#{$m}__text {
+  color: black;
+  font-size: .8em;
+  position: relative;
+  top: -.3em;
+  margin: 0 .66em 0 0;
+  letter-spacing: .1em;
+}

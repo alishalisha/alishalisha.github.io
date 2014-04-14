@@ -1,0 +1,27 @@
+.footer {
+  background: black;
+  padding: 5%;
+  color: white;
+  overflow: hidden;
+  font-size: .8em;
+  p, small {
+  color: #aaa;
+  font-size: 1em;
+  margin: 0 0 .5em 0;
+  }
+  small {
+  color: #777;
+  }
+}
+
+.footer__logo {
+  float: right;
+  margin-bottom: 1em;
+}
+
+.footer__text {
+  max-width: 40em;
+  @media (max-width: 50em) {
+    clear: both;
+  }
+}

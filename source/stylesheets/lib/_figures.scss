@@ -1,0 +1,168 @@
+@mixin center {
+  // Horizontally center things.
+  text-align: center;
+  margin: auto;
+
+  // Vertically center anything, literally anything.
+  // http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/
+  position: relative;
+  top: 50%;
+  // IE9+ ...
+  @include transform(translateY(-50%));
+
+  // Make sure margins of nested elements aren’t messing with spacing
+  :first-child {
+    margin-top: 0;
+  }
+  :last-child {
+    margin-bottom: 0;
+  }
+}
+
+@mixin play-overlay($size) {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  svg {
+    color: inherit;
+    width: $size;
+    height: $size;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+
+
+$full-bleed-margin: -5.56%;
+$figure-break: 50em;
+
+figure {
+  display: table;
+  width: 100%;
+  position: relative;
+  margin-bottom: 2em;
+  @media (min-width: $figure-break) {
+    margin-top: 3em;
+    margin-bottom: 4.5em;
+  }
+  h3 {
+    margin-top: 1em;
+  }
+  p {
+    font-size: 1.05em;
+    color: $text;
+  }
+  .action {
+    font-size: 1.2em;
+  }
+  @if $play-icon-links != true {
+    .inline-icon {
+      display: none;
+    }
+  }
+}
+
+.figure-content {
+  @media (min-width: $figure-break) {
+    position: absolute;
+    bottom: 10%;
+    padding: 5%;
+  }
+}
+
+.intro {
+  padding: 5% 0 3.3% 0;
+}
+
+figure.left, figure.left_quote {
+  @media (min-width: $figure-break) {
+    img {
+      width: 50% - $full-bleed-margin;
+      float: left;
+      margin: 0 1em 0 $full-bleed-margin;
+    }
+    .figure-content {
+      left: 50%;
+      margin-right: 0;
+    }
+  }
+}
+
+figure.right, figure.right_quote {
+  @media (min-width: $figure-break) {
+    img {
+      width: 50% - $full-bleed-margin;
+      float: right;
+      margin: 0 $full-bleed-margin 0 1em;
+    }
+    .figure-content {
+      right: 50%;
+      margin-left: 0;
+    }
+  }
+}
+
+figure.left_quote, figure.right_quote {
+  p {
+    color: $primary;
+    font-size: 1.2em;
+  }
+}
+
+figure.overlay {
+  @media (min-width: $figure-break) {
+    color: $background;
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #333;
+      background-color: rgba(#333, .5);
+    }
+    * {
+      color: $background;
+    }
+  }
+}
+
+figure.image, figure.next {
+  margin-left: $full-bleed-margin;
+  margin-right: $full-bleed-margin;
+  width: 100% - $full-bleed-margin * 2;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+figure.next {
+  @media (min-width: $figure-break) {
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #333;
+      background-color: rgba(#333, .5);
+    }
+    p {
+      color: white;
+    }
+  }
+  .figure-content {
+    padding: 2em $container-padding;
+  }
+}

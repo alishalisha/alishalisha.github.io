@@ -1,0 +1,37 @@
+.play-button {
+  color: $primary;
+}
+.play-button__stroke {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 9px;
+}
+.play-button__fill {
+  fill: currentColor;
+}
+
+.inline-icon {
+  display: inline;
+  width: 1em;
+  height: 1em;
+  position: relative;
+  top: .11em;
+}
+
+.vox-logo {
+  width: 100px;
+  height: 42px;
+  fill: white;
+}
+.vox-logo__mark-one {
+  fill: #f0d731;
+}
+.vox-logo__mark-two {
+  fill: #f4e30e;
+}
+.vox-logo__mark-three {
+  fill: #ed5f1b;
+}
+.vox-logo__mark-four {
+  fill: #ef8e18;
+}

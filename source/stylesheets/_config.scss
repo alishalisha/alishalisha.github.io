@@ -1,0 +1,97 @@
+@import "compass";
+
+// Associated Vertical
+$vertical: verge; // sbn, verge, polygon
+
+// Colors
+$primary: #0073c3;
+$background: #fff9f3;
+$text: #555;
+
+// Typography
+$headline-font: 'neosans', Verdana, sans-serif;
+$headline-weight: 400;
+$text-font: 'neosans', Verdana, sans-serif;
+$text-weight: 400;
+$font-size: 16px;
+$line-height: 1.5;
+
+
+// Container
+$container-padding: 10%;
+$max-width: 70em;
+
+// Dividers
+$divider: 1px solid #1E76C0;
+$divider-padding: 5em;
+// must be in images dir
+$divider-image: "intel-divider.png";
+
+// Iconography
+$play-icon-links: true;
+
+// Nav
+$nav-color: white;
+$nav-background: #0073C3;
+
+// Sponsor logo (30px tall)
+// must be in images dir
+$sponsor-logo: "Intel-Logo-White.png";
+$byline-sponsor-logo: "intel-logo-blue.png";
+
+// Intel One off stuff
+.action::after {
+  content: "";
+  display: inline-block;
+  float: right;
+  background: image-url($byline-sponsor-logo) center no-repeat;
+  width: 97px;
+  height: 31px;
+}
+
+.svg-icon {
+
+  &:hover { opacity: .8; transition: opacity .3s }
+}
+
+// Intel social share links for each article
+article .nav__social {
+	float: none;
+	padding: 5% 0 0 5%;
+
+	a {
+		font-family: 'Montserrat', Verdana, Arial, sans-serif;
+		text-decoration: none;
+		color: #555;
+		text-transform: uppercase;
+		font-size: 12px;
+
+		&:hover { text-decoration: none; opacity: 0.8; }
+	}
+
+	.nav__social__link {
+		margin-right: 1.3em;
+
+		&:hover { border-bottom: none; }
+	}
+
+	.nav__social__icon { margin: 0 0.3em 0 0; vertical-align: middle; }
+
+	.nav__social__icon.twitter { fill: #55acee; }
+	.nav__social__icon.facebook { fill: #3b5998; }
+	.nav__social__icon.googleplus { fill: #dd4b39; }
+
+}
+
+@import "lib/svg";
+@import "lib/footer";
+@import "lib/slider";
+@import "lib/parallax";
+@import "lib/reset";
+@import "lib/fucking-ooyala";
+@import "lib/nav";
+@import "lib/grid";
+@import "lib/sections";
+@import "lib/parallax";
+@import "lib/figures";
+@import "lib/content__social";

@@ -1,0 +1,15 @@
+<% share_text ||= default_share_text
+   share_url ||= absolute_prefix + url_prefix
+   share_url.gsub!(/\/\/$/,'/')
+%>
+<div class="nav__social">
+  <a class="nav__social__link" data-share-via="twitter" data-shared="<%= app_name %>"href="<%= tweet(share_url,share_text) %>">
+    <svg class="nav__social__icon svg-icon twitter" viewBox="0 0 100 100"><use xlink:href="#twitter"></use></svg>
+  </a>
+  <a class="nav__social__link" data-share-via="facebook" data-shared="<%= app_name %>" href="<%= facebook(share_url) %>">
+    <svg class="nav__social__icon svg-icon facebook" viewBox="0 0 100 100"><use xlink:href="#facebook"></use></svg>
+  </a>
+  <a class="nav__social__link" data-share-via="googleplus" data-shared="<%= app_name %>" href="<%= google_plus(share_url) %>">
+    <svg class="nav__social__icon svg-icon googleplus" viewBox="0 0 100 100"><use xlink:href="#google-plus"></use></svg>
+  </a>
+</div>
