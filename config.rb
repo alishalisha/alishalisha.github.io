@@ -7,7 +7,7 @@ set :css_dir, 'stylesheets'
 set :js_dir, 'javascripts'
 set :images_dir, 'images'
 
-set :app_name, "Intel The Future is Now"
+set :app_name, "Harmony Boilerplate"
 
 # These two items will be different when deploying
 # ------------------------------------------------
@@ -21,7 +21,7 @@ set :absolute_prefix, 'http://localhost:4567'
 set :facebook_app_id, '179668695452017'
 set :twitter, 'verge'
 set :twitter_account_id, '1465737598'
-set :default_share_text, 'SPONSORED: @Intel and Vox Creative show you that The Future is Now'
+set :default_share_text, 'SPONSORED: TODO - add share text'
 
 set :site_name, 'theverge.com'
 set :twitter, 'theverge'
@@ -29,8 +29,9 @@ set :twitter, 'theverge'
 # Reload the browser automatically whenever files change
 activate :livereload
 
+# TODO: Brian to re-number the gid's 
 helpers Middleman::Chorus::GoogleDrive::Helpers
-spreadsheet_id = "0Al-LMiQLJYBNdEFBNVBFRzZLZnBRWFlMOERsY056REE"
+spreadsheet_id = "0Aq4r9E2MjHrBdHdvTExMbEdoUDVqZTFISjFvazM4Smc"
 load_spreadsheet("index",  spreadsheet_id, :gid => 0)
 load_spreadsheet("week_1", spreadsheet_id, :gid => 13)
 load_spreadsheet("week_2", spreadsheet_id, :gid => 14)
@@ -93,7 +94,7 @@ configure :build do
   activate :minify_css
 
   # Should have a leading and trailing slash
-  set :url_prefix, "/sponsored/intel-future-is-now/"
+  set :url_prefix, "/sponsored/harmony-boilerplate/"
   set :absolute_prefix, "http://www.theverge.com"
 end
 
