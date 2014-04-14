@@ -20,8 +20,9 @@ $play-icon-links: true;
   height: 31px;
 }
 
-figure.overlay action:after {
+figure.overlay .action:after {
 	background: image-url($sponsor-logo) center no-repeat;
+	background-size: contain;
 }
 
 .svg-icon {
