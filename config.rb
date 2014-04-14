@@ -29,7 +29,6 @@ set :twitter, 'theverge'
 # Reload the browser automatically whenever files change
 activate :livereload
 
-# TODO: Brian to re-number the gid's 
 helpers Middleman::Chorus::GoogleDrive::Helpers
 spreadsheet_id = "1S4_7uPxYVWISOST-Cl1N00g0J0CfaR2Xdpyja9ifKIM"
 load_spreadsheet("index",  spreadsheet_id, :gid => 0)
