@@ -34,13 +34,13 @@
   </section>
   <% end %>
 
+  <!-- Content -->
+  <section class="content container">
+
   <%# Get the share text of out this week %>
   <% share_text = doc.detect{|row| row.kind == "share_text"}.try(:text) || default_share_text %>
   <%= partial 'partials/social_share', :locals => {:share_text => share_text,
                                                    :share_url => absolute_page_url} %>
-
-  <!-- Content -->
-  <section class="content container">
     <% doc.each do |d| %>
       <%# THINGS TO SKIP, these do not go in the layout %>
       <% if d.kind == "published" || d.kind == "video" || d.kind == "share_text" || d.kind == "page_title" %>
