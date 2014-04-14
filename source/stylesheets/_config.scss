@@ -3,35 +3,15 @@
 // Associated Vertical
 $vertical: verge; // sbn, verge, polygon
 
-// Colors
-$primary: #0073c3;
-$background: #fff9f3;
-$text: #555;
-
-// Typography
-$headline-font: 'neosans', Verdana, sans-serif;
-$headline-weight: 400;
-$text-font: 'neosans', Verdana, sans-serif;
-$text-weight: 400;
-$font-size: 16px;
-$line-height: 1.5;
-
-
 // Container
 $container-padding: 10%;
 $max-width: 70em;
-
-// Dividers
-$divider: 1px solid #1E76C0;
-$divider-padding: 5em;
-// must be in images dir
-$divider-image: "intel-divider.png";
 
 // Iconography
 $play-icon-links: true;
 
 // Nav
-$nav-color: white;
+$nav-color: #fff;
 $nav-background: #0073C3;
 
 // Sponsor logo (30px tall)
@@ -39,9 +19,9 @@ $nav-background: #0073C3;
 $sponsor-logo: "Intel-Logo-White.png";
 $byline-sponsor-logo: "intel-logo-blue.png";
 
-// Intel One off stuff
+// Logo after CTA
 .action::after {
-  content: "";
+  content: ' ';
   display: inline-block;
   float: right;
   background: image-url($byline-sponsor-logo) center no-repeat;
@@ -50,11 +30,10 @@ $byline-sponsor-logo: "intel-logo-blue.png";
 }
 
 .svg-icon {
-
   &:hover { opacity: .8; transition: opacity .3s }
 }
 
-// Intel social share links for each article
+// Social share links for each article
 article .nav__social {
 	float: none;
 	padding: 5% 0 0 5%;

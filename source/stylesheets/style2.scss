@@ -1,5 +1,19 @@
 @import "config";
 
+// Global variables
+// Colors
+$primary: #0073c3;
+$background: #fff9f3;
+$text: #555;
+
+// Typography
+$headline-font: Verdana, sans-serif;
+$headline-weight: normal;
+$text-font: Verdana, sans-serif;
+$text-weight: normal;
+$font-size: 16px;
+$line-height: 1.5;
+
 // Add Intel fonts
 @font-face {
   font-family: neosans;
