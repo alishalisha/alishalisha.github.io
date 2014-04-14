@@ -29,6 +29,11 @@ $play-icon-links: true;
   border-bottom: 4px solid $primary;
 }
 
+// Impression trackers should have no spacing
+figure.impression {
+	margin: 0;
+}
+
 // Social share links for each article
 article .nav__social {
 	float: none;
