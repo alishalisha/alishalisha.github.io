@@ -92,27 +92,4 @@
     <% end %>
   </section>
 
-  <% if index == 0 %>
-    <%# if we are in the first week we need to display the carousel here %>
-    <div class="more-videos container">
-      <h2>More Videos</h2>
-      <ul>
-      <% published_videos.each do |video| %>
-        <% if video[:slug] != "week-0" %>
-          <li class="thumbnail">
-            <a href="<%= absolute_prefix + url_prefix + (video[:slug] == "week-0" ? '/' : video[:slug])%>">
-              <button class="overlay" style="background-image: url('<%= video[:image] %>')" alt="<%= video[:text] %>">
-                <svg class="play-icon" viewBox="0 0 100 100">
-                  <use xlink:href="#play-button"></use>
-                </svg>
-              </button>
-              <h3><%= video[:text] %></h3>
-            </a>
-          </li>
-        <% end %>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
 </article>
