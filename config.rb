@@ -31,18 +31,18 @@ activate :livereload
 
 # TODO: Brian to re-number the gid's 
 helpers Middleman::Chorus::GoogleDrive::Helpers
-spreadsheet_id = "0Aq4r9E2MjHrBdHdvTExMbEdoUDVqZTFISjFvazM4Smc"
+spreadsheet_id = "1S4_7uPxYVWISOST-Cl1N00g0J0CfaR2Xdpyja9ifKIM"
 load_spreadsheet("index",  spreadsheet_id, :gid => 0)
-load_spreadsheet("week_1", spreadsheet_id, :gid => 13)
-load_spreadsheet("week_2", spreadsheet_id, :gid => 14)
-load_spreadsheet("week_3", spreadsheet_id, :gid => 15)
-load_spreadsheet("week_4", spreadsheet_id, :gid => 16)
-load_spreadsheet("week_5", spreadsheet_id, :gid => 17)
-load_spreadsheet("week_6", spreadsheet_id, :gid => 18)
-load_spreadsheet("week_7", spreadsheet_id, :gid => 19)
-load_spreadsheet("week_8", spreadsheet_id, :gid => 20)
-load_spreadsheet("week_9", spreadsheet_id, :gid => 21)
-load_spreadsheet("week_10", spreadsheet_id, :gid => 22)
+load_spreadsheet("week_1", spreadsheet_id, :gid => 1)
+load_spreadsheet("week_2", spreadsheet_id, :gid => 2)
+load_spreadsheet("week_3", spreadsheet_id, :gid => 3)
+load_spreadsheet("week_4", spreadsheet_id, :gid => 4)
+load_spreadsheet("week_5", spreadsheet_id, :gid => 5)
+load_spreadsheet("week_6", spreadsheet_id, :gid => 6)
+load_spreadsheet("week_7", spreadsheet_id, :gid => 7)
+load_spreadsheet("week_8", spreadsheet_id, :gid => 8)
+load_spreadsheet("week_9", spreadsheet_id, :gid => 9)
+load_spreadsheet("week_10", spreadsheet_id, :gid => 10)
 
 # Load the first index view
 weeks = [data.index];
