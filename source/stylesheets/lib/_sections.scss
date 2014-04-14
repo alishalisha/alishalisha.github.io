@@ -39,16 +39,8 @@ article {
     display: none;
   }
 
-  > section {
-
-    a figure, .divider {
-      padding-bottom: $divider-padding;
-      background-image: image-url($divider-image);
-      background-repeat: no-repeat;
-      background-position: 100% 100%;
-    }
-  }
-
+  // uncomment if we are including a  video carousel section
+  /*
   .more-videos {
     display: block;
     overflow: hidden;
@@ -114,5 +106,5 @@ article {
         width: 15%;
       }
     }
-  }
+  }*/
 }

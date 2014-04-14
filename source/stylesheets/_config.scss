@@ -10,15 +10,6 @@ $max-width: 70em;
 // Iconography
 $play-icon-links: true;
 
-// Nav
-$nav-color: #fff;
-$nav-background: #0073C3;
-
-// Sponsor logo (30px tall)
-// must be in images dir
-$sponsor-logo: "Intel-Logo-White.png";
-$byline-sponsor-logo: "intel-logo-blue.png";
-
 // Logo after CTA
 .action::after {
   content: ' ';
@@ -31,6 +22,11 @@ $byline-sponsor-logo: "intel-logo-blue.png";
 
 .svg-icon {
   &:hover { opacity: .8; transition: opacity .3s }
+}
+
+// Border for images
+.lede, img {
+  border-bottom: 4px solid $primary;
 }
 
 // Social share links for each article
