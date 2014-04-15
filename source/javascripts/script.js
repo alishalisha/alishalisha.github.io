@@ -97,9 +97,6 @@
       url += activeSlug;
     }
 
-    // Save this to use with
-    App.Context.current_url = url;
-
     if( url !== location.pathname ) {
       if( typeof(window.history.replaceState) === "function" ){
         // make sure google tracks our magic
