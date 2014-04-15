@@ -33,18 +33,19 @@ helpers Middleman::Chorus::GoogleDrive::Helpers
 spreadsheet_id = "0Aq4r9E2MjHrBdHdvTExMbEdoUDVqZTFISjFvazM4Smc"
 load_spreadsheet("index",  spreadsheet_id, :gid => 0)
 load_spreadsheet("week_1", spreadsheet_id, :gid => 13)
-load_spreadsheet("week_2", spreadsheet_id, :gid => 14)
-load_spreadsheet("week_3", spreadsheet_id, :gid => 15)
-load_spreadsheet("week_4", spreadsheet_id, :gid => 16)
-load_spreadsheet("week_5", spreadsheet_id, :gid => 17)
-load_spreadsheet("week_6", spreadsheet_id, :gid => 18)
-load_spreadsheet("week_7", spreadsheet_id, :gid => 19)
-load_spreadsheet("week_8", spreadsheet_id, :gid => 20)
-load_spreadsheet("week_9", spreadsheet_id, :gid => 21)
-load_spreadsheet("week_10", spreadsheet_id, :gid => 22)
+# load_spreadsheet("week_2", spreadsheet_id, :gid => 14)
+# load_spreadsheet("week_3", spreadsheet_id, :gid => 15)
+# load_spreadsheet("week_4", spreadsheet_id, :gid => 16)
+# load_spreadsheet("week_5", spreadsheet_id, :gid => 17)
+# load_spreadsheet("week_6", spreadsheet_id, :gid => 18)
+# load_spreadsheet("week_7", spreadsheet_id, :gid => 19)
+# load_spreadsheet("week_8", spreadsheet_id, :gid => 20)
+# load_spreadsheet("week_9", spreadsheet_id, :gid => 21)
+# load_spreadsheet("week_10", spreadsheet_id, :gid => 22)
 
 # Load the first index view
-weeks = [data.index];
+weeks = [data.index]
+
 (1..10).each do |week_number|
   weeks << data.send("week_#{week_number}")
 end
@@ -53,7 +54,7 @@ end
 activate :directory_indexes
 
 ignore "/week_template.html"
-ignore "/will-be-index.html.erb"
+ignore "/index.html.erb"
 ignore "/partials/*"
 
 published_weeks = weeks.select {|week_data|
@@ -71,23 +72,19 @@ published_weeks.each_with_index do |week,week_index|
   human_index = week_index + 1
   puts "Publishing week: #{human_index}"
   proxy "/week-#{human_index}/index.html",
-        "will-be-index.html",
+        "main.html",
         :locals => {:weeks => published_weeks,
                     :active_slug => "week-#{human_index}",
                     :slug => "week-#{human_index}" }
 end
 
-proxy '/index.html', 'will-be-index.html', :locals => {:weeks => published_weeks}
-
+proxy "/index.html",'main.html', :locals => {:weeks => published_weeks}
 
 # Build-specific configuration
 configure :build do
   puts "local build"
 
-  # clear out sprites
-  system "rm -f source/images/sprites/*.png"
-
-  activate :asset_hash,:ignore=>[/sprites\/.+\.png$/]
+  activate :asset_hash
   activate :chorus
   activate :minify_javascript
   activate :minify_css

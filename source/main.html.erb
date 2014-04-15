@@ -1,20 +1,17 @@
----
-title: Harmony Boilerplate
----
-
 <!-- Loop through all the weeks and build them here -->
 <% active_slug ||= 'week-0'
-   weeks ||= []
+  weeks ||= locals[:weeks] || []
 
-   # used for carousel at the bottom of the index page
-   videos = []
-   weeks.each_with_index do |week_data, index|
+  # used for carousel at the bottom of the index page ------
+  videos = []
+  weeks.each_with_index do |week_data, index|
     videos << {:image => week_data.detect{|row| row.kind == "video"}.fetch("image"),
                :text =>  week_data.detect{|row| row.kind == "text"}.fetch("title"),
                :slug => "week-#{index}"}
   end
-  # puts "VIDEOS -- #{videos.inspect}"
+  # --------------------------------------------------------
 %>
+
 <% weeks.each_with_index do |week_data, index| %>
   <%= partial "partials/week_template", :locals => {:doc => week_data,
                                                     :active_slug => active_slug,
