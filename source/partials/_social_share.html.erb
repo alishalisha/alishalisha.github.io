@@ -1,5 +1,5 @@
 <% share_text ||= default_share_text
-   share_url ||= absolute_prefix + url_prefix
+   share_url ||= url_host + url_prefix
    share_url.gsub!(/\/\/$/,'/')
 %>
 <div class="nav__social">

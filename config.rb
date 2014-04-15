@@ -14,7 +14,7 @@ set :app_name, "Harmony Boilerplate"
 # url_prefix must have a leading and trailing slash
 #    or condensned into one if there is no prefix.
 set :url_prefix, '/'
-set :absolute_prefix, 'http://localhost:4567'
+set :url_host, 'http://localhost:4567'
 # ------------------------------------------------
 
 # Social buttons
@@ -91,7 +91,7 @@ configure :build do
 
   # Should have a leading and trailing slash
   set :url_prefix, "/sponsored/harmony-boilerplate/"
-  set :absolute_prefix, "http://www.theverge.com"
+  set :url_host, "http://www.theverge.com"
 end
 
 
