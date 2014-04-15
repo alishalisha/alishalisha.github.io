@@ -1,5 +1,5 @@
 <% absolute_page_url = url_host + url_prefix + (slug == "week-0" ? '/' : slug) %>
-<% page_title = doc.detect{|row| row.kind == "video"}.try(:title) || '' %>
+<% page_title = doc.detect{|row| row.kind == "page_title"}.try(:title) || '' %>
 
 <article class="<%= slug == active_slug ? 'active' : 'hidden' %>"
          data-slug="<%=slug%>"

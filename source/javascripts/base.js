@@ -9,11 +9,7 @@
   var $twitterShareButton =    $('[data-share-via="twitter"]');
   var $facebookShareButton =   $('[data-share-via="facebook"]');
   var $googleplusShareButton = $('[data-share-via="googleplus"]');
-
-  // check if we can log stuffs
-  var canLog = (function(){
-    return typeof(console) !== "undefined" && typeof(console.log) === "function";
-  })();
+  var onMobile =  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
   var KEYBOARD_CONSTANTS = {
            left: 37,
@@ -28,7 +24,6 @@
 
     if($nextArticle[0]){
       // Move classes around
-      pauseVideoIfPlaying();
 
       // if it is keyboard identify it
       recordEvent('Navigation', 'Next');
@@ -37,8 +32,8 @@
       $nextArticle.addClass('active').removeClass('hidden').removeClass('next');
       $activeArticle = $nextArticle;
       setupNextAndPreviousArticle();
-      updateURL();
-      setPixelTrackerForThisPage();
+      
+      $(document).triggerHandler('Harmony.article.change', {activeArticle:$activeArticle});
     }
   };
 
@@ -48,7 +43,6 @@
 
     // Move classes around
     if($previousArticle[0]){
-      pauseVideoIfPlaying();
 
       // if it is keyboard identify it
       recordEvent('Navigation', 'Previous');
@@ -59,8 +53,8 @@
       // Now setup the articles
       $activeArticle = $previousArticle;
       setupNextAndPreviousArticle();
-      updateURL();
-      setPixelTrackerForThisPage();
+
+      $(document).triggerHandler('Harmony.article.change',{activeArticle:$activeArticle});
     }
   };
 
@@ -77,49 +71,7 @@
     }
   };
 
-  // Event name might be 'next', should be a single word
-  // Event source might be 'keyboard'
-  var recordEvent = function(action,label,value){
-    if(typeof(value) === "undefined"){
-      _gaq.push(['_trackEvent', App.Context.app_name, action, label]);
-    } else {
-      _gaq.push(['_trackEvent', App.Context.app_name, action, label, value]);
-    }
-  };
-
-  var updateURL = function(){
-    var state = {};
-    var activeSlug = $activeArticle.data('slug') || 'week-0';
-    var url = (App.Context.host_name || '') + (App.Context.url_prefix || '');
-
-    // add slug for non index pages
-    if(activeSlug !== 'week-0'){
-      url += activeSlug;
-    }
-
-    if( url !== location.pathname ) {
-      if( typeof(window.history.replaceState) === "function" ){
-        // make sure google tracks our magic
-        _gaq.push(['_trackPageview', url]);
-        var unusedTitle = '';
-        window.history.replaceState(state, unusedTitle, url);
-      }
-    }
-
-  };
-
-  // Inserts pixel trackers into
-  var setPixelTrackerForThisPage = function(){
-    if($activeArticle.length > 0) {
-      var randomThing = Math.round(Math.random()*10000);
-      var pixels = $activeArticle.find("img.pixel-tracker");
-      for( var i = 0; i < pixels.length; i++ ){
-        var pixelSource = $(pixels).data('src') + randomThing;
-        $(pixels.attr('src',pixelSource));
-      }
-    }
-  };
-
+  
   var setupNextAndPreviousArticle = function(){
     if($activeArticle[0]){
       //remove previous classes setup
@@ -141,10 +93,6 @@
       $previousArticle.addClass('previous');
 
     }
-  };
-
-  var pauseVideoIfPlaying = function(){
-    $(document).triggerHandler('Harmony.video.pause');
   };
 
   // Adds navigation via left/right and j/k keys.
@@ -169,18 +117,53 @@
     recordEvent('Share', kindOfShare);
   };
 
-  var rigUpVideoForContainer = function($videoContainer){
+
+  // Event name might be 'next', should be a single word
+  // Event source might be 'keyboard'
+  var recordEvent = function(action,label,value){
+    if(typeof(value) === "undefined"){
+      _gaq.push(['_trackEvent', App.Context.app_name, action, label]);
+    } else {
+      _gaq.push(['_trackEvent', App.Context.app_name, action, label, value]);
+    }
+  };
+
+  // ----------- Video ------------------------------------------
+
+  var rigUpVideoForContainer = function($videoContainer, isMuted){
+    // We don't want to mute all videos do we? Just the first one
+    // force this to a boolean value
+    isMuted = (isMuted === true);
+
     var videoId = $videoContainer.data('video-id');
     var videoIndex = $videoContainer.data('video-index');
     var videoContainerDOMId = 'video-container-' + videoIndex;
     var $overlay = $videoContainer.siblings('.overlay');
     var overlayHiddenClass = 'hidden';
 
+    // initially hide the replay option
+    var $replayIcon = $videoContainer.siblings('.replay-control');
+        $replayIcon.hide();
+
+    var $unmuteIcon = $videoContainer.siblings('.unmute-icon');
+    var $muteIcon = $videoContainer.siblings('.mute-icon');
+        $muteIcon.hide();
+
+    var $volumeControl = $videoContainer.siblings('.volume-control');
+
+    // Hide these things if we are not in the autplay/automute state
+    if(!isMuted){
+      $muteIcon.hide();
+      $unmuteIcon.hide();
+    }
+
     recordEvent('Video','play',videoIndex);
 
     OO.Player.create(videoContainerDOMId, videoId, {
       onCreate: function(player) {
         var thisPlayer = player;
+
+        // pause function
         var pausePlayer = function(){
           recordEvent('Video','pause',videoIndex);
           if(thisPlayer.getState() != "playing"){
@@ -194,19 +177,75 @@
           }
 
           $overlay.removeClass(overlayHiddenClass);
-          $(document).off('Harmony.video.pause',pausePlayer);
+          $(document).off('Harmony.article.change',pausePlayer);
         };
 
-        // Attach listener
-        $(document).on('Harmony.video.pause',pausePlayer);
+        // Mute, unmute, and replay functions
+        var mute = function(){
+          player.setVolume(0.0);
+        };
+
+        var unmute = function(){
+          player.setVolume(1.0);
+          $replayIcon.fadeIn();
+          // Lets record this event
+          recordEvent('Video','unmute',videoIndex);
+        };
+
+        // Replay function
+        var replay = function() {
+          player.setPlayheadTime(0.0);
+          // Lets record this event
+          recordEvent('Video','replay',videoIndex);
+        };
+
+        var toggleMute = function(){
+          if ($(this).hasClass('unmute-icon')) {
+            $(this).removeClass('unmute-icon')
+                   .addClass('mute-icon');
+            unmute();
+          } else {
+            $(this).removeClass('mute-icon')
+                   .addClass('unmute-icon');
+            mute();
+          }
+        };
+
+        // ------------------------------------------------------------
+        // Attach to DOM elements for mute and replay
+        // ------------------------------------------------------------
+
+        $volumeControl.on('click',toggleMute);
+
+        // Replay click event
+        $replayIcon.on('click',replay);
+
+        // Attach listener, so that video will pause if we go to another page
+        $(document).on('Harmony.article.change',pausePlayer);
 
         // Hide the cover once the video starts playing
-        player.mb.subscribe(OO.EVENTS.PLAY, 'myPage', function(eventName) {
+        // And mute the video
+        var playbackStarted = function(){
           $overlay.addClass(overlayHiddenClass);
+          if(isMuted){
+            $volumeControl.fadeIn();
+          }
+        };
+
+        player.mb.subscribe(OO.EVENTS.PLAY, 'myPage', playbackStarted);
+        player.mb.subscribe(OO.EVENTS.INITIAL_PLAY, 'myPage',playbackStarted);
+
+        // Hide controls
+        player.mb.subscribe(OO.EVENTS.DESTROY, 'myPage',function(){
+          $volumeControl.hide();
+          $replayIcon.hide();
         });
 
-        // Auto play when able to.
         player.mb.subscribe(OO.EVENTS.PLAYBACK_READY, 'myPage',function(){
+          // Alisha we ONLY do this on the landing page, right? Not for user clicks
+          if(isMuted){
+            mute();
+          }
           player.play();
         });
 
@@ -220,10 +259,6 @@
   };
 
   // VIDEO STUFF
-  var playMyVideo = function(){
-    rigUpVideoForContainer($(this).siblings('.video-container'));
-  };
-
 
   // Attach event handlers
   $nextButton.on('click', showNextArticle);
@@ -233,7 +268,15 @@
 
   setupNextAndPreviousArticle();
   displayApplicableArrows();
-  setPixelTrackerForThisPage();
 
-  $('.video button').on('click',playMyVideo);
+  // Call this to get going!
+  console.log("calling article change");
+  $(document).triggerHandler('Harmony.article.change', {activeArticle:$('article.active')});
+
+  // Attach a listener to the video so we can still play the video after navigating
+  // (or for all cases where autoplay does not apply)
+  $('.video button').on('click',function(){
+    rigUpVideoForContainer($('article.active .video-container'),false);
+  });
+
 })(jQuery);
