@@ -2,6 +2,10 @@
 
 For a complete readme and understanding of an Editorial App [read the documentation](https://github.com/voxmedia/411/wiki/Editorial-App-&-Google-Docs-Integration).
 
+# Boilerplate Google Doc
+
+You're gonna need to clone this: https://docs.google.com/a/sbnation.com/spreadsheet/ccc?key=0Aq4r9E2MjHrBdHdvTExMbEdoUDVqZTFISjFvazM4Smc&usp=sharing#gid=0
+
 # Setting up and navigating the doc
 
 Each row is a chunk of information. These can be displayed in different ways depending on what content is filled out.
