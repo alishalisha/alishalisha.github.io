@@ -1,14 +1,15 @@
-<% absolute_page_url = url_host + url_prefix + (slug == "week-0" ? '/' : slug) %>
+<% url_for_section = url_host + url_prefix + (slug == "week-0" ? '/' : slug) %>
 <% page_title = doc.detect{|row| row.kind == "page_title"}.try(:title) || '' %>
+<% share_text = doc.detect{|row| row.kind == "share_text"}.try(:text) || default_share_text %>
 
 <article class="<%= slug == active_slug ? 'active' : 'hidden' %>"
          data-slug="<%=slug%>"
          data-index="<%=index%>"
-         data-url-for-section="<%=absolute_page_url%>"
-         data-page-title= "<%= page_title %>">
+         data-url-for-section="<%=url_for_section%>"
+         data-page-title= "<%= page_title %>"
+         data-share-text= "<%= share_text %>" >
 
-  <!-- Video -->
-  <% # Figure out if there is a video here. %>
+  <%# ---- Video ----------------------------- #%>
   <% d = doc.detect{|row| row.kind == "video"} %>
   <% if d.present? %>
   <section class="lede video slider single">
@@ -23,7 +24,7 @@
     </ul>
 
     <div id="navigation">
-        <!-- Navigation -->
+        <%# --- Navigation -- -%>
       <a href="#" class="prev">
         <svg class="prev" viewBox="0 0 30 126"><use xlink:href="#prev-arrow"></use></svg>
       </a>
@@ -34,18 +35,15 @@
   </section>
   <% end %>
 
-  <!-- Content -->
+  <%# ---- Content --- %>
   <section class="content container">
 
   <%# Get the share text of out this week %>
-  <% share_text = doc.detect{|row| row.kind == "share_text"}.try(:text) || default_share_text %>
   <%= partial 'partials/social_share', :locals => {:share_text => share_text,
-                                                   :share_url => absolute_page_url} %>
+                                                   :share_url =>  url_for_section} %>
     <% doc.each do |d| %>
       <%# THINGS TO SKIP, these do not go in the layout %>
-      <% if d.kind == "published" || d.kind == "video" || d.kind == "share_text" || d.kind == "page_title" %>
-        <% next %>
-      <% elsif d.kind == "impression" && d.image.present? %>
+      <% if d.kind == "impression" && d.image.present? %>
         <img class="pixel-tracker" data-src="<%= d.image %>" />
       <% elsif d.kind == "text" %>
         <% if d.title.present? %>
@@ -54,14 +52,14 @@
         <div class="text">
           <p><%= d.text %></p>
         </div>
-        <% elsif d.kind == "left_quote" || d.kind == "right_quote" %>
-          <div class="<%= d.kind %>">
-            <% if d.title.present? %>
-              <h2><%= d.title %></h2>
-            <% end %>
-            <p><%= d.text %></p>
-          </div>
-      <% else %>
+      <% elsif d.kind == "left_quote" || d.kind == "right_quote" %>
+        <div class="<%= d.kind %>">
+          <% if d.title.present? %>
+            <h2><%= d.title %></h2>
+          <% end %>
+          <p><%= d.text %></p>
+        </div>
+      <% elsif (d.kind == "left" || d.kind == "right" || d.kind == "overlay") %>
         <% if d.link.present?
           markdown_syntax_link = /\[([^\]]+)\]\(([^)]+)\)/.match(d.link.to_s)
           if(!markdown_syntax_link.nil? && markdown_syntax_link.size == 3) # this is markdown syntax!
