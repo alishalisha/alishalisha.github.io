@@ -14,6 +14,5 @@
   };
 
   // This is something we want when a page changes
-  // Note this will be called
   $(document).on('Harmony.article.change',setPixelTrackerForPage);
 })(jQuery);

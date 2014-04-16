@@ -3,9 +3,10 @@
    share_url ||= url_host + url_prefix
    share_url.gsub!(/\/\/$/,'/')
 
+   # Note these are going to be overwritten in the javascript during run time
    twitter_url = "https://twitter.com/share?url=#{CGI.escape(share_url)}&amp;text=#{CGI.escape(share_text)}"
    facebook_url = "https://www.facebook.com/sharer/sharer.php?u=#{CGI.escape(share_url)}"
-   google_plus_url = "https://plus.google.com/share?url=#{CGI.escape(url)}"
+   google_plus_url = "https://plus.google.com/share?url=#{CGI.escape(share_url)}"
 %>
 <div class="nav__social">
   <a class="nav__social__link" data-share-via="twitter" data-shared="<%= app_name %>" href="<%= twitter_url %>">

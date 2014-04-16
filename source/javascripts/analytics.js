@@ -18,7 +18,6 @@
   });
 
   $(document).on('Harmony.article.change',function(evnt,data){
-                              // Data direction will be previous or next
     if(data.direction){
       recordEvent('Navigation', data.direction);
     }
