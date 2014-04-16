@@ -10,16 +10,16 @@
          data-share-text= "<%= share_text %>" >
 
   <%# ---- Video ----------------------------- #%>
-  <% d = doc.detect{|row| row.kind == "video"} %>
-  <% if row.present? %>
+  <% video_row = doc.detect{|row| row.kind == "video"} %>
+  <% if video_row.present? %>
   <section class="lede video slider single">
     <ul class="videos">
       <li class="active">
-        <button class="overlay" style="background-image: url('<%= row.image %>')">
-          <h1><%= row.title %></h1>
+        <button class="overlay" style="background-image: url('<%= video_row.image %>')">
+          <h1><%= video_row.title %></h1>
           <svg class="play-icon" viewBox="0 0 100 100"><use xlink:href="#play-button"></use></svg>
         </button>
-        <div class="video-container" id="video-container-<%= index %>" data-video-index="<%= index %>" data-video-id="<%=row.text %>"></div>
+        <div class="video-container" id="video-container-<%= index %>" data-video-index="<%= index %>" data-video-id="<%=video_row.text %>"></div>
       </li>
     </ul>
 
@@ -44,9 +44,9 @@
       <% if row.kind == "impression" && row.image.present? %>
         <img class="pixel-tracker" data-src="<%= row.image %>" />
       <% elsif row.kind == "text" %>
-        <%= partial 'partials/kind_text', :locals => {:row => row}
-      <% elsif row.kind.to_s.ends_with?('_quote') %>
-        <%= partial 'partials/kind_quote', :locals => {:row => row}
+        <%= partial 'partials/kind_text', :locals => {:row => row} %>
+      <% elsif row.kind.to_s.end_with?('_quote') %>
+        <%= partial 'partials/kind_quote', :locals => {:row => row} %>
       <% elsif (row.kind == "left" || row.kind == "right" || row.kind == "overlay" || row.kind == "divider") %>
         <% if row.link.present?
           markdown_syntax_link = /\[([^\]]+)\]\(([^)]+)\)/.match(row.link.to_s)
