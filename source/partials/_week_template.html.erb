@@ -1,29 +1,30 @@
-<% absolute_page_url = absolute_prefix + url_prefix + (slug == "week-0" ? '/' : slug) %>
-<% page_title = doc.detect{|row| row.kind == "video"}.try(:title) || '' %>
+<% url_for_section = url_host + url_prefix + (slug == "week-0" ? '/' : slug) %>
+<% page_title = doc.detect{|row| row.kind == "page_title"}.try(:title) || '' %>
+<% share_text = doc.detect{|row| row.kind == "share_text"}.try(:text) || default_share_text %>
 
 <article class="<%= slug == active_slug ? 'active' : 'hidden' %>"
          data-slug="<%=slug%>"
          data-index="<%=index%>"
-         data-url-for-section="<%=absolute_page_url%>"
-         data-page-title= "<%= page_title %>">
+         data-url-for-section="<%=url_for_section%>"
+         data-page-title= "<%= page_title %>"
+         data-share-text= "<%= share_text %>" >
 
-  <!-- Video -->
-  <% # Figure out if there is a video here. %>
-  <% d = doc.detect{|row| row.kind == "video"} %>
-  <% if d.present? %>
+  <%# ---- Video ----------------------------- #%>
+  <% video_row = doc.detect{|row| row.kind == "video"} %>
+  <% if video_row.present? %>
   <section class="lede video slider single">
     <ul class="videos">
       <li class="active">
-        <button class="overlay" style="background-image: url('<%= d.image %>')">
-          <h1><%= d.title %></h1>
+        <button class="overlay" style="background-image: url('<%= video_row.image %>')">
+          <h1><%= video_row.title %></h1>
           <svg class="play-icon" viewBox="0 0 100 100"><use xlink:href="#play-button"></use></svg>
         </button>
-        <div class="video-container" id="video-container-<%= index %>" data-video-index="<%= index %>" data-video-id="<%=d.text %>"></div>
+        <div class="video-container" id="video-container-<%= index %>" data-video-index="<%= index %>" data-video-id="<%=video_row.text %>"></div>
       </li>
     </ul>
 
     <div id="navigation">
-        <!-- Navigation -->
+      <%# --- Navigation -- -%>
       <a href="#" class="prev">
         <svg class="prev" viewBox="0 0 30 126"><use xlink:href="#prev-arrow"></use></svg>
       </a>
@@ -34,58 +35,43 @@
   </section>
   <% end %>
 
-  <!-- Content -->
+  <%# ---- Content --- %>
   <section class="content container">
-
   <%# Get the share text of out this week %>
-  <% share_text = doc.detect{|row| row.kind == "share_text"}.try(:text) || default_share_text %>
   <%= partial 'partials/social_share', :locals => {:share_text => share_text,
-                                                   :share_url => absolute_page_url} %>
-    <% doc.each do |d| %>
-      <%# THINGS TO SKIP, these do not go in the layout %>
-      <% if d.kind == "published" || d.kind == "video" || d.kind == "share_text" || d.kind == "page_title" %>
-        <% next %>
-      <% elsif d.kind == "impression" && d.image.present? %>
-        <img class="pixel-tracker" data-src="<%= d.image %>" />
-      <% elsif d.kind == "text" %>
-        <% if d.title.present? %>
-          <h2><%= d.title %></h2>
-        <% end %>
-        <div class="text">
-          <p><%= d.text %></p>
-        </div>
-        <% elsif d.kind == "left_quote" || d.kind == "right_quote" %>
-          <div class="<%= d.kind %>">
-            <% if d.title.present? %>
-              <h2><%= d.title %></h2>
-            <% end %>
-            <p><%= d.text %></p>
-          </div>
-      <% else %>
-        <% if d.link.present?
-          markdown_syntax_link = /\[([^\]]+)\]\(([^)]+)\)/.match(d.link.to_s)
+                                                   :share_url =>  url_for_section} %>
+    <% doc.each do |row| %>
+      <% if row.kind == "impression" && row.image.present? %>
+        <img class="pixel-tracker" data-src="<%= row.image %>" />
+      <% elsif row.kind == "text" %>
+        <%= partial 'partials/kind_text', :locals => {:row => row} %>
+      <% elsif row.kind.to_s.end_with?('_quote') %>
+        <%= partial 'partials/kind_quote', :locals => {:row => row} %>
+      <% elsif (row.kind == "left" || row.kind == "right" || row.kind == "overlay" || row.kind == "divider") %>
+        <% if row.link.present?
+          markdown_syntax_link = /\[([^\]]+)\]\(([^)]+)\)/.match(row.link.to_s)
           if(!markdown_syntax_link.nil? && markdown_syntax_link.size == 3) # this is markdown syntax!
             link_title = markdown_syntax_link[1]
             link_href =  markdown_syntax_link[2]
           else
-            link_title = "Read more about " + d.title.to_s + "..."
-            link_href = d.link.to_s
+            link_title = "Read more about " + row.title.to_s + "..."
+            link_href = row.link.to_s
           end
-           %>
+          %>
           <a href="<%= link_href %>">
         <% end %>
-        <figure class="<%= d.kind %>">
-          <% if d.image.present? %>
-            <img src="<%= d.image %>" alt=" ">
+        <figure class="<%= row.kind %>">
+          <% if row.image.present? %>
+            <img src="<%= row.image %>" alt=" ">
           <% end %>
           <div class="figure-content">
-            <% if d.title.present? %>
-              <h3><%= d.title %></h3>
+            <% if row.title.present? %>
+              <h3><%= row.title %></h3>
             <% end %>
-            <% if d.text.present? %>
-              <p><%= d.text %></p>
+            <% if row.text.present? %>
+              <p><%= row.text %></p>
             <% end %>
-            <% if d.link.present? %>
+            <% if row.link.present? %>
               <div class="action">
                 <svg class="inline-icon" viewBox="0 0 100 100"><use xlink:href="#play-button"></use></svg>
                 <%= link_title %>
@@ -93,9 +79,7 @@
             <% end %>
           </div>
         </figure>
-        <% if d.link.present? %>
-          </a>
-        <% end %>
+        <%= "</a>" if row.link.present? %>
       <% end %>
     <% end %>
   </section>

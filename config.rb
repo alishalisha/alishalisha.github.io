@@ -8,29 +8,32 @@ set :js_dir, 'javascripts'
 set :images_dir, 'images'
 
 set :app_name, "Harmony Boilerplate"
+set :sponsor_name, "TODO – CHANGE THIS"
 
 # These two items will be different when deploying
-# ------------------------------------------------
+# -----------------------------------------------------------
 # url_prefix must have a leading and trailing slash
 #    or condensned into one if there is no prefix.
 set :url_prefix, '/'
-set :absolute_prefix, 'http://localhost:4567'
-# ------------------------------------------------
+set :url_host, 'http://localhost:4567'
+# -----------------------------------------------------------
 
-# Social buttons
+# Social buttons --------------------------------------------
 set :facebook_app_id, '179668695452017'
-set :twitter, 'verge'
-set :twitter_account_id, '1465737598'
-set :default_share_text, 'SPONSORED: TODO - add share text'
-
-set :site_name, 'theverge.com'
 set :twitter, 'theverge'
+set :twitter_account_id, '1465737598'
+# If the sheet for this week does not contain a share_text field this will be used
+set :default_share_text, 'SPONSORED: TODO - add share text'
+# -----------------------------------------------------------
 
 # Reload the browser automatically whenever files change
 activate :livereload
 
 helpers Middleman::Chorus::GoogleDrive::Helpers
+
+# CHANGE this to match your spreadsheet id
 spreadsheet_id = "0Aq4r9E2MjHrBdHdvTExMbEdoUDVqZTFISjFvazM4Smc"
+
 load_spreadsheet("index",  spreadsheet_id, :gid => 0)
 load_spreadsheet("week_1", spreadsheet_id, :gid => 13)
 load_spreadsheet("week_2", spreadsheet_id, :gid => 14)
@@ -44,7 +47,8 @@ load_spreadsheet("week_9", spreadsheet_id, :gid => 21)
 load_spreadsheet("week_10", spreadsheet_id, :gid => 22)
 
 # Load the first index view
-weeks = [data.index];
+weeks = [data.index]
+
 (1..10).each do |week_number|
   weeks << data.send("week_#{week_number}")
 end
@@ -52,8 +56,7 @@ end
 # Routes for weeks!
 activate :directory_indexes
 
-ignore "/week_template.html"
-ignore "/will-be-index.html.erb"
+ignore "/main.html"
 ignore "/partials/*"
 
 published_weeks = weeks.select {|week_data|
@@ -71,31 +74,24 @@ published_weeks.each_with_index do |week,week_index|
   human_index = week_index + 1
   puts "Publishing week: #{human_index}"
   proxy "/week-#{human_index}/index.html",
-        "will-be-index.html",
+        "main.html",
         :locals => {:weeks => published_weeks,
                     :active_slug => "week-#{human_index}",
                     :slug => "week-#{human_index}" }
 end
 
-proxy '/index.html', 'will-be-index.html', :locals => {:weeks => published_weeks}
-
+proxy "/index.html",'main.html', :locals => {:weeks => published_weeks}
 
 # Build-specific configuration
 configure :build do
   puts "local build"
 
-  # clear out sprites
-  system "rm -f source/images/sprites/*.png"
-
-  activate :asset_hash,:ignore=>[/sprites\/.+\.png$/]
+  activate :asset_hash
   activate :chorus
   activate :minify_javascript
   activate :minify_css
 
   # Should have a leading and trailing slash
   set :url_prefix, "/sponsored/harmony-boilerplate/"
-  set :absolute_prefix, "http://www.theverge.com"
+  set :url_host, "http://www.theverge.com"
 end
-
-
-#

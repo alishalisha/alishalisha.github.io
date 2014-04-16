@@ -14,7 +14,15 @@ The `kind` row is the most important, it signifies the type of content and how t
 
 The type options are:
 
-* published — '1', 'true' or 'yes' will cause the sheet to be published. Anything else in this row, the sheet will be ignored when building it.
+_Configuration Kinds_
+
+* published — '1', 'true' or 'yes' (in the title column) will cause the sheet to be published. Anything else in this row, the sheet will be ignored when building it.
+* impression – use the image column to specify a pixel-tracker img src to load on page view. (You can include multiple rows of `impression` pixel trackers)
+* page_title – Will set the page title (title column)
+* share_text – Define the text shared from twitter, facebook and g+ (text column)
+
+_Display Kinds_
+
 * video — shows up in the video hero
 * text — Just a paragraph of text (works with title and text)
 * left — Image on the left, text on the right (works with title, text, image and links)
@@ -25,7 +33,6 @@ The type options are:
 * image — Full-width image (works with image and links)
 * next — next-click link (works with title, text, image and links)
 * divider - Adds a horizontal rule to the document
-* impression – use the image column and specify a pixel-tracker img src to load on page view. (You can include multiple rows of `impression` pixel trackers)
 
 # Styling
 

@@ -24,9 +24,8 @@
       App.Context = {
          url_prefix: "<%= url_prefix %>",
          app_name : "<%= app_name %>",
-         host_name: "<%= absolute_prefix %>",
-         twitter_name: "<%= twitter %>",
-         current_url: "<%= absolute_prefix + url_prefix %>"
+         host_name: "<%= url_host %>",
+         twitter_name: "<%= twitter %>"
        };
 
       // A nice place holder for google analytics things
@@ -54,12 +53,13 @@
     <footer class="footer">
       <a href="http://voxmedia.com"> <svg class="footer__logo vox-logo" viewBox="0 0 200 72"><use xlink:href="#vox-logo"></use></svg></a>
       <aside class="footer__text">
-        <p>This feature was produced in collaboration between <a href="http://www.voxmedia.com/media-kit/brand/vox-creative">VOX Creative</a> and Intel. The Verge editorial staff was not involved in the creation or production of this content.</p>
+        <p>This feature was produced in collaboration between <a href="http://www.voxmedia.com/media-kit/brand/vox-creative">VOX Creative</a> and <%= sponsor_name %>. The Verge editorial staff was not involved in the creation or production of this content.</p>
         <small>&copy;<%= Time.new.year %>. Vox Media, Inc. All Rights Reserved</small>
       </aside>
     </footer>
 
   </body>
   <%= partial 'partials/analytics' %>
-  <%= javascript_include_tag  "jquery-2.1.0.min", "script", "social" %>
+  <%= javascript_include_tag  "jquery-2.1.0.min", 'update_url','ooyala-video','analytics',"pixel_tracker", "social","base" %>
+
 </html>
