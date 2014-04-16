@@ -2,9 +2,6 @@
 
   var updateURLAndTitle = function(eventObject,data){
     var $activeArticle = data.activeArticle;
-    
-    console.log("updateURLAndTitle: ", $activeArticle[0],data);
-
     var state = {};
     var activeSlug = $activeArticle.data('slug') || 'week-0';
     var activeTitle = $activeArticle.data('page-title') || App.Context.app_name;
@@ -19,7 +16,6 @@
     App.Context.current_url = url;
 
     if( url !== location.pathname ) {
-      
       // Trigger a page change event, if the URL changed
       $(document).triggerHandler('Harmony.page.change',{"url":url});
 

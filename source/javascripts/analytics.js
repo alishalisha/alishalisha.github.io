@@ -3,7 +3,6 @@
   // Event name might be 'next', should be a single word
   // Event source might be 'keyboard'
   var recordEvent = function(action,label,value){
-    console.log("TRACKING - ", arguments);
     if(typeof(value) === "undefined"){
       _gaq.push(['_trackEvent', App.Context.app_name, action, label]);
     } else {
