@@ -36,7 +36,7 @@
 
         // pause function
         var pausePlayer = function(){
-          recordEvent('Video','pause',videoIndex);
+          $(document).triggerHandler('Harmony.event.track', {action:"Video", label:"Pause",value: videoIndex});
           if(thisPlayer.getState() != "playing"){
             thisPlayer.destroy();
           } else {
@@ -59,15 +59,13 @@
         var unmute = function(){
           player.setVolume(1.0);
           $replayIcon.fadeIn();
-          // Lets record this event
-          recordEvent('Video','unmute',videoIndex);
+          $(document).triggerHandler('Harmony.event.track', {action:"Video", label:"Unmute",value: videoIndex});
         };
 
         // Replay function
         var replay = function() {
           player.setPlayheadTime(0.0);
-          // Lets record this event
-          recordEvent('Video','replay',videoIndex);
+          $(document).triggerHandler('Harmony.event.track', {action:"Video", label:"Replay",value: videoIndex});
         };
 
         var toggleMute = function(){
