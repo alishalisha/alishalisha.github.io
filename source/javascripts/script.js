@@ -215,8 +215,8 @@
 
         // Remove that class once the video is done.
         player.mb.subscribe(OO.EVENTS.PLAYED,'myPage', function(eventName) {
-          $overlay.removeClass(overlayHiddenClass);
           player.destroy();
+          $overlay.removeClass(overlayHiddenClass);
         });
       }
     });
@@ -224,7 +224,8 @@
 
   // VIDEO STUFF
   var playMyVideo = function(){
-    rigUpVideoForContainer($(this).siblings('.video-container'));
+    //rigUpVideoForContainer($(this).siblings('.video-container'));
+    rigUpVideoForContainer($('article.active .video-container'));
   };
 
 
@@ -239,4 +240,7 @@
   setPixelTrackerForThisPage();
 
   $('.video button').on('click',playMyVideo);
+  playMyVideo();
+  // This enables autoplay
+
 })(jQuery);
