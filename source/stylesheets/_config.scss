@@ -121,6 +121,11 @@ article .nav__social {
 
 }
 
+// Hiding the ads countdown overlay
+.oo_ads_countdown {
+  display: none;
+}
+
 @import "lib/svg";
 @import "lib/footer";
 @import "lib/slider";
