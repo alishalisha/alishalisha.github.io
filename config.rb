@@ -95,6 +95,3 @@ configure :build do
   set :url_prefix, "/sponsored/harmony-boilerplate/"
   set :url_host, "http://www.theverge.com"
 end
-
-
-#
