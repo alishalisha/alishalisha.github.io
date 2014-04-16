@@ -23,14 +23,12 @@
     evnt.preventDefault();
 
     if($nextArticle[0]){
-      recordEvent('Navigation', 'Next');
-
       $activeArticle.removeClass('active').addClass('hidden');
       $nextArticle.addClass('active').removeClass('hidden').removeClass('next');
       $activeArticle = $nextArticle;
       setupNextAndPreviousArticle();
 
-      $(document).triggerHandler('Harmony.article.change', {activeArticle:$activeArticle});
+      $(document).triggerHandler('Harmony.article.change', {activeArticle:$activeArticle, direction:"Next"});
     }
   };
 
@@ -38,20 +36,13 @@
     evnt.stopPropagation();
     evnt.preventDefault();
 
-    // Move classes around
     if($previousArticle[0]){
-
-      // if it is keyboard identify it
-      recordEvent('Navigation', 'Previous');
-
       $activeArticle.removeClass('active').addClass('hidden');
       $previousArticle.addClass('active').removeClass('hidden').removeClass('previous');
-
-      // Now setup the articles
       $activeArticle = $previousArticle;
       setupNextAndPreviousArticle();
 
-      $(document).triggerHandler('Harmony.article.change',{activeArticle:$activeArticle});
+      $(document).triggerHandler('Harmony.article.change',{activeArticle:$activeArticle, direction:"Previous"});
     }
   };
 
@@ -115,8 +106,6 @@
 
   $(document).on('Harmony.article.next',     showNextArticle);
   $(document).on('Harmony.article.previous', showPreviousArticle);
-
-  // $('a.nav__social__link').click(trackSocialClick);
 
   setupNextAndPreviousArticle();
   displayApplicableArrows();
