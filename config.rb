@@ -10,27 +10,29 @@ set :images_dir, 'images'
 set :app_name, "Harmony Boilerplate"
 
 # These two items will be different when deploying
-# ------------------------------------------------
+# -----------------------------------------------------------
 # url_prefix must have a leading and trailing slash
 #    or condensned into one if there is no prefix.
 set :url_prefix, '/'
 set :url_host, 'http://localhost:4567'
-# ------------------------------------------------
+# -----------------------------------------------------------
 
-# Social buttons
+# Social buttons --------------------------------------------
 set :facebook_app_id, '179668695452017'
-set :twitter, 'verge'
-set :twitter_account_id, '1465737598'
-set :default_share_text, 'SPONSORED: TODO - add share text'
-
-set :site_name, 'theverge.com'
 set :twitter, 'theverge'
+set :twitter_account_id, '1465737598'
+# If the sheet for this week does not contain a share_text field this will be used
+set :default_share_text, 'SPONSORED: TODO - add share text'
+# -----------------------------------------------------------
 
 # Reload the browser automatically whenever files change
 activate :livereload
 
 helpers Middleman::Chorus::GoogleDrive::Helpers
+
+# CHANGE this to match your spreadsheet id
 spreadsheet_id = "0Aq4r9E2MjHrBdHdvTExMbEdoUDVqZTFISjFvazM4Smc"
+
 load_spreadsheet("index",  spreadsheet_id, :gid => 0)
 load_spreadsheet("week_1", spreadsheet_id, :gid => 13)
 # load_spreadsheet("week_2", spreadsheet_id, :gid => 14)
@@ -53,8 +55,7 @@ end
 # Routes for weeks!
 activate :directory_indexes
 
-ignore "/week_template.html"
-ignore "/index.html.erb"
+ignore "/main.html"
 ignore "/partials/*"
 
 published_weeks = weeks.select {|week_data|
