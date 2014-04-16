@@ -59,7 +59,7 @@
           <% end %>
           <p><%= d.text %></p>
         </div>
-      <% elsif (d.kind == "left" || d.kind == "right" || d.kind == "overlay") %>
+      <% elsif (d.kind == "left" || d.kind == "right" || d.kind == "overlay" || d.kind == "divider") %>
         <% if d.link.present?
           markdown_syntax_link = /\[([^\]]+)\]\(([^)]+)\)/.match(d.link.to_s)
           if(!markdown_syntax_link.nil? && markdown_syntax_link.size == 3) # this is markdown syntax!
