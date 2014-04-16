@@ -118,4 +118,7 @@
     $(document).triggerHandler('Harmony.video.playCurrent');
   });
 
+  // Autoplay when directly navigating to page
+  $(document).triggerHandler('Harmony.video.playCurrent');
+
 })(jQuery);

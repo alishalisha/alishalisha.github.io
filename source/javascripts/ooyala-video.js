@@ -132,11 +132,7 @@
 
 
   $(document).on('Harmony.video.playCurrent',function(){
-    rigUpVideoForContainer($('article.active .video-container'),false);
-  });
-
-  $(document).on('Harmony.video.playCurrentMuted',function(){
-    rigUpVideoForContainer($('article.active .video-container'),true);
+    rigUpVideoForContainer($('article.active .video-container'));
   });
 
 })(jQuery);
