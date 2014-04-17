@@ -3,9 +3,9 @@
 <% share_text = doc.detect{|row| row.kind == "share_text"}.try(:text) || default_share_text %>
 
 <article class="<%= slug == active_slug ? 'active' : 'hidden' %>"
-         data-slug="<%=slug%>"
-         data-index="<%=index%>"
-         data-url-for-section="<%=url_for_section%>"
+         data-slug="<%=slug %>"
+         data-index="<%=index %>"
+         data-url-for-section="<%=url_for_section %>"
          data-page-title= "<%= page_title %>"
          data-share-text= "<%= share_text %>" >
 
