@@ -37,14 +37,14 @@ spreadsheet_id = "0Aq4r9E2MjHrBdHdvTExMbEdoUDVqZTFISjFvazM4Smc"
 load_spreadsheet("index",  spreadsheet_id, :gid => 0)
 load_spreadsheet("week_1", spreadsheet_id, :gid => 13)
 load_spreadsheet("week_2", spreadsheet_id, :gid => 14)
-# load_spreadsheet("week_3", spreadsheet_id, :gid => 15)
-# load_spreadsheet("week_4", spreadsheet_id, :gid => 16)
-# load_spreadsheet("week_5", spreadsheet_id, :gid => 17)
-# load_spreadsheet("week_6", spreadsheet_id, :gid => 18)
-# load_spreadsheet("week_7", spreadsheet_id, :gid => 19)
-# load_spreadsheet("week_8", spreadsheet_id, :gid => 20)
-# load_spreadsheet("week_9", spreadsheet_id, :gid => 21)
-# load_spreadsheet("week_10", spreadsheet_id, :gid => 22)
+load_spreadsheet("week_3", spreadsheet_id, :gid => 15)
+load_spreadsheet("week_4", spreadsheet_id, :gid => 16)
+load_spreadsheet("week_5", spreadsheet_id, :gid => 17)
+load_spreadsheet("week_6", spreadsheet_id, :gid => 18)
+load_spreadsheet("week_7", spreadsheet_id, :gid => 19)
+load_spreadsheet("week_8", spreadsheet_id, :gid => 20)
+load_spreadsheet("week_9", spreadsheet_id, :gid => 21)
+load_spreadsheet("week_10", spreadsheet_id, :gid => 22)
 
 # Load the first index view
 weeks = [data.index]
@@ -65,11 +65,12 @@ published_weeks = weeks.select {|week_data|
                                                      row.title.to_s.downcase == "yes") }
 }
 
+# Build the slugs out for each page.
 week_slugs = []
 published_weeks.each_with_index do |week_data, index|
   slug = week_data.detect{|row| row.kind == "page_title"}.fetch("title","week-#{(index+1)}")
   slug = "#{index+1}/" + slug.split(/\W/).join('-') #make it url friendly
-  week_slugs << slug
+  week_slugs << slug.downcase
 end
 
 puts "published_weeks count: #{published_weeks.length}"
@@ -80,7 +81,7 @@ puts "published_weeks count: #{published_weeks.length}"
 published_weeks.each_with_index do |week,week_index|
   human_index = week_index + 1
   slug = week_slugs[week_index]
-  puts "Publishing week: #{human_index} slug: #{slug}"
+  puts "Publishing week: #{human_index} >> #{slug}"
   proxy "/#{slug}/index.html",
         "main.html",
         :locals => {:weeks => published_weeks,
