@@ -42,7 +42,12 @@ The `style.scss` file should start out blank at the beginning of every new proje
 
 # How Pages and Navigation work
 
-In order to have lightening fast navigation, we do a trick. _A tricksy trick._ Every page that is built contains all of the content for all of the pages. When the reader navigates between pages the javascript: a) displays the desired page and hides the others and b) changes the url to map to the new page (note this does not cause a page refresh, just simulates it.). But this technique does not work for directly requesting urls (/week-1/, /week-2/). For this we need  html files that have all the articles embeded in them but are only showing the correct article for the entered url
+In order to have lightening fast navigation, we do a trick. _A tricksy trick._ Every page that is built contains all of the content for all of the pages. When the reader navigates between pages the javascript:
+
+1. Displays the desired page and hides the others and
+2. Changes the url to map to the new page _(note: this does not cause a page refresh, just simulates it.)_
+
+But this technique does not work for directly requesting urls (`/week-1/`, `/week-2/`). For this we need html files that have all the articles embeded in them but are only showing the correct article for the entered url
 
 
     /index.html               /week-1/index.html      /week-2/index.html
