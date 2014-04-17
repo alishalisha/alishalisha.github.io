@@ -1,7 +1,4 @@
-<%# Loop through all the weeks and build them here -- %>
-<% active_slug ||= slugs.first
-  weeks ||= locals[:weeks] || []
-
+<%
   # used for carousel at the bottom of the index page ------
   videos = []
   weeks.each_with_index do |week_data, index|

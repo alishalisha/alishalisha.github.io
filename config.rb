@@ -37,14 +37,14 @@ spreadsheet_id = "0Aq4r9E2MjHrBdHdvTExMbEdoUDVqZTFISjFvazM4Smc"
 load_spreadsheet("index",  spreadsheet_id, :gid => 0)
 load_spreadsheet("week_1", spreadsheet_id, :gid => 13)
 load_spreadsheet("week_2", spreadsheet_id, :gid => 14)
-load_spreadsheet("week_3", spreadsheet_id, :gid => 15)
-load_spreadsheet("week_4", spreadsheet_id, :gid => 16)
-load_spreadsheet("week_5", spreadsheet_id, :gid => 17)
-load_spreadsheet("week_6", spreadsheet_id, :gid => 18)
-load_spreadsheet("week_7", spreadsheet_id, :gid => 19)
-load_spreadsheet("week_8", spreadsheet_id, :gid => 20)
-load_spreadsheet("week_9", spreadsheet_id, :gid => 21)
-load_spreadsheet("week_10", spreadsheet_id, :gid => 22)
+# load_spreadsheet("week_3", spreadsheet_id, :gid => 15)
+# load_spreadsheet("week_4", spreadsheet_id, :gid => 16)
+# load_spreadsheet("week_5", spreadsheet_id, :gid => 17)
+# load_spreadsheet("week_6", spreadsheet_id, :gid => 18)
+# load_spreadsheet("week_7", spreadsheet_id, :gid => 19)
+# load_spreadsheet("week_8", spreadsheet_id, :gid => 20)
+# load_spreadsheet("week_9", spreadsheet_id, :gid => 21)
+# load_spreadsheet("week_10", spreadsheet_id, :gid => 22)
 
 # Load the first index view
 weeks = [data.index]
@@ -68,9 +68,8 @@ published_weeks = weeks.select {|week_data|
 # Build the slugs out for each page.
 week_slugs = []
 published_weeks.each_with_index do |week_data, index|
-  slug = week_data.detect{|row| row.kind == "page_title"}.fetch("title","week-#{(index+1)}")
-  slug = "#{index+1}/" + slug.split(/\W/).join('-') #make it url friendly
-  week_slugs << slug.downcase
+  title = week_data.detect{|row| row.kind == "page_title"}.fetch("title","week-#{(index+1)}")
+  week_slugs << "#{index+1}/" + title.split(/\W/).join('-').downcase #make it url friendly
 end
 
 puts "published_weeks count: #{published_weeks.length}"
@@ -90,15 +89,14 @@ published_weeks.each_with_index do |week,week_index|
                     :slugs => week_slugs }
 
   # Can use old slugs too
-  proxy "/week-#{human_index}/index.html",
-        "main.html",
-        :locals => {:weeks => published_weeks,
-                    :active_slug => slug,
-                    :slug => slug,
-                    :slugs => week_slugs }
+  redirect "/week-#{human_index}/index.html", :to => "/#{slug}/index.html"
+  redirect "/week-#{human_index}/", :to => "/#{slug}/index.html"
 end
 
-proxy "/index.html",'main.html', :locals => {:weeks => published_weeks, :slugs => week_slugs}
+proxy "/index.html",'main.html', :locals => {:weeks => published_weeks,
+                                             :slugs => week_slugs,
+                                             :slug => week_slugs.first,
+                                             :active_slug => week_slugs.first}
 
 # Build-specific configuration
 configure :build do
