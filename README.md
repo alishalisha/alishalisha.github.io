@@ -4,7 +4,7 @@ For a complete readme and understanding of an Editorial App [read the documentat
 
 # Boilerplate Google Doc
 
-You're gonna need to clone this: `https://docs.google.com/a/sbnation.com/spreadsheet/ccc?key=0Aq4r9E2MjHrBdHdvTExMbEdoUDVqZTFISjFvazM4Smc`
+You're gonna need to clone this: https://docs.google.com/a/sbnation.com/spreadsheet/ccc?key=0Aq4r9E2MjHrBdHdvTExMbEdoUDVqZTFISjFvazM4Smc&usp=sharing#gid=0
 
 # Setting up and navigating the doc
 
@@ -66,7 +66,7 @@ But this technique does not work for directly requesting urls (`/week-1/`, `/wee
 
 # Events!
 
-Harmony Editorial Apps are designed to be flexible and modular. To account for this (nearly) all of the javascript is event based. Events can be observed or triggered.
+Harmony Editorial Apps are designed to be flexible and modular. To account for this (nearly) all of the javascript is event based. There are X events that are fired as the reader is interacting with these features:
 
 **Events to observe** – To handle state changes
 

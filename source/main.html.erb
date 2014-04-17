@@ -1,5 +1,5 @@
 <%# Loop through all the weeks and build them here -- %>
-<% active_slug ||= slugs.first
+<% active_slug ||= 'week-0'
   weeks ||= locals[:weeks] || []
 
   # used for carousel at the bottom of the index page ------
@@ -13,10 +13,9 @@
 %>
 
 <% weeks.each_with_index do |week_data, index| %>
-  <% slug = slugs.at(index) %>
   <%= partial "partials/week_template", :locals => {:doc => week_data,
                                                     :active_slug => active_slug,
-                                                    :slug => slug,
+                                                    :slug => "week-#{index}",
                                                     :index => index,
                                                     :published_videos => videos
                                                     } %>
