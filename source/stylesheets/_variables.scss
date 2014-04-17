@@ -12,10 +12,16 @@ $max-width: 70em;
 // Iconography
 $play-icon-links: true;
 
+// Breakpoints
+$break_large: 1000px;
+$break_medium: 800px;
+$break_small: 500px;
+
 // Colors
 $primary: #0073c3;
 $background: #fff9f3;
 $text: #555;
+$black: #000;
 
 // Typography
 $headline-font: Verdana, sans-serif;

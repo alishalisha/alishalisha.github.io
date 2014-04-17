@@ -7,7 +7,7 @@ nav, .nav__background {
   right: 0;
   top: 0;
   height: $nav-height;
-  overflow: hidden;
+ // overflow: hidden;
   color: $nav-color;
   @include background(
     linear-gradient(to bottom, rgba(#000, .2), rgba(#000, 0))
@@ -17,7 +17,7 @@ nav, .nav__background {
 .nav__vertical__logo {
   height: 34px;
   width: 140px;
-  margin: 6px 0 0 1.3em;
+  margin: 6px 0 0 4em;
   float: left;
   fill: $nav-color;
 }

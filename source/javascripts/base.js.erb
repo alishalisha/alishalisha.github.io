@@ -127,4 +127,12 @@
   // Autoplay when directly navigating to page
   $(document).triggerHandler('Harmony.video.playCurrent');
 
+  // Nav Menu -- need to move this into a partial later
+  var toggleMenu = function() {
+  $('.menu').toggleClass('active');
+  return false;
+  }
+
+  $('.nav__burger').on('click', toggleMenu);
+
 })(jQuery);
