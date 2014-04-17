@@ -129,10 +129,18 @@
 
   // Nav Menu -- need to move this into a partial later
   var toggleMenu = function() {
-  $('.menu').toggleClass('active');
-  return false;
+    $('.menu').toggleClass('active');
+    return false;
   }
 
   $('.nav__burger').on('click', toggleMenu);
+
+  var hideMenu = function() {
+    $('.menu').removeClass('active');
+    return false;
+  }
+
+  // When article is changed, hide the menu
+  $(document).on('Harmony.article.change',hideMenu);
 
 })(jQuery);
