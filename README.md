@@ -66,7 +66,7 @@ But this technique does not work for directly requesting urls (`/week-1/`, `/wee
 
 # Events!
 
-Harmony Editorial Apps are designed to be flexible and modular. To account for this (nearly) all of the javascript is event based. There are X events that are fired as the reader is interacting with these features:
+Harmony Editorial Apps are designed to be flexible and modular. To account for this (nearly) all of the javascript is event based. Events can be observed or triggered.
 
 **Events to observe** – To handle state changes
 
