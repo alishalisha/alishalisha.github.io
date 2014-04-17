@@ -88,6 +88,14 @@ published_weeks.each_with_index do |week,week_index|
                     :active_slug => slug,
                     :slug => slug,
                     :slugs => week_slugs }
+
+  # Can use old slugs too
+  proxy "/week-#{human_index}/index.html",
+        "main.html",
+        :locals => {:weeks => published_weeks,
+                    :active_slug => slug,
+                    :slug => slug,
+                    :slugs => week_slugs }
 end
 
 proxy "/index.html",'main.html', :locals => {:weeks => published_weeks, :slugs => week_slugs}
