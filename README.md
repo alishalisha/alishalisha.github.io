@@ -4,7 +4,7 @@ For a complete readme and understanding of an Editorial App [read the documentat
 
 # Boilerplate Google Doc
 
-You're gonna need to clone this: https://docs.google.com/a/sbnation.com/spreadsheet/ccc?key=0Aq4r9E2MjHrBdHdvTExMbEdoUDVqZTFISjFvazM4Smc&usp=sharing#gid=0
+You're gonna need to clone this: `https://docs.google.com/a/sbnation.com/spreadsheet/ccc?key=0Aq4r9E2MjHrBdHdvTExMbEdoUDVqZTFISjFvazM4Smc`
 
 # Setting up and navigating the doc
 
