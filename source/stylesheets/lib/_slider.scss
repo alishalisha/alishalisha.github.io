@@ -47,6 +47,10 @@ $prev-next-height: 126px;
   display: none;
 }
 
+// Play button hover state
+.svg-icon {
+  &:hover { opacity: .8; transition: opacity .3s }
+}
 
 $hover-offset: 5%;
 
