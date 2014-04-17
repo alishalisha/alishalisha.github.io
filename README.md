@@ -40,6 +40,39 @@ The two files you should be most concerned with are `_config.scss` and `style.sc
 
 The `style.scss` file should start out blank at the beginning of every new project. This is where custom styles happen that go beyond the initial configuration. If you want to do anything custom, this is where that magic happens.
 
+# How Pages and Navigation work
+
+In order to have lightening fast navigation, we do a trick. _A tricksy trick._ Every page that is built contains all of the content for all of the pages. When the reader navigates between pages the javascript: a) displays the desired page and hides the others and b) changes the url to map to the new page (note this does not cause a page refresh, just simulates it.). But this technique does not work for directly requesting urls (/week-1/, /week-2/). For this we need  html files that have all the articles embeded in them but are only showing the correct article for the entered url
+
+
+    /index.html               /week-1/index.html      /week-2/index.html
+    +-------------------+   +-------------------+   +-------------------+
+    |                   |   |  Article 1 hidden |   |  Article 1 hidden |
+    |                   |   +- - - - - - - - - -+   |  Article 2 hidden |
+    |  Article 1 SHOWN  |   |                   |   +- - - - - - - - - -+
+    |                   |   |  Article 2 SHOWN  |   |                   |
+    +- - - - - - - - - -+   |                   |   |  Article 3 SHOWN  |
+    |  Article 2 hidden |   +- - - - - - - - - -+   |                   |
+    |  Article 3 hidden |   |  Article 3 hidden |   +- - - - - - - - - -+
+    |  Article 4 hidden |   |  Article 4 hidden |   |  Article 4 hidden |
+    ~~~~~~~~~~~~~~~~~~~~~   ~~~~~~~~~~~~~~~~~~~~~   ~~~~~~~~~~~~~~~~~~~~~
+
+
+
+# Events!
+
+Harmony Editorial Apps are designed to be flexible and modular. To account for this (nearly) all of the javascript is event based. There are X events that are fired as the reader is interacting with these features:
+
+**Events to observe** – To handle state changes
+
+* `Harmony.article.change` – Fired when the displayed article on the page changes. data attribute `{activeArticle:$activeArticle, direction: <"Next" | "Previous">}`
+* `Harmony.page.change` – Fired when the URL changes. Data `{"url":"http://theverge.com/sponsored/xxx"}`
+
+**Events to emit/control** – use these events to control the experience
+
+* `Harmony.event.track` – Used to record an action. Data attribute should be in the follow form: `{action:"Video", label:"Play",value: 12}`
+* `Harmony.video.playCurrent` – Request current article's video to play.
+* `Harmony.video.pause` – Pause any playing video
 
 # Running Locally
 
