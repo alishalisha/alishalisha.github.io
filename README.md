@@ -27,8 +27,8 @@ _Display Kinds_
 * text — Just a paragraph of text (works with title and text)
 * left — Image on the left, text on the right (works with title, text, image and links)
 * right — Image on the right, text on the left (works with title, text, image and links)
-* left_quote — Image on the left, quote on the left (works with title, text (quote), image and links)
-* right_quote — Image on the right, quote on the left (works with title, text (quote), image and links)
+* left_quote — Quote on the left, text on the right ('title' column is the quote text)
+* right_quote — Quote on the right, text on the left ('title' column is the quote text)
 * overlay — Text overlays the image (works with title, text, image and links)
 * image — Full-width image (works with image and links)
 * next — next-click link (works with title, text, image and links)
@@ -36,7 +36,7 @@ _Display Kinds_
 
 # Styling
 
-The two files you should be most concerned with are `_config.scss` and `style.scss`. Config is just a list of variables that control various aspects of your design like how wide the text columns are, what fonts go where, and what colors various elements are. You should be able to get really far on just the configuration alone.
+The two files you should be most concerned with are `_variables.scss` and `style.scss`. Variables is just a list of variables that control various aspects of your design like how wide the text columns are, what fonts go where, and what colors various elements are. You should be able to get really far on just the configuration alone.
 
 The `style.scss` file should start out blank at the beginning of every new project. This is where custom styles happen that go beyond the initial configuration. If you want to do anything custom, this is where that magic happens.
 
