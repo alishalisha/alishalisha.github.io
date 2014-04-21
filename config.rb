@@ -68,8 +68,16 @@ published_weeks = weeks.select {|week_data|
 # Build the slugs out for each page.
 week_slugs = []
 published_weeks.each_with_index do |week_data, index|
-  title = week_data.detect{|row| row.kind == "page_title"}.fetch("title","week-#{(index+1)}")
-  week_slugs << "#{index+1}/" + title.split(/\W/).join('-').downcase #make it url friendly
+  title = week_data.detect{|row| row.kind == "page_title"}.fetch("title")
+  if index > 0
+    slug = "week-#{index}"
+    if title.present?
+      slug += "-" + title.split(/\W/).join('-').downcase
+    end
+  else
+    slug = ''
+  end
+  week_slugs << slug
 end
 
 puts "published_weeks count: #{published_weeks.length}"
@@ -78,9 +86,8 @@ puts "published_weeks count: #{published_weeks.length}"
 # published_weeks = weeks
 
 published_weeks.each_with_index do |week,week_index|
-  human_index = week_index + 1
   slug = week_slugs[week_index]
-  puts "Publishing week: #{human_index} >> #{slug}"
+  puts "Publishing week: #{week_index == 0 ? 'index' : week_index} >> #{slug}"
   proxy "/#{slug}/index.html",
         "main.html",
         :locals => {:weeks => published_weeks,
@@ -89,8 +96,12 @@ published_weeks.each_with_index do |week,week_index|
                     :slugs => week_slugs }
 
   # Can use old slugs too
-  redirect "/week-#{human_index}/index.html", :to => "/#{slug}/index.html"
-  redirect "/week-#{human_index}/", :to => "/#{slug}/index.html"
+  proxy "/week-#{week_index}/index.html",
+        "main.html",
+        :locals => {:weeks => published_weeks,
+                    :active_slug => slug,
+                    :slug => slug,
+                    :slugs => week_slugs }
 end
 
 proxy "/index.html",'main.html', :locals => {:weeks => published_weeks,
