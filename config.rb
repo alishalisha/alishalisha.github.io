@@ -65,22 +65,49 @@ published_weeks = weeks.select {|week_data|
                                                      row.title.to_s.downcase == "yes") }
 }
 
+# Build the slugs out for each page.
+week_slugs = []
+published_weeks.each_with_index do |week_data, index|
+  title = week_data.detect{|row| row.kind == "page_title"}.fetch("title")
+  if index > 0
+    slug = "week-#{index}"
+    if title.present?
+      slug += "-" + title.split(/\W/).join('-').downcase
+    end
+  else
+    slug = ''
+  end
+  week_slugs << slug
+end
+
 puts "published_weeks count: #{published_weeks.length}"
 
 # uncomment to show all articles regardless of published state
 # published_weeks = weeks
 
 published_weeks.each_with_index do |week,week_index|
-  human_index = week_index + 1
-  puts "Publishing week: #{human_index}"
-  proxy "/week-#{human_index}/index.html",
+  slug = week_slugs[week_index]
+  puts "Publishing week: #{week_index == 0 ? 'index' : week_index} >> #{slug}"
+  proxy "/#{slug}/index.html",
         "main.html",
         :locals => {:weeks => published_weeks,
-                    :active_slug => "week-#{human_index}",
-                    :slug => "week-#{human_index}" }
+                    :active_slug => slug,
+                    :slug => slug,
+                    :slugs => week_slugs }
+
+  # Can use old slugs too
+  proxy "/week-#{week_index}/index.html",
+        "main.html",
+        :locals => {:weeks => published_weeks,
+                    :active_slug => slug,
+                    :slug => slug,
+                    :slugs => week_slugs }
 end
 
-proxy "/index.html",'main.html', :locals => {:weeks => published_weeks}
+proxy "/index.html",'main.html', :locals => {:weeks => published_weeks,
+                                             :slugs => week_slugs,
+                                             :slug => week_slugs.first,
+                                             :active_slug => week_slugs.first}
 
 # Build-specific configuration
 configure :build do
