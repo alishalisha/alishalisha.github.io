@@ -4,6 +4,12 @@
 
 // Hamburger Menu - will move these into a partial soon.
  nav {
+
+ 	a:hover {
+ 		text-decoration: none;
+ 		border-bottom: none;
+ 	}
+ 	
  	z-index: 10001;
 	 .nav__burger {
 	    @include transition (background-color ease-in-out 0.3s);

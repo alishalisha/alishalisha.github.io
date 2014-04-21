@@ -152,3 +152,36 @@ $hover-offset: 5%;
 .play-button__stroke {
   stroke-width: 5px;
 }
+
+article {
+  position: absolute;
+  top: 44px;
+  left: 0;
+  right: 0;
+  //bottom: 0;
+}
+
+.displaynone {
+  display: none;
+}
+
+article.active {
+  -webkit-animation: slideIn 0.4s ease-in-out forwards;
+}
+
+article.hidden {
+  display: block !important;
+  -webkit-animation: fadeOut 0.4s ease-in-out forwards;
+}
+
+@-webkit-keyframes slideIn {
+  from { -webkit-transform: translateX(100%); opacity: 0; }
+  to { -webkit-transform: translateX(0); opacity: 1; }
+}
+
+@-webkit-keyframes fadeOut {
+  from { opacity: 1; -webkit-transform: translateX(0)}
+  to { opacity: 0;
+      -webkit-transform: translateX(-100%);
+  }
+}
