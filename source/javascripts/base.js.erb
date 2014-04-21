@@ -140,6 +140,11 @@
     return false;
   }
 
+  $("nav li a").on('click',function(){
+    var index = $(this).data('index');
+    $(document).triggerHandler('Harmony.article.jumpTo',{articleIndex: index});
+})
+
   // When article is changed, hide the menu
   $(document).on('Harmony.article.change',hideMenu);
 
