@@ -1,0 +1,55 @@
+@import "compass";
+
+// GLOBAL VARIABLES GO IN THIS STYLESHEET
+
+// Associated Vertical
+$vertical: verge; // sbn, verge, polygon
+
+// Container
+$container-padding: 10%;
+$max-width: 70em;
+
+// Iconography
+$play-icon-links: true;
+
+// Colors
+$primary: #0073c3;
+$background: #fff9f3;
+$text: #555;
+
+// Typography
+$headline-font: Verdana, sans-serif;
+$headline-weight: normal;
+$text-font: Verdana, sans-serif;
+$text-weight: normal;
+$font-size: 16px;
+$line-height: 1.5;
+
+// Add custom fonts here
+// @font-face {
+//   font-family: ;
+//   font-weight: ;
+//   src: image-url(" ");
+// }
+
+// Nav
+$nav-color: #fff;
+$nav-background: $primary;
+
+// Sponsor logo (30px tall)
+// must be in images dir
+$sponsor-logo: "Intel-Logo-White.png"; // white version of logo
+$byline-sponsor-logo: "intel-logo-blue.png"; // color version of logo
+
+@import "lib/svg";
+@import "lib/footer";
+@import "lib/slider";
+@import "lib/parallax";
+@import "lib/reset";
+@import "lib/fucking-ooyala";
+@import "lib/nav";
+@import "lib/grid";
+@import "lib/sections";
+@import "lib/parallax";
+@import "lib/figures";
+@import "lib/content__social";
