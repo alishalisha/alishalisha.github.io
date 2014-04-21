@@ -158,15 +158,14 @@ article {
   top: 44px;
   left: 0;
   right: 0;
-  //bottom: 0;
 }
 
-.displaynone {
-  display: none;
+article.slideLeft{
+  -webkit-animation: slideLeft 0.4s ease-in-out forwards;
 }
 
-article.active {
-  -webkit-animation: slideIn 0.4s ease-in-out forwards;
+article.slideRight{
+  -webkit-animation: slideRight 0.4s ease-in-out forwards;
 }
 
 article.hidden {
@@ -174,8 +173,13 @@ article.hidden {
   -webkit-animation: fadeOut 0.4s ease-in-out forwards;
 }
 
-@-webkit-keyframes slideIn {
+@-webkit-keyframes slideLeft {
   from { -webkit-transform: translateX(100%); opacity: 0; }
+  to { -webkit-transform: translateX(0); opacity: 1; }
+}
+
+@-webkit-keyframes slideRight {
+  from { -webkit-transform: translateX(-100%); opacity: 0; }
   to { -webkit-transform: translateX(0); opacity: 1; }
 }
 

@@ -29,8 +29,8 @@
     evnt.preventDefault();
 
     if($nextArticle[0]){
-      $activeArticle.removeClass('active').addClass('hidden');
-      $nextArticle.addClass('active').removeClass('hidden').removeClass('next');
+      $activeArticle.removeClass('active slideLeft').addClass('hidden');
+      $nextArticle.addClass('active slideLeft').removeClass('hidden').removeClass('next');
       $activeArticle = $nextArticle;
       setupNextAndPreviousArticle();
 
@@ -43,8 +43,8 @@
     evnt.preventDefault();
 
     if($previousArticle[0]){
-      $activeArticle.removeClass('active').addClass('hidden');
-      $previousArticle.addClass('active').removeClass('hidden').removeClass('previous');
+      $activeArticle.removeClass('active slideRight').addClass('hidden');
+      $previousArticle.addClass('active slideRight').removeClass('hidden').removeClass('previous');
       $activeArticle = $previousArticle;
       setupNextAndPreviousArticle();
 
