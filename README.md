@@ -88,5 +88,3 @@ Harmony Editorial Apps are designed to be flexible and modular. To account for t
 # Publishing and Deploying
 
 [Read the Editorial App documentation](https://github.com/voxmedia/411/wiki/Editorial-App-&-Google-Docs-Integration).
-
-_(Niv is writing code, and it is great!)_
