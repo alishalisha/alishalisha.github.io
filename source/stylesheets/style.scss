@@ -1,6 +1,14 @@
 @import "variables";
 
 // One-off styling goes here
+body, p, h1, h2, h3, h4 {
+	font-family: $text-font;
+	font-weight: 400;
+}
+
+.overlay h1 {
+	font-weight: 300;
+}
 
 // Hamburger Menu - will move these into a partial soon.
  nav {
@@ -40,9 +48,9 @@
 	    height: 100%;
 	    overflow: auto;
 	    left: -100%;
-	    width: 210px;
-	    background-color: #333;
-	    border-right: 1px solid darken($black, 10%);
+	    width: 230px;
+	    background-color: #1d1d1d;
+	    //border-right: 1px solid darken($black, 10%);
 	    border-bottom: 1px solid darken($black, 10%);
 	    margin: 0;
 	    padding: 0;
@@ -54,10 +62,11 @@
 	    	list-style: none;
 	    	margin: 0;
 	    	padding: 0.5em 1em;
+	    	border-bottom: 1px solid darken(#1d1d1d, 10%);
 
 	    	&:hover { 
 	    		cursor: pointer;
-	    		background-color: #444;
+	    		background-color: #2f2f2f;
 	    	}
 
 	    	a:hover {
@@ -66,9 +75,11 @@
 	    	}
 
 	    	&.menu-title {
-	    		background-color: #000;
+	    		background-color: $primary;
 	    		text-align: center;
 	    		padding: 1em;
+	    		font-weight: 900;
+	    		font-style: italic;
 
 	    		a {
 	    			color: #fff;
