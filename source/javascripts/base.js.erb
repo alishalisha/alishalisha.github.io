@@ -29,12 +29,19 @@
     evnt.preventDefault();
 
     if($nextArticle[0]){
-      $activeArticle.removeClass('active slideLeft').addClass('hidden');
+      $activeArticle.removeClass('active').addClass('slideLeftOut');
       $nextArticle.addClass('active slideLeft').removeClass('hidden').removeClass('next');
       $activeArticle = $nextArticle;
       setupNextAndPreviousArticle();
 
       $(document).triggerHandler('Harmony.article.change', {activeArticle:$activeArticle, direction:"Next"});
+
+      $activeArticle.one('webkitAnimationEnd oanimationend msAnimationEnd animationend',
+        function(e) {
+          $activeArticle.removeClass('slideLeft');
+          $previousArticle.removeClass('slideLeftOut').addClass('hidden');
+        }
+      );
     }
   };
 
@@ -43,12 +50,18 @@
     evnt.preventDefault();
 
     if($previousArticle[0]){
-      $activeArticle.removeClass('active slideRight').addClass('hidden');
+      $activeArticle.removeClass('active').addClass('slideRightOut');
       $previousArticle.addClass('active slideRight').removeClass('hidden').removeClass('previous');
       $activeArticle = $previousArticle;
       setupNextAndPreviousArticle();
 
       $(document).triggerHandler('Harmony.article.change',{activeArticle:$activeArticle, direction:"Previous"});
+      $activeArticle.one('webkitAnimationEnd oanimationend msAnimationEnd animationend',
+        function(e) {
+          $activeArticle.removeClass('slideRight');
+          $nextArticle.removeClass('slideRightOut').addClass('hidden');
+        }
+      );
     }
   };
 
