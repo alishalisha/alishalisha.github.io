@@ -12,6 +12,7 @@
   var $nextArticle = null;
   var $prevButton = $("#navigation a.prev");
   var $nextButton = $("#navigation a.next");
+  var $navLinks = $('.menu li a[data-index]');
   var $twitterShareButton =    $('[data-share-via="twitter"]');
   var $facebookShareButton =   $('[data-share-via="facebook"]');
   var $googleplusShareButton = $('[data-share-via="googleplus"]');
@@ -65,6 +66,21 @@
     }
   };
 
+  var goToArticle = function(evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+
+    pageIndex = $(this).data('index');
+
+    // now go to pageIndex
+    $newArticle = $("article[data-index='" + pageIndex + "']");
+    $newArticle.removeClass('hidden').addClass('active');
+    $activeArticle.removeClass('active').addClass('hidden');
+    $activeArticle = $newArticle;
+    setupNextAndPreviousArticle();
+    $(document).triggerHandler('Harmony.article.change', {activeArticle:$activeArticle, direction:"Menu"});
+  }
+
   var displayApplicableArrows = function(){
     if($nextArticle[0]){
       $nextButton.show();
@@ -106,21 +122,25 @@
   var keyboardNavigationHandler = function (evnt) {
     var key = evnt.keyCode || evnt.which;
 
-    switch (key) {
-    case KEYBOARD_CONSTANTS.j: case KEYBOARD_CONSTANTS.left:
-      showPreviousArticle(evnt);
-      return false;
-      break;
-    case KEYBOARD_CONSTANTS.k: case KEYBOARD_CONSTANTS.right:
-      showNextArticle(evnt);
-      return false;
-      break;
+    if(!evnt.metaKey && !evnt.ctrlKey) {
+      switch (key) {
+      case KEYBOARD_CONSTANTS.j: case KEYBOARD_CONSTANTS.left:
+        showPreviousArticle(evnt);
+        return false;
+        break;
+      case KEYBOARD_CONSTANTS.k: case KEYBOARD_CONSTANTS.right:
+        showNextArticle(evnt);
+        return false;
+        break;
+      }
     }
   };
 
   // Attach event handlers
   $nextButton.on('click', showNextArticle);
   $prevButton.on('click', showPreviousArticle);
+  $navLinks.on('click', goToArticle);
+
   $(document).on('keydown', { source: 'Keyboard'}, keyboardNavigationHandler);
 
   $(document).on('Harmony.article.next',     showNextArticle);

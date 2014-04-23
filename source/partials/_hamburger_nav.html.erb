@@ -1,12 +1,12 @@
 <%
   weeks ||= locals[:weeks] || []
-  puts weeks.inspect
 %>
 <ul class="menu">
   <li class="menu-title"><a href="#"><%= app_name %></a></li>
   <% weeks.each_with_index do |week_data, index| %>
+    <% page_title = week_data.detect{|row| row.kind == "page_title"}.try(:title) %>
     <li>
-      <a href="#"><%= week_data.detect{|row| row.kind == "page_title"}.try(:title) %></a>
+      <a href="#" data-index="<%= index %>"><%= page_title %></a>
     </li>
   <% end %>
 </ul>
