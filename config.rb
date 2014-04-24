@@ -26,6 +26,11 @@ set :twitter_account_id, '1465737598'
 set :default_share_text, 'SPONSORED: TODO - add share text'
 # -----------------------------------------------------------
 
+# -----------------------------------------------------------
+# These can be styled via css and will use the partials/_kind_image.html.erb
+set :image_types, ['image', 'left', 'right', 'overlay', 'divider']
+# -----------------------------------------------------------
+
 # Reload the browser automatically whenever files change
 activate :livereload
 
