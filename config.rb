@@ -27,7 +27,7 @@ set :default_share_text, 'SPONSORED: TODO - add share text'
 # -----------------------------------------------------------
 
 # -----------------------------------------------------------
-# These can be styled via css and will use the 
+# These can be styled via css and will use the partials/_kind_image.html.erb
 set :image_types, ['image', 'left', 'right', 'overlay', 'divider']
 # -----------------------------------------------------------
 
