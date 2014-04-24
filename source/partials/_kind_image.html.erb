@@ -1,0 +1,32 @@
+<% if row.link.present?
+  markdown_syntax_link = /\[([^\]]+)\]\(([^)]+)\)/.match(row.link.to_s)
+  if(!markdown_syntax_link.nil? && markdown_syntax_link.size == 3) # this is markdown syntax!
+    link_title = markdown_syntax_link[1]
+    link_href =  markdown_syntax_link[2]
+  else
+    link_title = "Read more about " + row.title.to_s + "..."
+    link_href = row.link.to_s
+  end
+  %>
+  <a href="<%= link_href %>">
+<% end %>
+<figure class="<%= row.kind %>">
+  <% if row.image.present? %>
+    <img src="<%= row.image %>" alt=" ">
+  <% end %>
+  <div class="figure-content">
+    <% if row.title.present? %>
+      <h3><%= row.title %></h3>
+    <% end %>
+    <% if row.text.present? %>
+      <p><%= row.text %></p>
+    <% end %>
+    <% if row.link.present? %>
+      <div class="action">
+        <svg class="inline-icon" viewBox="0 0 100 100"><use xlink:href="#play-button"></use></svg>
+        <%= link_title %>
+      </div>
+    <% end %>
+  </div>
+</figure>
+<%= "</a>" if row.link.present? %>
