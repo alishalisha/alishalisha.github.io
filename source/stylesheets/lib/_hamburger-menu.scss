@@ -1,0 +1,87 @@
+// Hamburger Menu - will move these into a partial soon.
+ nav {
+
+ 	a:hover {
+ 		text-decoration: none;
+ 		border-bottom: none;
+ 	}
+ 	
+ 	z-index: 10001;
+	 .nav__burger {
+	    @include transition (background-color ease-in-out 0.3s);
+	    display: block;
+	    height: 44px;
+	    line-height: 50px;
+	    position: absolute;
+	    left: 0;
+	    padding: 0 15px;
+	    color: white;
+	    font-size: 1.3em;
+	    //border-right: 1px solid rgba(0,0,0,0.3);
+	    &:hover {
+	      background-color: rgba(0,0,0,0.3);
+	      text-decoration: none;
+	      border-bottom: 0;
+	    }
+	    &:active {
+	      line-height: 54px;
+	    }
+	  }
+
+	  .menu {
+	    transition: all ease-in-out 0.3s;
+	    position: fixed;
+	    top: 44px;
+	    bottom: 0;
+	    height: 100%;
+	    overflow: auto;
+	    left: -100%;
+	    width: 230px;
+	    background-color: #1d1d1d;
+	    //border-right: 1px solid darken($black, 10%);
+	    border-bottom: 1px solid darken($black, 10%);
+	    margin: 0;
+	    padding: 0;
+	    &.active {
+	      left: 0;
+	    }
+
+	    li {
+	    	list-style: none;
+	    	margin: 0;
+	    	padding: 0.5em 1em;
+	    	border-bottom: 1px solid darken(#1d1d1d, 10%);
+
+	    	&:hover { 
+	    		cursor: pointer;
+	    		background-color: #2f2f2f;
+	    	}
+
+	    	a:hover {
+	    		text-decoration: none;
+	    		border-bottom: 0;
+	    	}
+
+	    	&.menu-title {
+	    		background-color: $primary;
+	    		text-align: center;
+	    		padding: 1em;
+	    		font-weight: 900;
+	    		font-style: italic;
+
+	    		a {
+	    			color: #fff;
+	    			font-weight: bold;
+	    			text-transform: uppercase;
+	    		}
+	    	}
+
+	    	&.menu-heading {
+	    		background-color: $primary;
+	    		color: #fff;
+
+	    		a { color: #fff; }
+	    	}
+	    }
+	}
+}
