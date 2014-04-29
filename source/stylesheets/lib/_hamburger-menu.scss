@@ -28,7 +28,7 @@
 	    }
 	  }
 
-	  .menu {
+	  ul.menu {
 	    transition: all ease-in-out 0.3s;
 	    position: fixed;
 	    top: 44px;
@@ -36,52 +36,114 @@
 	    height: 100%;
 	    overflow: auto;
 	    left: -100%;
-	    width: 230px;
+	    width: 400px;
 	    background-color: #1d1d1d;
-	    //border-right: 1px solid darken($black, 10%);
 	    border-bottom: 1px solid darken($black, 10%);
 	    margin: 0;
-	    padding: 0;
-	    &.active {
-	      left: 0;
+	    padding: 0 0 1em 0;
+	    overflow: scroll;
+
+	    // Title of the app shown in the menu
+	    h1 {
+	    	font-family: $headline-font;
+	    	font-weight: 900;
+	    	font-style: italic;
+	    	color: #fff;
+	    	padding: 1em;
+	    	text-transform: uppercase;
+	    	text-align: center;
+			line-height: 1.2em;
+			font-size: 2em;
 	    }
 
-	    li {
-	    	list-style: none;
+	    &.active {
+	     	left: 0;
+	    }
+
+	    ul {
 	    	margin: 0;
-	    	padding: 0.5em 1em;
-	    	border-bottom: 1px solid darken(#1d1d1d, 10%);
+	    	padding: 0;
+	    	list-style-type: none;
+	    }
 
-	    	&:hover { 
-	    		cursor: pointer;
-	    		background-color: #2f2f2f;
-	    	}
+	    h2.menu-subtitle {
+			text-transform: uppercase;
+			font-size: 1em;
+			letter-spacing: 0.5pt;
+			text-align: center;
+			padding: 0.5em 0;
+			color: tint($primary, 30%);
+			background-color: shade($primary, 30%);
+			margin-bottom: 0;
+	    }
 
-	    	a:hover {
-	    		text-decoration: none;
-	    		border-bottom: 0;
-	    	}
-
-	    	&.menu-title {
-	    		background-color: $primary;
+	    // recent episodes
+	    ul.recent-eps {
+	    	a {
+	    		display: block;
+	    		padding: 2em 0;
+	    		background-size: cover;
+	    		position: relative;
+	    		text-transform: uppercase;
+	    		color: #fff;
 	    		text-align: center;
-	    		padding: 1em;
-	    		font-weight: 900;
-	    		font-style: italic;
+	    		font-size: 1.6em;
+	    		font-weight: 400;
 
-	    		a {
-	    			color: #fff;
-	    			font-weight: bold;
-	    			text-transform: uppercase;
+	    		&:before {
+	    			content: '';
+	    			position: absolute;
+	    			top: 0;
+	    			left: 0;
+	    			right: 0;
+	    			bottom: 0;
+	    			z-index: 2;
+	    		}
+
+	    		&:hover {
+	    			opacity: 0.9;
 	    		}
 	    	}
 
-	    	&.menu-heading {
-	    		background-color: $primary;
-	    		color: #fff;
-
-	    		a { color: #fff; }
+	    	a:nth-of-type(1) {
+	    		background: url("http://37.media.tumblr.com/7f22459d59c9c2e63a4d45a0d0946ac8/tumblr_n4cm4hq4Vb1st5lhmo1_1280.jpg") no-repeat 50% 50%;
 	    	}
+
+	    	a:nth-of-type(2) {
+	    		background: url("http://37.media.tumblr.com/560a35b8fb40b1c069fa18ef9f2ea179/tumblr_n4cm73ozlb1st5lhmo1_1280.jpg") no-repeat 50% 50%;
+	    	}
+
+	    	a:nth-of-type(2) {
+	    		margin-bottom: 2em;
+	    	}
+	    }
+
+	    ul.theme {
+	    	padding: 1.5em 1em;
+	    	font-size: 0.9em;
+
+	    	h2, h3, a {
+	    		color: #fff;
+	    	}
+
+			h2 {
+				text-transform: uppercase;
+				font-size: 1.5em;
+				text-align: center;
+	    	}
+	    }
+
+	    // themes
+	    ul.theme:nth-child(1n) {
+	    	// background-color: shade($primary, 30%);
+	    }
+
+	    ul.theme:nth-child(2n) {
+	    	// background-color: shade($primary, 40%);
+	    }
+
+	    ul.theme:nth-child(3n) {
+	    	// background-color: shade($primary, 50%);
 	    }
 	}
 }
