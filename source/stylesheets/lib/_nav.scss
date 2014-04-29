@@ -26,7 +26,7 @@ nav, .nav__background {
   float: right;
   margin: 0 1em 0 0;
 
-  @media (max-width: 30em) {
+  @media (max-width: 35em) {
     display: none;
   }
 
@@ -73,8 +73,8 @@ article .nav__social {
   display: block;
   float: right;
 
-  @media (max-width: 30em) {
-    margin-right: 20px
+  @media (max-width: 35em) {
+    display: none;
   }
 
   &:after {

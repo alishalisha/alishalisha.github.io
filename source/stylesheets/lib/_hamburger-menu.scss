@@ -17,7 +17,6 @@
 	    padding: 0 15px;
 	    color: white;
 	    font-size: 1.3em;
-	    //border-right: 1px solid rgba(0,0,0,0.3);
 	    &:hover {
 	      background-color: rgba(0,0,0,0.3);
 	      text-decoration: none;
@@ -36,12 +35,14 @@
 	    height: 100%;
 	    overflow: auto;
 	    left: -100%;
-	    width: 400px;
+	    height: 100%;
+	    width: 25em;
+	    max-width: 100%;
 	    background-color: #1d1d1d;
 	    border-bottom: 1px solid darken($black, 10%);
 	    margin: 0;
 	    padding: 0 0 1em 0;
-	    overflow: scroll;
+	    opacity: 0;
 
 	    // Title of the app shown in the menu
 	    h1 {
@@ -58,6 +59,7 @@
 
 	    &.active {
 	     	left: 0;
+	     	opacity: 1;
 	    }
 
 	    ul {
@@ -72,8 +74,7 @@
 			letter-spacing: 0.5pt;
 			text-align: center;
 			padding: 0.5em 0;
-			color: tint($primary, 30%);
-			background-color: shade($primary, 30%);
+			color: darken(#fff,50%);
 			margin-bottom: 0;
 	    }
 
