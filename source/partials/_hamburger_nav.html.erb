@@ -1,0 +1,36 @@
+<%
+  weeks ||= locals[:weeks] || []
+%>
+<ul class="menu">
+	<h1><%= app_name %></h1>
+
+	<!-- Recent Episodes -->
+	<ul class="recent-eps">
+	  <h2 class="menu-subtitle">Recent Episodes</h2>
+	  <a href="#"><li>Episode One</li></a>
+	  <a href="#"><li>Episode Two</li></a>
+	</ul>
+
+	<!-- All episodes, divided by theme -->
+	<h2 class="menu-subtitle">Explore by Theme</h2>
+	<ul class="theme">
+		<h2>Theme One</h2>
+		<h3>There would be something here describing Theme One.</h3>
+		<% weeks.each_with_index do |week_data, index| %>
+   		<% page_title = week_data.detect{|row| row.kind == "page_title"}.try(:title) %>
+	    <li>
+	      <a href="#" data-index="<%= index %>"><%= page_title %></a>
+	    </li>
+  		<% end %>
+	</ul>
+  	<ul class="theme">
+		<h2>Theme Two</h2><h3>There would be something here describing Theme Two.</h3>
+		<li><a href="#">Episode One</a></li>
+		<li><a href="#">Episode Two</a></li>
+	</ul>
+	<ul class="theme">
+		<h2>Theme Two</h2><h3>There would be something here describing Theme Two.</h3>
+		<li><a href="#">Episode One</a></li>
+		<li><a href="#">Episode Two</a></li>
+	</ul>
+</ul>

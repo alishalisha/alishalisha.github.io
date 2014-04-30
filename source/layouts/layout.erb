@@ -11,6 +11,7 @@
     <title><%= app_name %></title>
 
     <script type="text/javascript" src="http://fonts.sbnation.com/wvq7oai.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,900italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     <% ooyala_player_code = 'b40f5b65292c4a6f8b3687c8670463fc' %>
@@ -35,12 +36,14 @@
   <body id="scrollbox">
     <%= partial "svg/svg" %>
 
-    <nav>
+   <nav>
       <span class="nav__vertical">
+        <a class="nav__burger" href="#">☰</a>
         <a href="/">
           <svg class="nav__vertical__logo svg-icon" viewBox="0 0 474 86"><use xlink:href="#verge"></use></svg>
         </a>
       </span>
+      <%= partial 'partials/hamburger_nav', :locals => {:weeks => weeks} %>
       <%= partial 'partials/social_share' %>
       <span class="nav__label">From our sponsor</span>
     </nav>
@@ -48,14 +51,6 @@
     <div class="nav__spacer"></div>
 
     <%= yield %>
-
-    <footer class="footer">
-      <a href="http://voxmedia.com"> <svg class="footer__logo vox-logo" viewBox="0 0 200 72"><use xlink:href="#vox-logo"></use></svg></a>
-      <aside class="footer__text">
-        <p>This feature was produced in collaboration between <a href="http://www.voxmedia.com/media-kit/brand/vox-creative">VOX Creative</a> and <%= sponsor_name %>. The Verge editorial staff was not involved in the creation or production of this content.</p>
-        <small>&copy;<%= Time.new.year %>. Vox Media, Inc. All Rights Reserved</small>
-      </aside>
-    </footer>
 
   </body>
   <%= partial 'partials/analytics' %>

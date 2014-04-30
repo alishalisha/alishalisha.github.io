@@ -12,6 +12,7 @@
   var $nextArticle = null;
   var $prevButton = $("#navigation a.prev");
   var $nextButton = $("#navigation a.next");
+  var $navLinks = $('.menu li a[data-index]');
   var $twitterShareButton =    $('[data-share-via="twitter"]');
   var $facebookShareButton =   $('[data-share-via="facebook"]');
   var $googleplusShareButton = $('[data-share-via="googleplus"]');
@@ -29,12 +30,19 @@
     evnt.preventDefault();
 
     if($nextArticle[0]){
-      $activeArticle.removeClass('active').addClass('hidden');
-      $nextArticle.addClass('active').removeClass('hidden').removeClass('next');
+      $activeArticle.removeClass('active').addClass('slideLeftOut');
+      $nextArticle.addClass('active slideLeft').removeClass('hidden').removeClass('next');
       $activeArticle = $nextArticle;
       setupNextAndPreviousArticle();
 
       $(document).triggerHandler('Harmony.article.change', {activeArticle:$activeArticle, direction:"Next"});
+
+      $activeArticle.one('webkitAnimationEnd oanimationend msAnimationEnd animationend',
+        function(e) {
+          $activeArticle.removeClass('slideLeft');
+          $previousArticle.removeClass('slideLeftOut').addClass('hidden');
+        }
+      );
     }
   };
 
@@ -43,14 +51,35 @@
     evnt.preventDefault();
 
     if($previousArticle[0]){
-      $activeArticle.removeClass('active').addClass('hidden');
-      $previousArticle.addClass('active').removeClass('hidden').removeClass('previous');
+      $activeArticle.removeClass('active').addClass('slideRightOut');
+      $previousArticle.addClass('active slideRight').removeClass('hidden').removeClass('previous');
       $activeArticle = $previousArticle;
       setupNextAndPreviousArticle();
 
       $(document).triggerHandler('Harmony.article.change',{activeArticle:$activeArticle, direction:"Previous"});
+      $activeArticle.one('webkitAnimationEnd oanimationend msAnimationEnd animationend',
+        function(e) {
+          $activeArticle.removeClass('slideRight');
+          $nextArticle.removeClass('slideRightOut').addClass('hidden');
+        }
+      );
     }
   };
+
+  var goToArticle = function(evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+
+    pageIndex = $(this).data('index');
+
+    // now go to pageIndex
+    $newArticle = $("article[data-index='" + pageIndex + "']");
+    $newArticle.removeClass('hidden').addClass('active');
+    $activeArticle.removeClass('active').addClass('hidden');
+    $activeArticle = $newArticle;
+    setupNextAndPreviousArticle();
+    $(document).triggerHandler('Harmony.article.change', {activeArticle:$activeArticle, direction:"Menu"});
+  }
 
   var displayApplicableArrows = function(){
     if($nextArticle[0]){
@@ -93,21 +122,25 @@
   var keyboardNavigationHandler = function (evnt) {
     var key = evnt.keyCode || evnt.which;
 
-    switch (key) {
-    case KEYBOARD_CONSTANTS.j: case KEYBOARD_CONSTANTS.left:
-      showPreviousArticle(evnt);
-      return false;
-      break;
-    case KEYBOARD_CONSTANTS.k: case KEYBOARD_CONSTANTS.right:
-      showNextArticle(evnt);
-      return false;
-      break;
+    if(!evnt.metaKey && !evnt.ctrlKey) {
+      switch (key) {
+      case KEYBOARD_CONSTANTS.j: case KEYBOARD_CONSTANTS.left:
+        showPreviousArticle(evnt);
+        return false;
+        break;
+      case KEYBOARD_CONSTANTS.k: case KEYBOARD_CONSTANTS.right:
+        showNextArticle(evnt);
+        return false;
+        break;
+      }
     }
   };
 
   // Attach event handlers
   $nextButton.on('click', showNextArticle);
   $prevButton.on('click', showPreviousArticle);
+  $navLinks.on('click', goToArticle);
+
   $(document).on('keydown', { source: 'Keyboard'}, keyboardNavigationHandler);
 
   $(document).on('Harmony.article.next',     showNextArticle);
@@ -126,5 +159,26 @@
 
   // Autoplay when directly navigating to page
   $(document).triggerHandler('Harmony.video.playCurrent');
+
+  // Nav Menu -- need to move this into a partial later
+  var toggleMenu = function() {
+    $('.menu').toggleClass('active');
+    return false;
+  }
+
+  $('.nav__burger').on('click', toggleMenu);
+
+  var hideMenu = function() {
+    $('.menu').removeClass('active');
+    return false;
+  }
+
+  $("nav li a").on('click',function(){
+    var index = $(this).data('index');
+    $(document).triggerHandler('Harmony.article.jumpTo',{articleIndex: index});
+})
+
+  // When article is changed, hide the menu
+  $(document).on('Harmony.article.change',hideMenu);
 
 })(jQuery);

@@ -12,15 +12,21 @@ $max-width: 70em;
 // Iconography
 $play-icon-links: true;
 
+// Breakpoints
+$break_large: 1000px;
+$break_medium: 800px;
+$break_small: 500px;
+
 // Colors
 $primary: #0073c3;
 $background: #fff9f3;
 $text: #555;
+$black: #000;
 
 // Typography
-$headline-font: Verdana, sans-serif;
+$headline-font: 'Source Sans Pro', Verdana, sans-serif;
 $headline-weight: normal;
-$text-font: Verdana, sans-serif;
+$text-font: 'Source Sans Pro', Verdana, sans-serif;
 $text-weight: normal;
 $font-size: 16px;
 $line-height: 1.5;
@@ -53,3 +59,4 @@ $byline-sponsor-logo: "intel-logo-blue.png"; // color version of logo
 @import "lib/parallax";
 @import "lib/figures";
 @import "lib/content__social";
+@import "lib/hamburger-menu";

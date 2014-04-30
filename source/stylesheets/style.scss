@@ -1,3 +1,11 @@
 @import "variables";
 
 // One-off styling goes here
+body, p, h1, h2, h3, h4 {
+	font-family: $text-font;
+	font-weight: 400;
+}
+
+.overlay h1 {
+	font-weight: 300;
+}
