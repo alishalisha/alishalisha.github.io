@@ -3,17 +3,18 @@
   var $inArticleButtons = $('article a.nav__social__link');
   var $globalShareButtons = $('nav a.nav__social__link');
 
-  var proxyToArticleButtons = function(evnt) {
+  var proxyToArticleHref = function(evnt) {
     var kindOfShare = $(this).data('share-via');
     var $target = $('article.active [data-share-via="'+kindOfShare+'"]');
-    window.open($target.attr('href'),'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');
+    var url = $target.attr('href') || $(this).attr('href');
+    window.open(url,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');
     $(document).triggerHandler('Harmony.event.track', {action:"Share", label:kindOfShare});
 
     evnt.stopPropagation();
     evnt.preventDefault();
 
     return false;
-  }
+  };
 
   // Share window open
   var openShareWindow = function (e) {
@@ -29,5 +30,6 @@
   };
 
   $inArticleButtons.on('click', openShareWindow);
-  $globalShareButtons.on('click', proxyToArticleButtons);
+  // So this only works when we have article sharing too :(
+  $globalShareButtons.on('click', proxyToArticleHref);
 })(jQuery);
