@@ -1,5 +1,5 @@
 <script type="text/javascript">
-  _gaq.push(['_setAccount', 'UA-26533115-1']);
+  _gaq.push(['_setAccount', '<%= google_analytics_account %>']);
   _gaq.push(['_setCustomVar', 1, 'Harmony App', '<%= app_name %>']);
   _gaq.push(['_setCustomVar', 2, 'Entry Type', 'Harmony App']);
   _gaq.push(['_trackPageview']);
@@ -11,54 +11,60 @@
   })();
 </script>
 
-<%# Begin comScore Tag %>
-<script type="text/javascript">
-  var _comscore = _comscore || [];
-  _comscore.push({ c1: "2", c2: "7976662" });
-  (function() {
-    var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
-    s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
-    el.parentNode.insertBefore(s, el);
+<% if comscore_id.present? %>
+  <%# Begin comScore Tag %>
+  <script type="text/javascript">
+    var _comscore = _comscore || [];
+    _comscore.push({ c1: "2", c2: "<%=comscore_id%>" });
+    (function() {
+      var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+      s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+      el.parentNode.insertBefore(s, el);
+    })();
+  </script>
+  <noscript>
+    <img src="http://b.scorecardresearch.com/p?c1=2&amp;c2=<%=comscore_id%>&amp;cv=2.0&amp;cj=1" alt=''/>
+  </noscript>
+  <%# end comScore Tag %>
+<% end %>
+
+<% if quantcast_id.present? %>
+  <%# Begin Quantcast Tag %>
+  <script type="text/javascript"
+  src="http://edge.quantserve.com/quant.js"></script>
+  <script type="text/javascript">_qacct="<%=quantcast_id%>"; if (typeof(quantserve) != "undefined") { quantserve(); }</script>
+  <noscript>
+  <a href="http://www.quantcast.com/<%=quantcast_id%>"
+  target="_blank"><img
+  src="http://pixel.quantserve.com/pixel/<%=quantcast_id%>.gif"
+  style="display: none;" border="0" height="1" width="1"
+  alt="Quantcast"/></a>
+  </noscript>
+  <%# End Quantcast Tag %>
+<% end %>
+
+<% if chartbeat_domain.present? %>
+  <%# Begin Chartbeat Tag %>
+  <script type="text/javascript">
+  var _sf_async_config={uid:2724,domain:"<%= chartbeat_domain %>"};
+  (function(){
+    function loadChartbeat() {
+      window._sf_endpt=(new Date()).getTime();
+      var e = document.createElement('script');
+      e.setAttribute('language', 'javascript');
+      e.setAttribute('type', 'text/javascript');
+      e.setAttribute('src',
+         (("https:" == document.location.protocol) ? "https://a248.e.akamai.net/chartbeat.download.akamai.com/102508/" : "http://static.chartbeat.com/") +
+         "js/chartbeat_pub.js");
+      document.body.appendChild(e);
+    }
+    var oldonload = window.onload;
+    window.onload = (typeof window.onload != 'function') ?
+       loadChartbeat : function() { oldonload(); loadChartbeat(); };
   })();
-</script>
-<noscript>
-  <img src="http://b.scorecardresearch.com/p?c1=2&amp;c2=7976662&amp;cv=2.0&amp;cj=1" alt=''/>
-</noscript>
-<%# end comScore Tag %>
-
-<%# Begin Quantcast Tag %>
-<script type="text/javascript"
-src="http://edge.quantserve.com/quant.js"></script>
-<script type="text/javascript">_qacct="p-d9vfr8QTWnv1E"; if (typeof(quantserve) != "undefined") { quantserve(); }</script>
-<noscript>
-<a href="http://www.quantcast.com/p-d9vfr8QTWnv1E"
-target="_blank"><img
-src="http://pixel.quantserve.com/pixel/p-d9vfr8QTWnv1E.gif"
-style="display: none;" border="0" height="1" width="1"
-alt="Quantcast"/></a>
-</noscript>
-<%# End Quantcast Tag %>
-
-<%# Begin Chartbeat Tag %>
-<script type="text/javascript">
-var _sf_async_config={uid:2724,domain:"theverge.com"};
-(function(){
-  function loadChartbeat() {
-    window._sf_endpt=(new Date()).getTime();
-    var e = document.createElement('script');
-    e.setAttribute('language', 'javascript');
-    e.setAttribute('type', 'text/javascript');
-    e.setAttribute('src',
-       (("https:" == document.location.protocol) ? "https://a248.e.akamai.net/chartbeat.download.akamai.com/102508/" : "http://static.chartbeat.com/") +
-       "js/chartbeat_pub.js");
-    document.body.appendChild(e);
-  }
-  var oldonload = window.onload;
-  window.onload = (typeof window.onload != 'function') ?
-     loadChartbeat : function() { oldonload(); loadChartbeat(); };
-})();
-</script>
-<%# End Chartbeat Tag %>
+  </script>
+  <%# End Chartbeat Tag %>
+<% end %>
 
 <%# NETWORK-WIDE APERTURE TRACKING PIXEL %>
 <img src="http://aperture.displaymarketplace.com/audmeasure.gif?liveconclientID=5497559777280&PageID=650423876&EventType=view" style="width:1px; height: 1px; visibility:hidden" /> 
@@ -70,3 +76,25 @@ Providence=(function(){var c={};var b=function(e){var g=document.cookie,d=0,f={}
 //]]>
 </script>
 <%# End Providence Include %>
+
+<% if umbel_id.present? %>
+<%# Begin Umbel Tag %>
+<script type="text/javascript">
+  window._umbel = window._umbel || [];
+  (function() {
+    var u = document.createElement('script');
+    u.type = 'text/javascript';
+    u.async = true;
+    u.src = document.location.protocol + '//tags.api.umbel.com/<%=umbel_id%>/w.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(u, s);
+    var d = new Date();
+    d.setDate(d.getDate() + 365);
+    document.cookie = "umbel_api_key=<%=umbel_id%>; expires=" + d.toUTCString();
+  })();
+</script>
+<% end %>
+
+<script type="text/javascript">
+_umbel.push({"type": "set", "name": "profile.unique_id", "value":"399282"})
+</script>
+<%# End Umbel Tag %>
