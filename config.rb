@@ -26,6 +26,69 @@ set :twitter_account_id, '1465737598'
 set :default_share_text, 'SPONSORED: TODO - add share text'
 # -----------------------------------------------------------
 
+# Tracking / Metrics ----------------------------------------
+# to ignore a tracker, set the value to an blank string: ''
+# uncomment as necessary
+
+# -----------------------------------------------------------
+# THEVERGE.COM
+set :google_analytics_account,  'UA-26533115-1'
+set :chartbeat_domain,          'theverge.com'
+set :quantcast_id,              'p-d9vfr8QTWnv1E'
+set :comscore_id,               '7976662'
+set :umbel_id,                  'lrjhazrpqbgtnrij'
+
+# -----------------------------------------------------------
+# POLYGON.COM
+# set :google_analytics_account,  'UA-29192711-1'
+# set :chartbeat_domain,          'polygon.com'
+# set :quantcast_id,              'p-d9vfr8QTWnv1E'
+# set :comscore_id,               '7976662'
+# set :umbel_id,                  'lcojgvtzjxmbjdgh'
+
+# -----------------------------------------------------------
+# SBNATION.COM
+# set :google_analytics_account,  'UA-20975224-1'
+# set :chartbeat_domain,          'sbnation.com'
+# set :quantcast_id,              'p-d9vfr8QTWnv1E'
+# set :comscore_id,               '7976662'
+# set :umbel_id,                  'rhrdgrjixmwngtzk'
+
+# -----------------------------------------------------------
+# RACKED.COM
+# set :google_analytics_account,  'UA-189494-75'
+# set :chartbeat_domain,          'racked.com'
+# set :quantcast_id,              'p-d9vfr8QTWnv1E'
+# set :comscore_id,               '7976662'
+# set :umbel_id,                  ''
+
+
+# -----------------------------------------------------------
+# EATER.COM
+# set :google_analytics_account,  'UA-189494-73'
+# set :chartbeat_domain,          'eater.com'
+# set :quantcast_id,              'p-d9vfr8QTWnv1E'
+# set :comscore_id,               '7976662'
+# set :umbel_id,                  ''
+
+
+# -----------------------------------------------------------
+# CURBED.COM
+# set :google_analytics_account,  'UA-189494-74'
+# set :chartbeat_domain,          'curbed.com'
+# set :quantcast_id,              'p-d9vfr8QTWnv1E'
+# set :comscore_id,               '7976662'
+# set :umbel_id,                  ''
+
+# -----------------------------------------------------------
+# VOX.COM
+# set :google_analytics_account,  'UA-48698701-1'
+# set :chartbeat_domain,          'vox.com'
+# set :quantcast_id,              'p-d9vfr8QTWnv1E'
+# set :comscore_id,               '7976662'
+# set :umbel_id,                  'epuhlnvvrdpvqsnz'
+# -----------------------------------------------------------
+
 # -----------------------------------------------------------
 # These can be styled via css and will use the partials/_kind_image.html.erb
 set :image_types, ['image', 'left', 'right', 'overlay', 'divider']
