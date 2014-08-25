@@ -23,8 +23,8 @@
       var kindOfShare = $link.data('share-via') || "social";
       $(document).triggerHandler('Harmony.event.track', {action:"Share", label:kindOfShare});
       window.open($link.attr('href'),'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');
-      evnt.stopPropagation();
-      evnt.preventDefault();
+      e.stopPropagation();
+      e.preventDefault();
       return false;
     }
   };
