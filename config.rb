@@ -94,6 +94,9 @@ set :umbel_id,                  'lrjhazrpqbgtnrij'
 set :image_types, ['image', 'left', 'right', 'overlay', 'divider']
 # -----------------------------------------------------------
 
+set :next_click_teaser_text, "You may also be interested in..."
+# set :next_click_teaser_frequency, 3 #show every three next clicks
+
 # Reload the browser automatically whenever files change
 activate :livereload
 
