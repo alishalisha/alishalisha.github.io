@@ -10,8 +10,6 @@ has_video = doc.detect{|row| row.kind == "video"}.try(:text) || ''
 
 share_text = doc.detect{|row| row.kind == "share_text"}.try(:text) || default_share_text
 
-homepage_meta_text = doc.detect{|row| row.kind == "video"}.try(:meta) || ''
-
 # One or more categories for this episode
 categories = doc.map{|row| row.kind == "category" ? row.title : nil}.compact.uniq
 is_video = categories.detect{|c| c == "video"}
@@ -34,11 +32,6 @@ category_text = categories.join(' | ')
       <li class="active">
         <button class="overlay lazy" data-src="<%= video_row.image %>"></button>
         <div class="article-info">
-          <% if index == 0 %>
-          <span class="subhead"><%= homepage_meta_text %></span>
-          <% else %>
-          <span class="subhead"><%= category_text %></span>
-          <% end %>
           <h1><%= video_row.title %></h1>
             <% if has_video != '' %>
             <svg class="play-icon" viewBox="0 0 100 100"><use xlink:href="#play-button"></use></svg>
@@ -52,10 +45,8 @@ category_text = categories.join(' | ')
 
   <% if is_video %>
     <% video_title = video_row.try(:title,"") %>
-    <% video_meta = video_row.try(:meta,"") %>
     <section class="video-intro">
       <div class="container">
-        <span class="subhead"><%= video_meta %></span>
         <h2><%= video_title %></h2>
       </div>
     </section>
