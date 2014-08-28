@@ -100,82 +100,112 @@ activate :livereload
 helpers Middleman::Chorus::GoogleDrive::Helpers
 
 # CHANGE this to match your spreadsheet id
-spreadsheet_id = "0Aq4r9E2MjHrBdHdvTExMbEdoUDVqZTFISjFvazM4Smc"
+spreadsheet_id = "0Aq4r9E2MjHrBdDZPdXhTYlZNU0xKQTdSUFhQSVlWSnc"
 
 load_spreadsheet("index",  spreadsheet_id, :gid => 0)
-load_spreadsheet("week_1", spreadsheet_id, :gid => 13)
-load_spreadsheet("week_2", spreadsheet_id, :gid => 14)
-load_spreadsheet("week_3", spreadsheet_id, :gid => 15)
-load_spreadsheet("week_4", spreadsheet_id, :gid => 16)
-load_spreadsheet("week_5", spreadsheet_id, :gid => 17)
-load_spreadsheet("week_6", spreadsheet_id, :gid => 18)
-load_spreadsheet("week_7", spreadsheet_id, :gid => 19)
-load_spreadsheet("week_8", spreadsheet_id, :gid => 20)
-load_spreadsheet("week_9", spreadsheet_id, :gid => 21)
-load_spreadsheet("week_10", spreadsheet_id, :gid => 22)
+load_spreadsheet("episode_1", spreadsheet_id, :gid => 13)
+load_spreadsheet("episode_2", spreadsheet_id, :gid => 14)
+load_spreadsheet("episode_3", spreadsheet_id, :gid => 15)
+load_spreadsheet("episode_4", spreadsheet_id, :gid => 16)
+load_spreadsheet("episode_5", spreadsheet_id, :gid => 17)
+load_spreadsheet("episode_6", spreadsheet_id, :gid => 25)
+load_spreadsheet("episode_7", spreadsheet_id, :gid => 32)
+load_spreadsheet("episode_8", spreadsheet_id, :gid => 33)
+load_spreadsheet("episode_9", spreadsheet_id, :gid => 34)
+load_spreadsheet("episode_10", spreadsheet_id, :gid => 35)
+load_spreadsheet("episode_11", spreadsheet_id, :gid => 36)
+load_spreadsheet("episode_12", spreadsheet_id, :gid => 37)
+load_spreadsheet("episode_13", spreadsheet_id, :gid => 38)
+load_spreadsheet("episode_14", spreadsheet_id, :gid => 41)
+load_spreadsheet("episode_15", spreadsheet_id, :gid => 42)
+load_spreadsheet("episode_16", spreadsheet_id, :gid => 43)
+load_spreadsheet("episode_17", spreadsheet_id, :gid => 44)
+load_spreadsheet("episode_18", spreadsheet_id, :gid => 45)
+load_spreadsheet("episode_19", spreadsheet_id, :gid => 46)
+load_spreadsheet("episode_20", spreadsheet_id, :gid => 47)
+load_spreadsheet("episode_21", spreadsheet_id, :gid => 48)
+load_spreadsheet("episode_22", spreadsheet_id, :gid => 49)
+load_spreadsheet("episode_23", spreadsheet_id, :gid => 50)
+load_spreadsheet("episode_24", spreadsheet_id, :gid => 51)
+load_spreadsheet("episode_25", spreadsheet_id, :gid => 52)
+load_spreadsheet("episode_26", spreadsheet_id, :gid => 53)
+load_spreadsheet("episode_27", spreadsheet_id, :gid => 54)
+load_spreadsheet("episode_28", spreadsheet_id, :gid => 55)
+load_spreadsheet("episode_29", spreadsheet_id, :gid => 56)
+load_spreadsheet("episode_30", spreadsheet_id, :gid => 57)
+load_spreadsheet("episode_31", spreadsheet_id, :gid => 58)
+load_spreadsheet("episode_32", spreadsheet_id, :gid => 59)
+load_spreadsheet("episode_33", spreadsheet_id, :gid => 60)
+load_spreadsheet("episode_34", spreadsheet_id, :gid => 61)
+load_spreadsheet("episode_35", spreadsheet_id, :gid => 62)
+load_spreadsheet("episode_36", spreadsheet_id, :gid => 63)
+load_spreadsheet("episode_37", spreadsheet_id, :gid => 64)
+load_spreadsheet("episode_38", spreadsheet_id, :gid => 65)
+load_spreadsheet("episode_39", spreadsheet_id, :gid => 66)
+load_spreadsheet("episode_40", spreadsheet_id, :gid => 67)
+
 
 # Load the first index view
-weeks = [data.index]
+episodes = [data.index]
 
-(1..10).each do |week_number|
-  weeks << data.send("week_#{week_number}")
+# We could use .each on data, but the ordering is not guarenteed
+# this enforces the correct order.
+(1..100).each do |index|
+  episodes << data.send("episode_#{index}") if data.has_key?("episode_#{index}")
 end
 
-# Routes for weeks!
+# Routes for episodes!
 activate :directory_indexes
 
 ignore "/main.html"
 ignore "/partials/*"
 
-published_weeks = weeks.select {|week_data|
-  week_data.detect{|row| row.kind == "published" && (row.title == "1" ||
-                                                     row.title.to_s.downcase == "true" ||
-                                                     row.title.to_s.downcase == "yes") }
+published_episodes = episodes.select {|episode|
+  episode.detect{|row| row.kind == "published" && (row.title == "1" ||
+                                                   row.title.to_s.downcase.include?('true') ||
+                                                   row.title.to_s.downcase.include?('yes')) }
 }
 
 # Build the slugs out for each page.
-week_slugs = []
-published_weeks.each_with_index do |week_data, index|
-  title = week_data.detect{|row| row.kind == "page_title"}.fetch("title")
+episode_slugs = []
+published_episodes.each_with_index do |episode, index|
+  title = episode.detect{|row| row.kind == "page_title"}.fetch("title")
   if index > 0
-    slug = "week-#{index}"
+    slug = "episode-#{index}"
     if title.present?
       slug += "-" + title.split(/\W/).join('-').downcase
     end
   else
     slug = ''
   end
-  week_slugs << slug
+  episode_slugs << slug
 end
 
-puts "published_weeks count: #{published_weeks.length}"
+puts "published episodes count: #{published_episodes.length}"
 
-# uncomment to show all articles regardless of published state
-# published_weeks = weeks
-
-published_weeks.each_with_index do |week,week_index|
-  slug = week_slugs[week_index]
-  puts "Publishing week: #{week_index == 0 ? 'index' : week_index} >> #{slug}"
-  proxy "/#{slug}/index.html",
+published_episodes.each_with_index do |episode,index|
+  slug = episode_slugs[index]
+  puts "Publishing episode: #{index == 0 ? 'index' : index} >> #{slug}"
+  proxy "/#{slug}/index.html".gsub(/\/\/+/,'/'),
         "main.html",
-        :locals => {:weeks => published_weeks,
+        :locals => {:episodes => published_episodes,
                     :active_slug => slug,
                     :slug => slug,
-                    :slugs => week_slugs }
+                    :slugs => episode_slugs }
 
   # Can use old slugs too
-  proxy "/week-#{week_index}/index.html",
+  proxy "/episode-#{index}/index.html",
         "main.html",
-        :locals => {:weeks => published_weeks,
+        :locals => {:episodes => published_episodes,
                     :active_slug => slug,
                     :slug => slug,
-                    :slugs => week_slugs }
+                    :slugs => episode_slugs }
 end
 
-proxy "/index.html",'main.html', :locals => {:weeks => published_weeks,
-                                             :slugs => week_slugs,
-                                             :slug => week_slugs.first,
-                                             :active_slug => week_slugs.first}
+proxy "/index.html",'main.html', :locals => {:episodes => published_episodes,
+                                             :slugs => episode_slugs,
+                                             :slug => episode_slugs.first,
+                                             :active_slug => episode_slugs.first}
 
 # Build-specific configuration
 configure :build do
