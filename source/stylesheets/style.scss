@@ -15,6 +15,19 @@ body, p, h1, h2, h3, h4 {
 //
 //-----------------------
 
+$gradientcolor-1: rgba(193,205,81,0.4);
+$gradientcolor-2: rgba(42,110,15,0.4);
+
+// z-index
+.slider {
+  z-index: 302;
+}
+
+// fix for IE showing img borders
+img {
+  border: none;
+}
+
 //-----------------------
 //
 // TYPOGRAPHY - SPECIAL INSTANCES
@@ -61,6 +74,25 @@ body, p, h1, h2, h3, h4 {
   font-style: normal;
   border: 0;
   padding: 0.5em 0;
+}
+
+// typography
+.figure-content {
+  h3 {
+    font-family: $headline-font;
+    letter-spacing: 0.2pt;
+    text-transform: uppercase;
+    color: #000;
+    font-size: 2em;
+  }
+  .subhead {
+    font-size: 1.2em;
+  }
+}
+
+.text p, .left_quote p, .right_quote p, .next_click p {
+  line-height: 1.45em;
+  margin: 0.5em 0 1em 0;
 }
 
 // paragraphs
@@ -179,6 +211,36 @@ nav ul.menu {
   max-width: 100%;
 }
 
+// testing something for menu js
+.no-bg-image {
+  background: none !important;
+}
+
+.toggled-video {
+  height: 150px;
+  position: relative;
+  padding: 0 !important;
+}
+
+.video-gradient {
+  position: absolute;
+  height: 150px;
+  width: 100%;
+  @include background-image(linear-gradient(top left, $gradientcolor-1, $gradientcolor-2));
+}
+
+.toggled-meta {
+  text-align: center;
+  display: block;
+  position: absolute;
+  margin: 10% auto 0 auto;
+  width: 100%;
+}
+
+.inactive-category {
+  opacity: 0.5;
+}
+
 //-----------------------
 //
 // NAV BAR ADJUSTMENTS
@@ -215,6 +277,87 @@ article .nav__social {
 
 article .nav__social .nav__social__link {
   margin-right: 0.3em;
+}
+
+.bp-horiz-logo {
+  display: inline;
+  width: auto;
+  margin: 3px 0 0 50px;
+  @media (max-width: $break_medium) {
+    width: 150px;
+    margin-top: 13px;
+  }
+  @media (max-width: $break_small) {
+    width: 35%;
+    margin-top: 15px;
+  }
+}
+
+.nav__bp-logo {
+  display: inline;
+  width: auto;
+  float: right;
+  margin-right: 4em;
+}
+
+a .nav__label {
+  margin-right: 0;
+  @media (max-width: 580px) {
+    display: block;
+    margin-right: 5px;
+  }
+  @media (max-width: $break_small) {
+    margin-top: 20px;
+    width: 100%;
+    &:after {
+      width: 47px;
+      vertical-align: bottom;
+    }
+  }
+}
+
+nav .nav-right {
+  position: absolute;
+  display: inline-block;
+  right: 0;
+  top: 0;
+}
+
+// new nav bar madness
+.nav {
+  height: 44px;
+}
+
+.horiz {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 303;
+}
+
+.fixed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: $primary;
+  height: 44px;
+  z-index: 304;
+}
+
+.nav__background {
+  z-index: 301;
+}
+
+.right {
+  position: absolute;
+  right: 10px;
+  top: 0;
+}
+
+nav ul.menu {
+  z-index: 400;
 }
 
 //-----------------------
@@ -289,10 +432,6 @@ figure.next_click {
 // FIND NEW HOMES FOR THIS
 //
 //-----------------------
-
-// trying out gradient mixins.
-$gradientcolor-1: rgba(193,205,81,0.4);
-$gradientcolor-2: rgba(42,110,15,0.4);
 
 button.overlay:before {
   content: '';
@@ -396,36 +535,19 @@ article.category-video li.active {
   .category-longform .article-info {
     margin-top: 30% !important;
   }
-}
 
-// testing something for menu js
-.no-bg-image {
-  background: none !important;
-}
+  .next_click {
+    h3 {
+      font-size: 1.3em;
+    }
+    p {
+      font-size: 1em;
+    }
+  }
 
-.toggled-video {
-  height: 150px;
-  position: relative;
-  padding: 0 !important;
-}
-
-.video-gradient {
-  position: absolute;
-  height: 150px;
-  width: 100%;
-  @include background-image(linear-gradient(top left, $gradientcolor-1, $gradientcolor-2));
-}
-
-.toggled-meta {
-  text-align: center;
-  display: block;
-  position: absolute;
-  margin: 10% auto 0 auto;
-  width: 100%;
-}
-
-.inactive-category {
-  opacity: 0.5;
+  .video-intro {
+    font-size: 0.6em;
+  }
 }
 
 //-----------------------
@@ -467,193 +589,3 @@ nav .nav__social [data-share-via] {
   background: none;
 }
 
-.bp-horiz-logo {
-  display: inline;
-  width: auto;
-  margin: 3px 0 0 50px;
-  @media (max-width: $break_medium) {
-    width: 150px;
-    margin-top: 13px;
-  }
-  @media (max-width: $break_small) {
-    width: 35%;
-    margin-top: 15px;
-  }
-}
-
-.nav__bp-logo {
-  display: inline;
-  width: auto;
-  float: right;
-  margin-right: 4em;
-}
-
-a .nav__label {
-  margin-right: 0;
-  @media (max-width: 580px) {
-    display: block;
-    margin-right: 5px;
-  }
-  @media (max-width: $break_small) {
-    margin-top: 20px;
-    width: 100%;
-    &:after {
-      width: 47px;
-      vertical-align: bottom;
-    }
-  }
-}
-
-// new border at the top of nav menu
-.slider li.active {
-  border-top: 5px solid $primary;
-}
-
-// making nav visible atop lede
-nav {
-  background: #81c441;
-}
-
-nav .nav-right {
-  position: absolute;
-  display: inline-block;
-  right: 0;
-  top: 0;
-}
-
-// z-index
-.slider {
-  z-index: 302;
-}
-
-.nav__background {
-  z-index: 301;
-}
-
-
-// typography
-.figure-content {
-  h3 {
-    font-family: $headline-font;
-    letter-spacing: 0.2pt;
-    text-transform: uppercase;
-    color: #000;
-    font-size: 2em;
-  }
-  .subhead {
-    font-size: 1.2em;
-  }
-}
-
-.text p, .left_quote p, .right_quote p, .next_click p {
-  line-height: 1.45em;
-  margin: 0.5em 0 1em 0;
-}
-
-@media (max-width: $break_small) {
-  .text h2 {
-    font-size: 1.3em;
-  }
-
-  .right_quote, .left_quote {
-    margin: 0;
-    padding: 0;
-    h2 {
-      font-size: 1.3em;
-    }
-    p {
-      font-size: 1em;
-    }
-  }
-
-  .next_click {
-    h3 {
-      font-size: 1.3em;
-    }
-    p {
-      font-size: 1em;
-    }
-  }
-
-  .video-intro {
-    font-size: 0.6em;
-  }
-}
-
-.right_quote, .left_quote {
-  margin: 0;
-  padding: 0;
-}
-
-// ama CTA styling
-.ama-submit {
-  margin: 2em 0;
-  text-align: center;
-  & > svg {
-    height: 50px;
-    display: inline-block;
-    vertical-align: middle;
-  }
-  & > a {
-    color: $accent-color;
-    text-decoration: underline;
-    font-size: 1.3em;
-    display: inline-block;
-    vertical-align: middle;
-    margin-left: 10px;
-    &:hover {
-      text-decoration: none;
-      border: 0;
-    }
-  }
-}
-
-// new nav bar madness
-.nav {
-  background-color: $primary;
-  height: 44px;
-}
-
-.horiz {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 303;
-}
-
-.fixed {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: $primary;
-  height: 44px;
-  z-index: 304;
-}
-
-.logo {
-  @media (max-width: 400px) {
-    width: 40px;
-  }
-  width: 79px;
-  height: 137px;
-  background-color: transparent;
-  position: absolute;
-  left: 50px;
-}
-
-.right {
-  position: absolute;
-  right: 10px;
-  top: 0;
-}
-
-nav ul.menu {
-  z-index: 400;
-}
-
-// fix for IE showing img borders
-img {
-  border: none;
-}
