@@ -1,22 +1,33 @@
 @import "variables";
 
-// One-off styling goes here
+//-----------------------
+//
+// GENERAL STYLES
+//
+//-----------------------
 body, p, h1, h2, h3, h4 {
 	font-family: $text-font;
 }
 
-.slider h1 {
-  text-transform: uppercase;
-  @media (max-width: $break_small) {
-    font-size: 1.4em;
-  }
-}
+//-----------------------
+//
+// HELPERS
+//
+//-----------------------
 
-.subhead {
+//-----------------------
+//
+// TYPOGRAPHY - SPECIAL INSTANCES
+//
+//-----------------------
+
+// meta tags above next-clicks
+.subhead, .slider .subhead {
   font-family: $text-font;
   text-transform: uppercase;
 }
 
+// subhead styling that goes in the hero
 .slider .subhead {
   color: #fff;
   font-size: 1.3em;
@@ -26,32 +37,10 @@ body, p, h1, h2, h3, h4 {
   }
 }
 
-.wrapper {
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-
-}
-.sponsor-logos {
-  max-width: 150px;
-  display: block;
-  z-index: 302;
-  margin: 0 auto;
-  text-align: center;
-  left: 50%;
-  background-color: #fff;
-  padding: 1em 2em;
-  font-size: 1em;
+.slider h1 {
+  text-transform: uppercase;
   @media (max-width: $break_small) {
-    max-width: 70px;
-    font-size: 0.8em;
-  }
-  .subhead {
-    letter-spacing: 1pt;
-    color: $text;
-  }
-  img {
-    margin: 0 auto;
+    font-size: 1.4em;
   }
 }
 
@@ -63,6 +52,27 @@ body, p, h1, h2, h3, h4 {
     padding: 0.3em;
   }
 }
+
+// pullquotes
+.left_quote h2, .right_quote h2 {
+  font-family: 'UniversLTStd-BoldCnObl', Arial, sans-serif;
+  font-size: 2.2em;
+  text-transform: none;
+  font-style: normal;
+  border: 0;
+  padding: 0.5em 0;
+}
+
+// paragraphs
+figure p, p, .left_quote p, .right_quote p {
+  font-family: $paragraph-font;
+}
+
+//-----------------------
+//
+// HAMBURGER MENU ADJUSTMENTS
+//
+//-----------------------
 
 // new menu
 ul.menu {
@@ -169,17 +179,11 @@ nav ul.menu {
   max-width: 100%;
 }
 
-// bp logo
-.nav-logo {
-  position: absolute;
-  top: 0;
-  left: 44px;
-  width: 79px;
-  display: inline;
-  @media (max-width: $break_small) {
-    width: 50px;
-  }
-}
+//-----------------------
+//
+// NAV BAR ADJUSTMENTS
+//
+//-----------------------
 
 // nav label
 a .nav__label {
@@ -213,81 +217,11 @@ article .nav__social .nav__social__link {
   margin-right: 0.3em;
 }
 
-// homepage styling
-
-// introductory blurb on homepage
-.bp-intro {
-  font-size: 1.5em;
-  font-family: $text-font;
-  color: $primary;
-  padding-top: 1em;
-  margin-top: 3em !important;
-  border-top: 1px solid $primary;
-  @media (max-width: $break_small) {
-    font-size: 1.3em;
-  }
-  .cobrands {
-    margin-top: 2em;
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 0.8em;
-    color: $text;
-  }
-  strong {
-    color: #00a652;
-    font-family: 'UniversLTStd-BoldCnObl', Arial, sans-serif;
-  }
-  a.img {
-    margin-top: 4em;
-  }
-  a:hover {
-    border: 0;
-  }
-}
-
-// copywriters will have to wrap dropcaps in <span>.
-p span {
-  font-family: 'UniversLTStd-XBlack', 'Arial Black', Arial, sans-serif;
-    font-size: 3em;
-    float: left;
-    background-color: $primary;
-    color: #fff;
-    padding: 0.5em;
-    margin: 6px 10px 10px 0;
-}
-
-// pullquotes
-
-.left_quote h2, .right_quote h2 {
-  font-family: 'UniversLTStd-BoldCnObl', Arial, sans-serif;
-  font-size: 2.2em;
-  text-transform: none;
-  font-style: normal;
-  border: 0;
-  padding: 0.5em 0;
-}
-
-// paragraphs
-
-figure p, p, .left_quote p, .right_quote p {
-  font-family: $paragraph-font;
-}
-
-// the latest posts in this series
-// figure.left:before {
-//   content: '';
-//   display: block;
-//   position: absolute;
-//   left: -1000%;
-//   right: -8850%;
-//   background: #f5f5f5;
-//   z-index: -1;
-//   bottom: 0;
-//   top: 0;
-//   padding: 22% 0;
-// }
-
-// $firstLatestPost.prepend("<div class='latest-posts'>Latest Posts</div>");
+//-----------------------
+//
+// NEXT CLICKS
+//
+//-----------------------
 
 // the title of the next-click section
 .latest-posts {
@@ -348,6 +282,14 @@ figure.next_click {
   }
 }
 
+
+//-----------------------
+//
+// MISC - NEED TO REFACTOR OR
+// FIND NEW HOMES FOR THIS
+//
+//-----------------------
+
 // trying out gradient mixins.
 $gradientcolor-1: rgba(193,205,81,0.4);
 $gradientcolor-2: rgba(42,110,15,0.4);
@@ -362,6 +304,21 @@ button.overlay:before {
   width: 100%;
 }
 
+// hide play button + hover state on articles that are NOT video
+article.category-longform,
+article.category-ama,
+article.category-infographic,
+article.category-home {
+  .play-icon { 
+    display: none;
+  }
+}
+
+//-----------------------
+//
+// VIDEO PAGES
+//
+//-----------------------
 .article-info {
   z-index: 10008;
   text-align: center;
@@ -372,12 +329,6 @@ button.overlay:before {
   width: 60% !important;
   &.hidden {
     display: none;
-  }
-}
-
-.category-home .article-info {
-  @media (max-width: $break_small) {
-    margin-top: 35% !important;
   }
 }
 
@@ -396,59 +347,8 @@ button.overlay:before {
   }
 }
 
-
-.sponsor-logos {
-  @media (max-width: $break_small) {
-    margin-top: 3em;
-  }
-  .subhead {
-    display: block;
-  }
-}
-
-
-.category-ama .article-info,
-.category-infographic .article-info,
-.category-longform .article-info {
-  @media (max-width: $break_small) {
-    margin-top: 30% !important;
-  }
-}
-
 .video-container {
   z-index: 10007;
-}
-
-// AMA tweet text king
-.ama_text {
-  padding: 1em 0;
-  font-size: 1.2em;
-  @media (max-width: $break_small) {
-    font-size: 1em;
-  }
-  p {
-    font-size: 1.2em;
-    margin: 0;
-    -webkit-font-smoothing: antialiased;
-    line-height: 1.5em;
-  }
-  &:nth-of-type(odd) {
-    color: #00b0ff; // twitter blue make into var?
-  }
-  &:nth-of-type(even) {
-    color: #b0b0b0; // gray
-  }
-  &:nth-of-type(2n+2) {
-    margin-top: 2em;
-    padding-top: 3.5em;
-    border-top: 1px dotted #b0b0b0;
-  }
-
-  // h2 = the part that says "@username says:" and "Person says:"
-  h2 {
-    font-size: 1em;
-    color: inherit;
-  }
 }
 
 // video intro title block
@@ -474,40 +374,28 @@ button.overlay:before {
   }
 }
 
-.nudge {
-  bottom: -30%;
-  @media (max-width: $break_small) {
-    bottom: -70%;
-  }
-}
-
-// infographic
-figure.infographic {
-  padding: 2em 0;
-  //background-color: $background-secondary;
-  img {
-    max-width: 70em;
-    display: block;
-    margin: 0 auto;
-  }
-}
-
-// hide play button + hover state on articles that are NOT video
-article.category-longform,
-article.category-ama,
-article.category-infographic,
-article.category-home {
-  .play-icon { 
-    display: none;
-  }
-}
-
 article.category-video li.active {
   &:hover { cursor: pointer; }
 }
 
 .play-button__stroke {
   fill: rgba(0,0,0,0.3);
+}
+
+//-----------------------
+//
+// MEDIA QUERIES
+//
+//-----------------------
+@media (max-width: $break_small) {
+  .category-home .article-info {
+    margin-top: 35% !important;
+  }
+  .category-ama .article-info,
+  .category-infographic .article-info,
+  .category-longform .article-info {
+    margin-top: 30% !important;
+  }
 }
 
 // testing something for menu js
@@ -540,6 +428,12 @@ article.category-video li.active {
   opacity: 0.5;
 }
 
+//-----------------------
+//
+// SOCIAL ICONS ADJUSTMENTS
+//
+//-----------------------
+
 // social icons - customizing for bp
 .nav__social__icon.twitter,
 .nav__social__icon.facebook,
@@ -571,23 +465,6 @@ article.category-video li.active {
 
 nav .nav__social [data-share-via] {
   background: none;
-}
-
-// new logo placement..
-.bp-logo {
-  position: fixed;
-  display: inline-block;
-  top: 0;
-  left: 0;
-  z-index: 2;
-  width: auto;
-  margin-left: 50px;
-  @media (max-width: $break_medium) {
-    width: 50px;
-  }
-  @media (max-width: $break_small) {
-    width: 30px;
-  }
 }
 
 .bp-horiz-logo {
