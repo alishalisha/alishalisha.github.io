@@ -82,14 +82,14 @@ figure {
 }
 
 // Logo after CTA
-.action::after {
-  content: ' ';
-  display: inline-block;
-  float: right;
-  background: image-url($byline-sponsor-logo) center no-repeat;
-  width: 97px;
-  height: 31px;
-}
+// .action::after {
+//   content: ' ';
+//   display: inline-block;
+//   float: right;
+//   background: image-url($byline-sponsor-logo) center no-repeat;
+//   width: 97px;
+//   height: 31px;
+// }
 
 // "Overlay" styling
 figure.overlay .action:after {
@@ -117,38 +117,37 @@ figure.overlay .action:after {
   }
 }
 
-figure.left, figure.left_quote {
-  @media (min-width: $figure-break) {
-    img {
-      width: 50% - $full-bleed-margin;
-      float: left;
-      margin: 0 1em 0 $full-bleed-margin;
-    }
-    .figure-content {
-      left: 50%;
-      margin-right: 0;
-    }
+figure.left, .left_quote {
+  @extend figure.next_click;
+  padding-top: 50px;
+  img {
+    float: left;
+  }
+  .figure-content {
+    float: right;
   }
 }
 
-figure.right, figure.right_quote {
-  @media (min-width: $figure-break) {
-    img {
-      width: 50% - $full-bleed-margin;
-      float: right;
-      margin: 0 $full-bleed-margin 0 1em;
-    }
-    .figure-content {
-      right: 50%;
-      margin-left: 0;
-    }
+figure.right, .right_quote {
+  @extend figure.next_click;
+  padding-top: 50px;
+  img {
+    float: right;
+  }
+  .figure-content {
+    float: left;
   }
 }
 
-figure.left_quote, figure.right_quote {
-  p {
+.left_quote, .right_quote {
+  h2 {
     color: $primary;
     font-size: 1.2em;
+    text-transform: uppercase;
+    font-style: italic;
+    border-top: 1px solid $primary;
+    border-bottom: 1px solid $primary;
+    padding: 1em 0;
   }
 }
 
@@ -177,31 +176,31 @@ figure.image, figure.next {
   }
 }
 
-figure.next {
-  @media (min-width: $figure-break) {
-    &:before {
-      content: "";
-      display: block;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background-color: #333;
-      background-color: rgba(#333, .5);
-    }
-    p {
-      color: white;
-    }
+figure.next_click {
+  background-color: #fff;
+  margin: 0 auto;
+  max-width: 70em;
+  padding-bottom: 50px;
+  img {
+    width: 50%;
+    float: left;
+    margin: 0;
   }
   .figure-content {
-    padding: 2em $container-padding;
+    float: left;
+    max-width: 44%;
+    padding: 0;
+    position: static;
+    padding: 0 3%;
+    h3 {
+      margin-top: 0;
+    }
   }
 }
 
 // Border for images
 .lede, img {
-  border-bottom: 4px solid $primary;
+  //border-bottom: 4px solid $primary;
 }
 
 // Impression trackers should have no spacing

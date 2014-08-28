@@ -3,6 +3,7 @@
 //= require 'ooyala-video'
 //= require 'social'
 //= require 'update_url'
+//= require 'menu'
 
 (function($){
   var $articles = $('article');
@@ -66,19 +67,22 @@
     }
   };
 
-  var goToArticle = function(evnt) {
+  var goToArticle = function(evnt,data) {
     evnt.stopPropagation();
     evnt.preventDefault();
 
-    pageIndex = $(this).data('index');
+    articleIndex = data.articleIndex;
 
-    // now go to pageIndex
-    $newArticle = $("article[data-index='" + pageIndex + "']");
-    $newArticle.removeClass('hidden').addClass('active');
-    $activeArticle.removeClass('active').addClass('hidden');
-    $activeArticle = $newArticle;
-    setupNextAndPreviousArticle();
-    $(document).triggerHandler('Harmony.article.change', {activeArticle:$activeArticle, direction:"Menu"});
+    // now go to pageIndex... only if it is different than the active one
+    if( articleIndex !== $activeArticle.data('index') ){
+      $newArticle = $("article[data-index='" + articleIndex + "']");
+      $newArticle.removeClass('hidden').addClass('active');
+      $activeArticle.removeClass('active').addClass('hidden');
+      $activeArticle = $newArticle;
+      setupNextAndPreviousArticle();
+
+      $(document).triggerHandler('Harmony.article.change', {activeArticle:$activeArticle, direction:"Menu"});
+    }
   }
 
   var displayApplicableArrows = function(){
@@ -139,12 +143,13 @@
   // Attach event handlers
   $nextButton.on('click', showNextArticle);
   $prevButton.on('click', showPreviousArticle);
-  $navLinks.on('click', goToArticle);
 
   $(document).on('keydown', { source: 'Keyboard'}, keyboardNavigationHandler);
 
   $(document).on('Harmony.article.next',     showNextArticle);
   $(document).on('Harmony.article.previous', showPreviousArticle);
+  $(document).on('Harmony.article.goTo',     goToArticle);
+
 
   setupNextAndPreviousArticle();
   displayApplicableArrows();
@@ -153,32 +158,11 @@
   $(document).triggerHandler('Harmony.article.change', {activeArticle:$('article.active')});
 
   // Attach a listener to the video play button
-  $('.video button').on('click',function(){
+  $('article .play-icon').on('click',function(){
     $(document).triggerHandler('Harmony.video.playCurrent');
   });
 
   // Autoplay when directly navigating to page
-  $(document).triggerHandler('Harmony.video.playCurrent');
-
-  // Nav Menu -- need to move this into a partial later
-  var toggleMenu = function() {
-    $('.menu').toggleClass('active');
-    return false;
-  }
-
-  $('.nav__burger').on('click', toggleMenu);
-
-  var hideMenu = function() {
-    $('.menu').removeClass('active');
-    return false;
-  }
-
-  $("nav li a").on('click',function(){
-    var index = $(this).data('index');
-    $(document).triggerHandler('Harmony.article.jumpTo',{articleIndex: index});
-})
-
-  // When article is changed, hide the menu
-  $(document).on('Harmony.article.change',hideMenu);
+  //$(document).triggerHandler('Harmony.video.playCurrent');
 
 })(jQuery);

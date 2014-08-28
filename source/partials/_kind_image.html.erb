@@ -1,18 +1,18 @@
-<% if row.link.present?
-  markdown_syntax_link = /\[([^\]]+)\]\(([^)]+)\)/.match(row.link.to_s)
-  if(!markdown_syntax_link.nil? && markdown_syntax_link.size == 3) # this is markdown syntax!
-    link_title = markdown_syntax_link[1]
-    link_href =  markdown_syntax_link[2]
-  else
-    link_title = "Read more about " + row.title.to_s + "..."
-    link_href = row.link.to_s
-  end
-  %>
-  <a href="<%= link_href %>">
+<%
+has_link = false
+if row.link.present?
+  link = parse_link(row.link.to_s, "Read more about " + row.title.to_s + "...")
+  has_link = true
+end
+%>
+
+<%= set_section "content container" %>
+<% if has_link %>
+  <a href="<%= link.url %>">
 <% end %>
 <figure class="<%= row.kind %>">
   <% if row.image.present? %>
-    <img src="<%= row.image %>" alt=" ">
+    <img class="lazy" data-src="<%= row.image %>" alt=" ">
   <% end %>
   <div class="figure-content">
     <% if row.title.present? %>
@@ -21,12 +21,12 @@
     <% if row.text.present? %>
       <p><%= row.text %></p>
     <% end %>
-    <% if row.link.present? %>
-      <div class="action">
+    <%# if has_link %>
+<!--       <div class="action">
         <svg class="inline-icon" viewBox="0 0 100 100"><use xlink:href="#play-button"></use></svg>
-        <%= link_title %>
-      </div>
-    <% end %>
+        <%#= link.title %>
+      </div> -->
+    <%# end %>
   </div>
 </figure>
-<%= "</a>" if row.link.present? %>
+<%= "</a>" if has_link %>

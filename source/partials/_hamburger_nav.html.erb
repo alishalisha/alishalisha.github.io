@@ -1,36 +1,50 @@
 <%
-  weeks ||= locals[:weeks] || []
+  episodes ||= locals[:episodes] || []
 %>
+
 <ul class="menu">
-	<h1><%= app_name %></h1>
+  <ul class="menu-categories">
+    <li data-category="latest">
+      <span class="svg"></span>
+      Latest
+    </li>
+    <li data-category="longform">
+      <span class="svg"></span>
+      Longform
+    </li>
+    <li data-category="video">
+      <span class="svg"></span>
+      Video
+    </li>
+    <li data-category="ama">
+      <span class="svg"></span>
+      AMAs
+    </li>
+    <li data-category="infographic">
+      <span class="svg"></span>
+      Infographics
+    </li>
+  </ul>
 
-	<!-- Recent Episodes -->
-	<ul class="recent-eps">
-	  <h2 class="menu-subtitle">Recent Episodes</h2>
-	  <a href="#"><li>Episode One</li></a>
-	  <a href="#"><li>Episode Two</li></a>
-	</ul>
+  <ul class="menu-content">
+    <% episodes.each_with_index do |data, index| %>
+      <% page_title = data.detect{|row| row.kind == "page_title"}.try(:title) %>
+      <% category = data.detect{|row| row.kind == "category"}.try(:title) %>
+      <% video_image = data.detect{|row| row.kind == "video"}.try(:image) %>
+      <% if category == "video" %>
+      <li class="<%= category %> lazy" data-src="<%= video_image %>" style="background: no-repeat 50% 50%;">
+        <div class="video-gradient"></div>
+        <div class="video-meta">
+          <span class="subhead"><%= category %></span>
+          <h2><a href="#" data-index="<%= index %>"><%= page_title %></a></h2>
+        </div>
+      <% else %>
+      <li class="<%= category %>">
+        <span class="subhead"><%= category %></span>
+        <h2><a href="#" data-index="<%= index %>"><%= page_title %></a></h2>
+      <% end %>
+      </li>
+    <% end %>
+  </ul>
 
-	<!-- All episodes, divided by theme -->
-	<h2 class="menu-subtitle">Explore by Theme</h2>
-	<ul class="theme">
-		<h2>Theme One</h2>
-		<h3>There would be something here describing Theme One.</h3>
-		<% weeks.each_with_index do |week_data, index| %>
-   		<% page_title = week_data.detect{|row| row.kind == "page_title"}.try(:title) %>
-	    <li>
-	      <a href="#" data-index="<%= index %>"><%= page_title %></a>
-	    </li>
-  		<% end %>
-	</ul>
-  	<ul class="theme">
-		<h2>Theme Two</h2><h3>There would be something here describing Theme Two.</h3>
-		<li><a href="#">Episode One</a></li>
-		<li><a href="#">Episode Two</a></li>
-	</ul>
-	<ul class="theme">
-		<h2>Theme Two</h2><h3>There would be something here describing Theme Two.</h3>
-		<li><a href="#">Episode One</a></li>
-		<li><a href="#">Episode Two</a></li>
-	</ul>
 </ul>

@@ -2,7 +2,7 @@ $nav-height: 44px;
 
 nav, .nav__background {
   position: fixed;
-  z-index: 4000000;
+  z-index: 100;
   left: 0;
   right: 0;
   top: 0;
@@ -17,14 +17,15 @@ nav, .nav__background {
 .nav__vertical__logo {
   height: 34px;
   width: 140px;
-  margin: 6px 0 0 1.5em;
+  margin: 6px 0 0 4em;
   float: left;
   fill: $nav-color;
 }
 
 .nav__social {
-  float: right;
+  // float: right;
   margin: 0 1em 0 0;
+  display: inline-block;
 
   @media (max-width: 35em) {
     display: none;
@@ -68,10 +69,12 @@ article .nav__social {
   font-family: $text-font;
   font-weight: $text-weight;
   font-size: 10px;
-  margin: 20px 0 0 2.5em;
+  vertical-align: top;
+  margin-top: 20px;
   letter-spacing: 1px;
-  display: block;
-  float: right;
+  display: inline-block;
+  // display: block;
+  // float: right;
 
   @media (max-width: 35em) {
     display: none;

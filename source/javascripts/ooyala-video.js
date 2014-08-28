@@ -9,7 +9,8 @@
     var videoId = $videoContainer.data('video-id');
     var videoIndex = $videoContainer.data('video-index');
     var videoContainerDOMId = 'video-container-' + videoIndex;
-    var $overlay = $videoContainer.siblings('.overlay');
+    //var $overlay = $videoContainer.siblings('.overlay');
+    var $overlay = $('video-container');
     var overlayHiddenClass = 'hidden';
 
     // initially hide the replay option
@@ -48,6 +49,7 @@
           }
 
           $overlay.removeClass(overlayHiddenClass);
+          $('.article-info').removeClass(overlayHiddenClass);
           $(document).off('Harmony.article.change',pausePlayer);
         };
 
@@ -98,7 +100,10 @@
         // Hide the cover once the video starts playing
         // And mute the video
         var playbackStarted = function(){
+          // hide nav
+          $('nav').hide();
           $overlay.addClass(overlayHiddenClass);
+          $('article.active .article-info').addClass(overlayHiddenClass);
           if(isMuted){
             $volumeControl.fadeIn();
           }
@@ -121,15 +126,22 @@
           player.play();
         });
 
+        // On pause, show nav
+        player.mb.subscribe(OO.EVENTS.PAUSED, 'myPage',function(){
+          $('nav').show();
+        });
+
         // Remove that class once the video is done.
         player.mb.subscribe(OO.EVENTS.PLAYED,'myPage', function(eventName) {
           $overlay.removeClass(overlayHiddenClass);
+          $('.article-info').removeClass(overlayHiddenClass);
           player.destroy();
+          // show nav bar again
+          $('nav').show();
         });
       }
     });
   };
-
 
   $(document).on('Harmony.video.playCurrent',function(){
     rigUpVideoForContainer($('article.active .video-container'));

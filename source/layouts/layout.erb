@@ -2,10 +2,7 @@
 <html lang="en-US" class="no-js">
   <head>
     <meta charset="utf-8">
-    
-    <meta property="og:title" content="SPONSORED: Harmony Boilerplate">
-    <meta property="og:description" content="Harmony Boilerplate">
-    <!--<meta property="og:image" content="http://cdn0.vox-cdn.com/assets/4871818/GOS_explainer.jpg">-->
+    <meta property="og:description" content="SPONSORED: The Next Mile was created to explore trends, products, and technologies that are changing the world for the better. Inspired by BP Gasoline with Invigorate, The Next Mile will share the stories that take you a little farther, through video, infographics, photography, and interviews.">
     <meta name="google" value="notranslate" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -19,7 +16,7 @@
     <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     <% ooyala_player_code = 'b40f5b65292c4a6f8b3687c8670463fc' %>
-    <script type="text/javascript" src="http://player.ooyala.com/v3/<%= ooyala_player_code %>?platform=html5-priority"></script>
+    <script type="text/javascript" src="http://player.ooyala.com/v3/<%= ooyala_player_code %>?platform=html5-fallback?tweaks=android-enable-hls"></script>
 
     <%= stylesheet_link_tag "style" %>
     <%# This is  is how we pass data from config.rb, or ruby in general, to the javascript %>
@@ -39,23 +36,46 @@
 
   <body id="scrollbox">
     <%= partial "svg/svg" %>
+      <nav class="horiz nav">
+        <span class="nav__vertical">
+          <a class="nav__burger" href="#">
+            <div class="nav__burger__patty"></div>
+            <div class="nav__burger__patty"></div>
+            <div class="nav__burger__patty"></div>
+          </a>
+        </span>
+        <%= partial 'partials/hamburger_nav', :locals => {:episodes => episodes} %>
+        <a href="http://www.voxcreative.com/sponsored/bp-the-next-mile/"><img src="http://cdn2.vox-cdn.com/assets/4521315/bp-nextmile-horiz-logo.png" class="bp-horiz-logo" /></a>
+        <div class="right">
+          <a href="http://bs.serving-sys.com/BurstingPipe/adServer.bs?cn=tf&c=20&mc=click&pli=9994846&PluID=0&ord=[timestamp]"><span class="nav__label">Fueled by BP</span></a>
+          <%= partial 'partials/social_share' %>
+        </div>
+      </nav>
 
-   <nav>
-      <span class="nav__vertical">
-        <!--<a class="nav__burger" href="#">☰</a>-->
-        <a href="/">
-          <svg class="nav__vertical__logo svg-icon" viewBox="0 0 474 86"><use xlink:href="#verge"></use></svg>
-        </a>
-      </span>
-      <%= partial 'partials/social_share' %>
-      <span class="nav__label">From our sponsor</span>
-    </nav>
-    <div class="nav__background"></div>
-    <div class="nav__spacer"></div>
+      <nav class="fixed nav">
+        <span class="nav__vertical">
+          <a class="nav__burger" href="#">
+            <div class="nav__burger__patty"></div>
+            <div class="nav__burger__patty"></div>
+            <div class="nav__burger__patty"></div>
+          </a>
+        </span>
+        <%= partial 'partials/hamburger_nav', :locals => {:episodes => episodes} %>
+        <div class="logo">
+          <a href="http://www.voxcreative.com/sponsored/bp-the-next-mile/"><img src="http://cdn2.vox-cdn.com/assets/4898126/bp-nextmile-logo.png" /></a>
+        </div>
+        <div class="right">
+          <a href="http://bs.serving-sys.com/BurstingPipe/adServer.bs?cn=tf&c=20&mc=click&pli=9994846&PluID=0&ord=[timestamp]"><span class="nav__label">Fueled by BP</span></a>
+          <%= partial 'partials/social_share' %>
+        </div>
+      </nav>
+<!--   </nav> -->
+  <div class="nav__spacer"></div>
 
     <%= yield %>
 
   </body>
   <%= partial 'partials/analytics' %>
   <%= javascript_include_tag  "base" %>
+  <%= javascript_include_tag  "bottom" %>
 </html>

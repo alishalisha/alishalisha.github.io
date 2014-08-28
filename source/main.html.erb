@@ -1,20 +1,20 @@
 <%
   # used for carousel at the bottom of the index page ------
   videos = []
-  weeks.each_with_index do |week_data, index|
-    videos << {:image => week_data.detect{|row| row.kind == "video"}.fetch("image"),
-               :text =>  week_data.detect{|row| row.kind == "text"}.fetch("title"),
-               :slug => "week-#{index}"}
+  episodes.each_with_index do |episode, index|
+    videos << {:image => episode.detect{|row| row.kind == "video"}.fetch("image"),
+               :text =>  episode.detect{|row| row.kind == "text"}.fetch("title"),
+               :slug => "episode-#{index}"}
   end
   # --------------------------------------------------------
 %>
 
-<% weeks.each_with_index do |week_data, index| %>
+<% episodes.each_with_index do |episode, index| %>
   <% slug = slugs.at(index) %>
-  <%= partial "partials/week_template", :locals => {:doc => week_data,
-                                                    :active_slug => active_slug,
-                                                    :slug => slug,
-                                                    :index => index,
-                                                    :published_videos => videos
-                                                    } %>
+  <%= partial "partials/episode_template", :locals => {:doc => episode,
+                                                       :active_slug => active_slug,
+                                                       :slug => slug,
+                                                       :index => index,
+                                                       :published_videos => videos
+                                                       } %>
 <% end %>

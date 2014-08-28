@@ -13,15 +13,15 @@ $m: content__social;
   border: none;
 }
 
-.#{$m}__icon.twitter {
-  fill: #00a0d1;
-}
-.#{$m}__icon.facebook {
-  fill: #3b5998;
-}
-.#{$m}__icon.googleplus {
-  fill: #db4a39;
-}
+// .#{$m}__icon.twitter {
+//   fill: #00a0d1;
+// }
+// .#{$m}__icon.facebook {
+//   fill: #3b5998;
+// }
+// .#{$m}__icon.googleplus {
+//   fill: #db4a39;
+// }
 
 .#{$m}__text {
   color: black;
@@ -55,8 +55,8 @@ article .nav__social {
 
   .nav__social__icon { margin: 0 0.3em 0 0; vertical-align: middle; }
 
-  .nav__social__icon.twitter { fill: #55acee; }
-  .nav__social__icon.facebook { fill: #3b5998; }
-  .nav__social__icon.googleplus { fill: #dd4b39; }
+  // .nav__social__icon.twitter { fill: #55acee; }
+  // .nav__social__icon.facebook { fill: #3b5998; }
+  // .nav__social__icon.googleplus { fill: #dd4b39; }
 
 }

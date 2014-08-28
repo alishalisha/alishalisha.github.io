@@ -1,6 +1,8 @@
+<%= set_section "content container" %>
+<% meta = get_meta(row) %>
+<div class="text <%= meta %>">
 <% if row.title.present? %>
-  <h2><%= row.title %></h2>
+  <h2 class="<%= meta %>"><%= row.title %></h2>
 <% end %>
-<div class="text">
-  <p><%= row.text %></p>
+  <p class="<%= meta %>"><%= row.text %></p>
 </div>
