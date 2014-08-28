@@ -20,7 +20,6 @@
 .DS_Store
 
 /vendor
-*.lock
 
 oauth2.json
 /data/*.json
