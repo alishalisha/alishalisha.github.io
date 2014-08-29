@@ -8,6 +8,9 @@
 body, p, h1, h2, h3, h4 {
 	font-family: $text-font;
 }
+img {
+  border: none;
+}
 * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -21,16 +24,6 @@ body, p, h1, h2, h3, h4 {
 
 $gradientcolor-1: rgba(193,205,81,0.4);
 $gradientcolor-2: rgba(42,110,15,0.4);
-
-// z-index
-.slider {
-  z-index: 302;
-}
-
-// fix for IE showing img borders
-img {
-  border: none;
-}
 
 //-----------------------
 //
