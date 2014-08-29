@@ -8,6 +8,10 @@
 body, p, h1, h2, h3, h4 {
 	font-family: $text-font;
 }
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
 //-----------------------
 //
@@ -64,40 +68,6 @@ img {
   @media (max-width: $break_small) {
     padding: 0.3em;
   }
-}
-
-// pullquotes
-.left_quote h2, .right_quote h2 {
-  font-family: 'UniversLTStd-BoldCnObl', Arial, sans-serif;
-  font-size: 2.2em;
-  text-transform: none;
-  font-style: normal;
-  border: 0;
-  padding: 0.5em 0;
-}
-
-// typography
-.figure-content {
-  h3 {
-    font-family: $headline-font;
-    letter-spacing: 0.2pt;
-    text-transform: uppercase;
-    color: #000;
-    font-size: 2em;
-  }
-  .subhead {
-    font-size: 1.2em;
-  }
-}
-
-.text p, .left_quote p, .right_quote p, .next_click p {
-  line-height: 1.45em;
-  margin: 0.5em 0 1em 0;
-}
-
-// paragraphs
-figure p, p, .left_quote p, .right_quote p {
-  font-family: $paragraph-font;
 }
 
 //-----------------------
@@ -350,7 +320,7 @@ nav .nav-right {
   z-index: 301;
 }
 
-.right {
+nav .right {
   position: absolute;
   right: 10px;
   top: 0;

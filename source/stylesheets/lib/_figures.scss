@@ -52,10 +52,8 @@ figure {
     margin-top: 3em;
     margin-bottom: 4.5em;
   }
-  h3 {
-    margin-top: 1em;
-  }
   p {
+    font-family: $paragraph-font;
     font-size: 1.05em;
     color: $text;
   }
@@ -67,29 +65,26 @@ figure {
       display: none;
     }
   }
+  .figure-content {
+    h3 {
+      font-size: 2em;
+    }
+  }
 }
 
-.figure-content {
-  @media (min-width: $figure-break) {
-    position: absolute;
-    bottom: 10%;
-    padding: 5%;
+figure.overlay {
+  .figure-content {
+    @media (min-width: $figure-break) {
+      position: absolute;
+      bottom: 10%;
+      padding: 5%;
+    }
   }
 }
 
 .intro {
   padding: 5% 0 3.3% 0;
 }
-
-// Logo after CTA
-// .action::after {
-//   content: ' ';
-//   display: inline-block;
-//   float: right;
-//   background: image-url($byline-sponsor-logo) center no-repeat;
-//   width: 97px;
-//   height: 31px;
-// }
 
 // "Overlay" styling
 figure.overlay .action:after {
@@ -117,7 +112,37 @@ figure.overlay .action:after {
   }
 }
 
-figure.left, .left_quote {
+// left and right kinds
+figure.left {
+  img,
+  .figure-content {
+    display: inline-block;
+    width: 50%;
+    position: relative;
+    vertical-align: top;
+  }
+  .figure-content {
+    padding-left: 2em;
+  }
+}
+
+figure.right {
+  img,
+  .figure-content {
+    display: inline-block;
+    width: 50%;
+    position: relative;
+    vertical-align: top;
+  }
+  img {
+    float: right;
+  }
+  .figure-content {
+    padding-right: 2em;
+  }
+}
+
+.left_quote {
   @extend figure.next_click;
   padding-top: 50px;
   img {
@@ -128,7 +153,7 @@ figure.left, .left_quote {
   }
 }
 
-figure.right, .right_quote {
+.right_quote {
   @extend figure.next_click;
   padding-top: 50px;
   img {
@@ -143,10 +168,6 @@ figure.right, .right_quote {
   h2 {
     color: $primary;
     font-size: 1.2em;
-    text-transform: uppercase;
-    font-style: italic;
-    border-top: 1px solid $primary;
-    border-bottom: 1px solid $primary;
     padding: 1em 0;
   }
 }
@@ -253,6 +274,7 @@ figure.impression {
     font-size: $font-size * 1.5;
     line-height: $line-height;
     width: 47%;
+    padding: 0;
     @media (max-width: 30em) {
       font-size: $font-size;
       display: block;
