@@ -83,20 +83,6 @@ $gradientcolor-2: rgba(42,110,15,0.4);
 //
 //-----------------------
 
-// nav label
-a .nav__label {
-  color: #fff;
-  font-family: $text-font;
-  text-transform: uppercase;
-  margin-right: 4em;
-  span {
-    text-transform: uppercase;
-  }
-  &:after {
-    width: 90px;
-  }
-}
-
 nav .nav__social {
   @media (max-width: 580px) {
     display: none;
@@ -109,10 +95,9 @@ article .nav__social {
     display: block;
     padding-bottom: 0;
   }
-}
-
-article .nav__social .nav__social__link {
-  margin-right: 0.3em;
+  .nav__social__link {
+    margin-right: 10px;
+  }
 }
 
 .bp-horiz-logo {
@@ -129,71 +114,10 @@ article .nav__social .nav__social__link {
   }
 }
 
-.nav__bp-logo {
-  display: inline;
-  width: auto;
-  float: right;
-  margin-right: 4em;
-}
-
-a .nav__label {
-  margin-right: 0;
-  @media (max-width: 580px) {
-    display: block;
-    margin-right: 5px;
-  }
-  @media (max-width: $break_small) {
-    margin-top: 20px;
-    width: 100%;
-    &:after {
-      width: 47px;
-      vertical-align: bottom;
-    }
-  }
-}
-
-nav .nav-right {
-  position: absolute;
-  display: inline-block;
-  right: 0;
-  top: 0;
-}
-
-// new nav bar madness
-.nav {
-  height: 44px;
-}
-
-.horiz {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 303;
-}
-
-.fixed {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: $primary;
-  height: 44px;
-  z-index: 304;
-}
-
-.nav__background {
-  z-index: 301;
-}
-
 nav .right {
   position: absolute;
   right: 10px;
   top: 0;
-}
-
-nav ul.menu {
-  z-index: 400;
 }
 
 //-----------------------
