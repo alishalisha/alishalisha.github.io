@@ -38,29 +38,7 @@ img {
 //
 //-----------------------
 
-// meta tags above next-clicks
-.subhead, .slider .subhead {
-  font-family: $text-font;
-  text-transform: uppercase;
-}
-
-// subhead styling that goes in the hero
-.slider .subhead {
-  color: #fff;
-  font-size: 1.3em;
-  -webkit-font-smoothing: antialiased;
-  @media (max-width: $break_small) {
-    font-size: 0.8em;
-  }
-}
-
-.slider h1 {
-  text-transform: uppercase;
-  @media (max-width: $break_small) {
-    font-size: 1.4em;
-  }
-}
-
+// move to figures/make better.
 .slider .play-icon {
   @media (max-width: 580px) {
     padding: 0.5em;
@@ -76,112 +54,7 @@ img {
 //
 //-----------------------
 
-// new menu
-ul.menu {
-  ul.menu-categories {
-    border-bottom: 2px solid #000;
-    padding: 0;
-    font-size: 0px;
-    @mixin bg-no-repeat {
-      background-repeat: no-repeat;
-      background-position: 50%;
-    }
-
-    li {
-      box-sizing: border-box;
-      width: 19.7%;
-      display: inline-block;
-      border-right: 2px solid #000;
-      text-align: center;
-      padding-bottom: 10px;
-      font-size: 12px;
-      @media (max-width: $break_small) {
-        font-size: 9px;
-      }
-      text-transform: uppercase;
-      letter-spacing: 0.5pt;
-      // delete this later. where our svg icons will go.
-      span.svg {
-        display: block;
-        width: 50%;
-        height: 40px;
-        color: lighten(#000,30%);
-        margin: 10px auto 0 auto;
-        font-size: 0.9em;
-      }
-      &:last-child {
-        border-right: 0;
-      }
-      &:hover {
-        cursor: pointer;
-        background-color: lighten(#000,20%);
-      }
-      &[data-category='latest'] > .svg {
-        background-image: image-url('icon-latest.png');
-        @include bg-no-repeat;
-      }
-      &[data-category='longform'] > .svg {
-        background-image: image-url('icon-longform.png');
-        @include bg-no-repeat;
-      }
-      &[data-category='video'] > .svg {
-        background-image: image-url('icon-video.png');
-        @include bg-no-repeat;
-      }
-      &[data-category='ama'] > .svg {
-        background-image: image-url('icon-ama.png');
-        @include bg-no-repeat;
-      }
-      &[data-category='infographic'] > .svg {
-        background-image: image-url('icon-infographic.png');
-        @include bg-no-repeat;
-      }
-    }
-  }
-  ul.menu-content {
-    padding: 0;
-    li {
-      text-transform: uppercase;
-      border-bottom: 2px solid #000;
-      padding: 10px 0 15px 0;
-      .subhead, h2 {
-        margin: 0 20px;
-
-        &.video.special {
-          display: none;
-        }
-      }
-      .subhead {
-        font-size: 0.9em;
-      }
-      h2 {
-        padding: 0;
-        margin-top: -0.2em;
-        line-height: 0.5;
-      }
-      h2 a {
-        font-size: 0.4em;
-        color: #fff;
-        font-family: $headline-font;
-        font-weight: normal;
-        line-height: 0.5;
-        -webkit-font-smoothing: antialiased;
-        letter-spacing: 0.2pt;
-      }
-      &:hover {
-        background-color: lighten(#000,20%) !important;
-      }
-    }
-  }
-}
-
-// adjusting width for bp
-nav ul.menu {
-  width: 33em;
-  max-width: 100%;
-}
-
-// testing something for menu js
+// TODO: Alisha needs to revisit js for this.
 .no-bg-image {
   background: none !important;
 }

@@ -65,16 +65,16 @@ article .nav__social {
 
 }
 
-.nav__label {
+a .nav__label {
   font-family: $text-font;
   font-weight: $text-weight;
+  text-transform: uppercase;
   font-size: 10px;
   vertical-align: top;
-  margin-top: 20px;
+  margin: 20px 4em 0 0;
   letter-spacing: 1px;
+  color: #fff;
   display: inline-block;
-  // display: block;
-  // float: right;
 
   @media (max-width: 35em) {
     display: none;
@@ -82,7 +82,7 @@ article .nav__social {
 
   &:after {
     content: "";
-    width: 50px; // 150
+    width: 80px;
     height: 30px;
     @include background-size(contain);
     background-repeat: no-repeat;
