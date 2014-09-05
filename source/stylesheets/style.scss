@@ -99,6 +99,10 @@ article .nav__social {
   .nav__social__link {
     margin-right: 10px;
   }
+  // don't display linkedin button within the article for now - fix later
+  a[data-share-via="linkedin"] {
+    display: none;
+  }
 }
 
 .bp-horiz-logo {
