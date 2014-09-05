@@ -47,7 +47,8 @@ $gradientcolor-2: rgba(42,110,15,0.4);
 //
 //-----------------------
 
-// TODO: Alisha needs to revisit js for this.
+// TODO: Alisha needs to revisit js for this
+// or move into the _hamburger-menu.scss partial.
 .no-bg-image {
   background: none !important;
 }
@@ -126,6 +127,8 @@ nav .right {
 //
 //-----------------------
 
+// TODO: Move into partial?
+
 // the title of the next-click section
 .latest-posts {
   text-transform: uppercase;
@@ -143,7 +146,7 @@ section.next-click-wrapper {
 
 .action, a.action {
   display: inline-block;
-  background-color: #ff7d49;
+  background-color: $primary;
   text-transform: uppercase;
   color: #fff;
   padding: 6px 10px 3px 10px;
