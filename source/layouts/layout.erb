@@ -36,8 +36,11 @@
 
   <body id="scrollbox">
     <%= partial "svg/svg" %>
-      <nav class="horiz nav">
+      <nav class="nav">
         <span class="nav__vertical">
+          <a href="/">
+            <svg class="nav__vertical__logo svg-icon" viewBox="0 0 474 86"><use xlink:href="#verge"></use></svg>
+          </a>
           <a class="nav__burger" href="#">
             <div class="nav__burger__patty"></div>
             <div class="nav__burger__patty"></div>
@@ -45,7 +48,6 @@
           </a>
         </span>
         <%= partial 'partials/hamburger_nav', :locals => {:episodes => episodes} %>
-        <a href="http://www.voxcreative.com/sponsored/bp-the-next-mile/"><img src="http://cdn2.vox-cdn.com/assets/4521315/bp-nextmile-horiz-logo.png" class="bp-horiz-logo" /></a>
         <div class="right">
           <a href="http://bs.serving-sys.com/BurstingPipe/adServer.bs?cn=tf&c=20&mc=click&pli=9994846&PluID=0&ord=[timestamp]"><span class="nav__label">Fueled by BP</span></a>
           <%= partial 'partials/social_share' %>
