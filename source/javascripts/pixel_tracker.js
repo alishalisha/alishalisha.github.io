@@ -4,11 +4,10 @@
     var $activeArticle = data.activeArticle;
     if($activeArticle.length > 0) {
       var randomThing = Math.round(Math.random()*10000);
-      var pixels = $activeArticle.find("img.pixel-tracker");
-      for( var i = 0; i < pixels.length; i++ ){
-        var pixelSource = $(pixels).data('src') + randomThing;
-        $(pixels.attr('src',pixelSource));
-      }
+      $activeArticle.find("img.pixel-tracker").each(function(){
+        var pixelSource = $(this).data('src') + "&harmonyRnd=" + randomThing;
+        $(this).attr('src',pixelSource);
+      });
     }
   };
 
