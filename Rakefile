@@ -39,7 +39,7 @@ namespace :harmony do
   desc "Open Google Spreadsheet"
   task :doc => :read_config do
     config_rb_spreadsheet_variable_name = 'spreadsheet_id'
-    url_prefix = "https://docs.google.com/a/sbnation.com/spreadsheet/ccc?key="
+    url_prefix = "https://docs.google.com/a/voxmedia.com/spreadsheet/ccc?key="
 
     # http://rubular.com/r/2S006Q8ESy
     spreadsheet_id_matches = Regexp.new(config_rb_spreadsheet_variable_name.to_s + '\s*=\s*"(.*)"').match(@config)
