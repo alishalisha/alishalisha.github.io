@@ -11,6 +11,8 @@ def get_url_for_domain(domain)
     'http://www.vox.com/admin/editorial_apps/?community_id=441'
   when /verge/i
     'http://www.theverge.com/admin/editorial_apps/?community_id=372'
+  when /eater/i
+    'http://www.eater.com/admin/editorial_apps/list?community_id=450'
   else
     ''
   end
