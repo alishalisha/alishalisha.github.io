@@ -100,7 +100,7 @@ activate :livereload
 helpers Middleman::Chorus::GoogleDrive::Helpers
 
 # CHANGE this to match your spreadsheet id
-spreadsheet_id = "0AgDG7fgkwz50dGdZcm83bkc1MW5BSXlCajBDbHBMQkE"
+spreadsheet_id = "0AgDG7fgkwz50dDZTVkJ0T2txdEhWa0kteTdpWDVta0E"
 
 load_spreadsheet("index",  spreadsheet_id, :gid => 0)
 load_spreadsheet("episode_1", spreadsheet_id, :gid => 13)

@@ -2,8 +2,8 @@
   # used for carousel at the bottom of the index page ------
   videos = []
   episodes.each_with_index do |episode, index|
-    videos << {:image => episode.detect{|row| row.kind == "video"}.fetch("image"),
-               :text =>  episode.detect{|row| row.kind == "text"}.fetch("title"),
+    videos << {#:image => episode.detect{|row| row.kind == "video"}.fetch("image"),
+               #:text =>  episode.detect{|row| row.kind == "text"}.fetch("title"),
                :slug => "episode-#{index}"}
   end
   # --------------------------------------------------------
