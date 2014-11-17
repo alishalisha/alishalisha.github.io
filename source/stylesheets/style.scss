@@ -5,220 +5,12 @@
 // GENERAL STYLES
 //
 //-----------------------
-body, p, h1, h2, h3, h4 {
-	font-family: $text-font;
-}
-img {
-  border: none;
-}
-* {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
 
 //-----------------------
 //
-// HELPERS
+// TYPOGRAPHY
 //
 //-----------------------
-
-$gradientcolor-1: rgba(193,205,81,0.4);
-$gradientcolor-2: rgba(42,110,15,0.4);
-
-//-----------------------
-//
-// TYPOGRAPHY - SPECIAL INSTANCES
-//
-//-----------------------
-
-// move to figures/make better.
-.slider .play-icon {
-  @media (max-width: 580px) {
-    padding: 0.5em;
-  }
-  @media (max-width: $break_small) {
-    padding: 0.3em;
-  }
-}
-
-//-----------------------
-//
-// HAMBURGER MENU ADJUSTMENTS
-//
-//-----------------------
-
-// TODO: Alisha needs to revisit js for this
-// or move into the _hamburger-menu.scss partial.
-.no-bg-image {
-  background: none !important;
-}
-
-.toggled-video {
-  height: 150px;
-  position: relative;
-  padding: 0 !important;
-}
-
-.video-gradient {
-  position: absolute;
-  height: 150px;
-  width: 100%;
-  @include background-image(linear-gradient(top left, $gradientcolor-1, $gradientcolor-2));
-}
-
-.toggled-meta {
-  text-align: center;
-  display: block;
-  position: absolute;
-  margin: 10% auto 0 auto;
-  width: 100%;
-}
-
-.inactive-category {
-  opacity: 0.5;
-}
-
-//-----------------------
-//
-// NAV BAR ADJUSTMENTS
-//
-//-----------------------
-
-nav .nav__social {
-  @media (max-width: 580px) {
-    display: none;
-  }
-}
-
-article .nav__social {
-  padding-bottom: 2em;
-  @media (max-width: 580px) {
-    display: block;
-    padding-bottom: 0;
-  }
-  .nav__social__link {
-    margin-right: 10px;
-  }
-  // don't display linkedin button within the article for now - fix later
-  a[data-share-via="linkedin"] {
-    display: none;
-  }
-}
-
-.bp-horiz-logo {
-  display: inline;
-  width: auto;
-  margin: 3px 0 0 50px;
-  @media (max-width: $break_medium) {
-    width: 150px;
-    margin-top: 13px;
-  }
-  @media (max-width: $break_small) {
-    width: 35%;
-    margin-top: 15px;
-  }
-}
-
-nav .right {
-  position: absolute;
-  right: 10px;
-  top: 0;
-}
-
-//-----------------------
-//
-// NEXT CLICKS
-//
-//-----------------------
-
-// TODO: Move into partial?
-
-// the title of the next-click section
-.latest-posts {
-  text-transform: uppercase;
-  background-color: $primary;
-  color: #fff;
-  padding: 5px;
-  text-align: left;
-  max-width: 70em;
-  margin: 0 auto 30px auto;
-}
-
-section.next-click-wrapper {
-  background-color: #fff;
-}
-
-.action, a.action {
-  display: inline-block;
-  background-color: $primary;
-  text-transform: uppercase;
-  color: #fff;
-  padding: 6px 10px 3px 10px;
-  .next {
-    color: #fff;
-  }
-  &:hover {
-    opacity: 0.8;
-  }
-}
-
-figure.next_click {
-  padding-bottom: 100px;
-  a.action:after {
-    content: '';
-    display: inline-block;
-    margin-left: 5px;
-    width: 7px;
-    height: 12px;
-    background-image: image-url('readmore-arrow.png');
-
-  }
-  img {
-    width: 38%;
-  }
-  .figure-content {
-    max-width: 55%;
-  }
-  @media (max-width: $break_medium) {
-    img, .figure-content { 
-      width: 100%;
-      display: block;
-    }
-    .figure-content {
-      width: 90%;
-      max-width: 90%;
-      padding-top: 1em;
-    }
-  }
-}
-
-
-//-----------------------
-//
-// MISC - NEED TO REFACTOR OR
-// FIND NEW HOMES FOR THIS
-//
-//-----------------------
-
-button.overlay:before {
-  content: '';
-  z-index: 10000;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-}
-
-// hide play button + hover state on articles that are NOT video
-article.category-longform,
-article.category-ama,
-article.category-infographic,
-article.category-home {
-  .play-icon { 
-    display: none;
-  }
-}
 
 //-----------------------
 //
@@ -230,31 +22,12 @@ article.category-home {
   text-align: center;
   margin: 17% auto !important;
   @media (max-width: 400px) {
-    margin-top: 37% !important;
+    margin-top: 33% !important;
   }
   width: 60% !important;
   &.hidden {
     display: none;
   }
-}
-
-.category-video .article-info {
-  h1 {
-    display: none;
-  }
-  .subhead {
-    display: none;
-  }
-  .sponsor-logos .subhead {
-    display: block;
-  }
-  @media (max-width: $break_small) {
-    margin-top: 35% !important;
-  }
-}
-
-.video-container {
-  z-index: 10007;
 }
 
 // video intro title block
@@ -275,17 +48,8 @@ article.category-home {
     font-size: 1.2em;
   }
   @media (max-width: $break_small) {
-    padding: 1em 0;
-    margin-bottom: 3em;
+    padding: 3em 0;
   }
-}
-
-article.category-video li.active {
-  &:hover { cursor: pointer; }
-}
-
-.play-button__stroke {
-  fill: rgba(0,0,0,0.3);
 }
 
 //-----------------------
@@ -296,11 +60,6 @@ article.category-video li.active {
 @media (max-width: $break_small) {
   .category-home .article-info {
     margin-top: 35% !important;
-  }
-  .category-ama .article-info,
-  .category-infographic .article-info,
-  .category-longform .article-info {
-    margin-top: 30% !important;
   }
 
   .next_click {
@@ -315,44 +74,5 @@ article.category-video li.active {
   .video-intro {
     font-size: 0.6em;
   }
-}
-
-//-----------------------
-//
-// SOCIAL ICONS ADJUSTMENTS
-//
-//-----------------------
-
-// social icons - customizing for bp
-.nav__social__icon.twitter,
-.nav__social__icon.facebook,
-.nav__social__icon.googleplus {
-  fill: #fff !important;
-}
-
-.nav__social [data-share-via] {
-  &:after {
-    color: #fff !important;
-  }
-  font-family: "UniversLT-Condensed";
-  padding: 0.5em;
-  font-size: 0.9em;
-  -webkit-font-smoothing: antialiased;
-}
-
-.nav__social [data-share-via="twitter"] {
-  background-color: $twitter;
-}
-
-.nav__social [data-share-via="facebook"] {
-  background-color: $facebook;
-}
-
-.nav__social [data-share-via="googleplus"] {
-  background-color: $googleplus;
-}
-
-nav .nav__social [data-share-via] {
-  background: none;
 }
 

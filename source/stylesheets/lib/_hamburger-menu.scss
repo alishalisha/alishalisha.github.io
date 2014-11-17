@@ -1,4 +1,4 @@
-// Hamburger Menu - will move these into a partial soon.
+// Hamburger Menu
  nav {
 
  	a:hover {
@@ -259,4 +259,33 @@ nav ul.menu {
       }
     }
   }
+}
+
+.no-bg-image {
+  background: none !important;
+}
+
+.toggled-video {
+  height: 150px;
+  position: relative;
+  padding: 0 !important;
+}
+
+.video-gradient {
+  position: absolute;
+  height: 150px;
+  width: 100%;
+  @include background-image(linear-gradient(top left, $menu-gradientcolor-1, $menu-gradientcolor-2));
+}
+
+.toggled-meta {
+  text-align: center;
+  display: block;
+  position: absolute;
+  margin: 10% auto 0 auto;
+  width: 100%;
+}
+
+.inactive-category {
+  opacity: 0.5;
 }

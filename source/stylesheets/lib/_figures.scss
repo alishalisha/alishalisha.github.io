@@ -80,6 +80,11 @@ figure.overlay {
       padding: 5%;
     }
   }
+  @media (max-width: $break_small) {
+    img {
+      margin-bottom: 1em;
+    }
+  }
 }
 
 .intro {
@@ -144,7 +149,6 @@ figure.right {
 
 .left_quote {
   @extend figure.next_click;
-  padding-top: 50px;
   img {
     float: left;
   }
@@ -242,6 +246,10 @@ figure.impression {
 
 .right_quote, .left_quote {
   margin: 2.5em 0;
+  @media (max-width: $break_small) {
+    margin: 0 0 1em 0;
+    padding: 0 !important;
+  }
 
   &:before, &:after {
     content: " ";
@@ -274,6 +282,20 @@ figure.impression {
       font-size: $font-size;
       display: block;
       width: 100%;
+    }
+  }
+}
+
+@media (max-width: $break_medium) {
+  figure.right,
+  figure.left {
+    img, .figure-content {
+      display: block;
+      width: 100%;
+      padding: 0;
+    }
+    img {
+      margin-bottom: 1em;
     }
   }
 }

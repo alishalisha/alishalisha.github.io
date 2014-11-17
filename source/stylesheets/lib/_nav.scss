@@ -1,5 +1,10 @@
-$nav-height: 44px;
-
+nav {
+  .right {
+    position: absolute;
+    right: 10px;
+    top: 0;
+  }
+}
 nav, .nav__background {
   position: fixed;
   z-index: 100;
@@ -20,15 +25,23 @@ nav, .nav__background {
   margin: 6px 0 0 4em;
   float: left;
   fill: $nav-color;
+  @media (max-width: $break_small) {
+    width: 100px;
+  }
 }
 
 .nav__social {
-  // float: right;
   margin: 0 1em 0 0;
   display: inline-block;
 
-  @media (max-width: 35em) {
-    display: none;
+  @media (max-width: $break_small) {
+    margin: 0;
+    .nav__social__icon {
+      margin: 14px 5px;
+    }
+    a[data-share-via="linkedin"] {
+      display: none;
+    }
   }
 
   a {
