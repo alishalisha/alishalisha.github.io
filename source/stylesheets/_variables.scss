@@ -36,7 +36,7 @@ $menu-gradientcolor-1: rgba(255,118,51,0.7);
 $menu-gradientcolor-2: rgba(42,110,15,0.7);
 
 // Typography
-$headline-font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$headline-font: Helvetica, Arial, sans-serif;
 $headline-weight: normal;
 $paragraph-font: Helvetica, Arial, sans-serif;
 $text-font: Helvetica, Arial, sans-serif;
@@ -50,59 +50,14 @@ $vox-logo: "vox-media-logo.png";
 // Add custom fonts here
 @import url("//hello.myfonts.net/count/2afb11");
 
-// univers light condensed  
-@font-face {
-  font-family: 'UniversLT-Condensed';
-  src: image-url('webfonts/2AFB11_0_0.eot');
-  src: image-url('webfonts/2AFB11_0_0.eot?#iefix') format('embedded-opentype'),
-       image-url('webfonts/2AFB11_0_0.woff') format('woff'),
-       image-url('webfonts/2AFB11_0_0.ttf') format('truetype');
-}
- 
-// univers light condensed bold
-@font-face {
-  font-family: 'UniversLT-CondensedBold';
-  src: image-url('webfonts/2AFB11_1_0.eot');
-  src: image-url('webfonts/2AFB11_1_0.eot?#iefix') format('embedded-opentype'),
-       image-url('webfonts/2AFB11_1_0.woff') format('woff'),
-       image-url('webfonts/2AFB11_1_0.ttf') format('truetype');
-}
- 
-// univers light standard  
-@font-face {
-  font-family: 'UniversLTStd-Light';
-  src: image-url('webfonts/2AFB11_2_0.eot');
-  src: image-url('webfonts/2AFB11_2_0.eot?#iefix') format('embedded-opentype'),
-       image-url('webfonts/2AFB11_2_0.woff') format('woff'),
-       image-url('webfonts/2AFB11_2_0.ttf') format('truetype');
-}
- 
-// univers light condensed oblique
-@font-face {
-  font-family: 'UniversLTStd-CnObl';
-  src: image-url('webfonts/2AFB11_3_0.eot');
-  src: image-url('webfonts/2AFB11_3_0.eot?#iefix') format('embedded-opentype'),
-       image-url('webfonts/2AFB11_3_0.woff') format('woff'),
-       image-url('webfonts/2AFB11_3_0.ttf') format('truetype');
-}
- 
-// univers 85 extra black
-@font-face {
-  font-family: 'UniversLTStd-XBlack';
-  src: image-url('webfonts/2AFB11_4_0.eot');
-  src: image-url('webfonts/2AFB11_4_0.eot?#iefix') format('embedded-opentype'),
-       image-url('webfonts/2AFB11_4_0.woff') format('woff'),
-       image-url('webfonts/2AFB11_4_0.ttf') format('truetype');
-}
- 
-// univers light condensed bold oblique
-@font-face {
-  font-family: 'UniversLTStd-BoldCnObl';
-  src: image-url('webfonts/2AFB11_5_0.eot');
-  src: image-url('webfonts/2AFB11_5_0.eot?#iefix') format('embedded-opentype'),
-       image-url('webfonts/2AFB11_5_0.woff') format('woff'),
-       image-url('webfonts/2AFB11_5_0.ttf') format('truetype');
-}
+// // univers light condensed  
+// @font-face {
+//   font-family: 'UniversLT-Condensed';
+//   src: image-url('webfonts/2AFB11_0_0.eot');
+//   src: image-url('webfonts/2AFB11_0_0.eot?#iefix') format('embedded-opentype'),
+//        image-url('webfonts/2AFB11_0_0.woff') format('woff'),
+//        image-url('webfonts/2AFB11_0_0.ttf') format('truetype');
+// }
 
 // Nav
 $nav-color: #fff;
