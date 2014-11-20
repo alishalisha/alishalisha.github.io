@@ -141,8 +141,8 @@ $hover-offset: 5%;
   }
   .play-icon {
     color: $nav-color;
-    width: 30%;
-    height: 30%;
+    width: $play-icon-size;
+    height: $play-icon-size;
     padding: 1em;
     margin: 0 auto !important;
     &:hover {
