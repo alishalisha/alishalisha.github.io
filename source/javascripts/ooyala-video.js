@@ -32,7 +32,9 @@
     $(document).triggerHandler('Harmony.event.track', {action:"Video", label:"Play",value: videoIndex});
 
     OO.Player.create(videoContainerDOMId, videoId, {
+      autoplay: true,
       onCreate: function(player) {
+
         var thisPlayer = player;
 
         // pause function
@@ -82,6 +84,16 @@
           }
         };
 
+        var showOverlay = function() {
+          $overlay.removeClass(overlayHiddenClass);
+          $('article.active .article-info').removeClass(overlayHiddenClass);
+        };
+
+        var hideOverlay = function() {
+          $overlay.addClass(overlayHiddenClass);
+          $('article.active .article-info').addClass(overlayHiddenClass);
+        };
+
         // ------------------------------------------------------------
         // Attach to DOM elements for mute and replay
         // ------------------------------------------------------------
@@ -102,15 +114,13 @@
         var playbackStarted = function(){
           // hide nav
           $('nav').hide();
-          $overlay.addClass(overlayHiddenClass);
-          $('article.active .article-info').addClass(overlayHiddenClass);
           if(isMuted){
             $volumeControl.fadeIn();
           }
         };
 
-        player.mb.subscribe(OO.EVENTS.PLAY, 'myPage', playbackStarted);
-        player.mb.subscribe(OO.EVENTS.INITIAL_PLAY, 'myPage',playbackStarted);
+        player.mb.subscribe(OO.EVENTS.WILL_PLAY, 'myPage', playbackStarted);
+        player.mb.subscribe(OO.EVENTS.WILL_PLAY_ADS, 'myPage', playbackStarted);
 
         // Hide controls
         player.mb.subscribe(OO.EVENTS.DESTROY, 'myPage',function(){
@@ -119,11 +129,12 @@
         });
 
         player.mb.subscribe(OO.EVENTS.PLAYBACK_READY, 'myPage',function(){
+          hideOverlay();
+
           // Alisha we ONLY do this on the landing page, right? Not for user clicks
           if(isMuted){
             mute();
           }
-          player.play();
         });
 
         // On pause, show nav
@@ -133,8 +144,7 @@
 
         // Remove that class once the video is done.
         player.mb.subscribe(OO.EVENTS.PLAYED,'myPage', function(eventName) {
-          $overlay.removeClass(overlayHiddenClass);
-          $('.article-info').removeClass(overlayHiddenClass);
+          showOverlay();
           player.destroy();
           // show nav bar again
           $('nav').show();
