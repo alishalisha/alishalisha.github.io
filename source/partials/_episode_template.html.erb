@@ -53,10 +53,14 @@ category_text = categories.join(' | ')
   <% end %>
 
   <% if is_video %>
+    <% video_intro_row = doc.detect{|row| row.kind == "video-intro"} %>
     <% video_title = video_row.try(:title,"") %>
+    <% video_text= video_intro_row.try(:text,"") %>
     <section class="video-intro">
       <div class="container">
         <h2><%= video_title %></h2>
+        <p><%= video_text %></p>
+        <div class="stb"></div>
       </div>
     </section>
   <% end %>
