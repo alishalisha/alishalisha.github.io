@@ -96,6 +96,12 @@ category_text = categories.join(' | ')
 
   </section> <%# this needs to be here, section is setup in each partial %>
 
+  <% athena_row = doc.detect{|row| row.kind == "athena"} %>
+  <% athena_image = athena_row.try(:image,"") %>
+  <% athena_mobile_image = athena_row.try(:mobileimage,"") %>
+  <a href="#" target="_blank"><img class="athena" src="<%= athena_image %>" /></a>
+  <a href="#" target="_blank"><img class="mobile-athena" src="<%= athena_mobile_image %>" /></a>
+  
   <footer class="footer">
       <a class="footer__logo" href="http://voxmedia.com"></a>
       <aside class="footer__text">
