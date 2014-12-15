@@ -47,11 +47,6 @@ figure {
   display: table;
   width: 100%;
   position: relative;
-  margin-bottom: 2em;
-  @media (min-width: $figure-break) {
-    margin-top: 3em;
-    margin-bottom: 4.5em;
-  }
   p {
     font-family: $paragraph-font;
     font-size: 1.05em;
@@ -159,7 +154,6 @@ figure.right {
 
 .right_quote {
   @extend figure.next_click;
-  padding-top: 50px;
   img {
     float: right;
   }
@@ -205,7 +199,6 @@ figure.next_click {
   background-color: #fff;
   margin: 0 auto;
   max-width: 70em;
-  padding-bottom: 50px;
   img {
     width: 50%;
     float: left;

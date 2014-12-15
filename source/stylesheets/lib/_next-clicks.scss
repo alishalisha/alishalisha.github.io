@@ -18,7 +18,7 @@
 }
 
 section.next-click-wrapper {
-  margin-top: 3em;
+  margin: 3em 0;
 }
 
 .action, a.action {
@@ -36,7 +36,7 @@ section.next-click-wrapper {
 }
 
 figure.next_click {
-  //padding-bottom: 100px;
+  margin: 2em auto;
   a.action:after {
     content: '';
     display: inline-block;
