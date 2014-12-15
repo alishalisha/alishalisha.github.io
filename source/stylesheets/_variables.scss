@@ -78,6 +78,46 @@ $byline-sponsor-logo: "bp-invigorate-logo.png"; // color version of logo
   transform: translateY(-50%);
 }
 
+@mixin vendor-prefix($name, $argument) {
+  -webkit-#{$name}: #{$argument};
+  -ms-#{$name}: #{$argument};
+  -moz-#{$name}: #{$argument};
+  -o-#{$name}: #{$argument};
+  #{$name}: #{$argument};
+}
+// usage:
+// p {
+//   @include vendor-prefix(hyphens, auto)
+// }
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content; 
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  } 
+}
+ 
+// use of keyframes mixin
+// @include keyframes(bgcolor) {
+//   0% {
+//     background-color: #ffccf2;
+//   }
+//   50% {
+//     background-color: #ccffcc;
+//   }
+//   100% {
+//     background-color: #ccffff;
+//   } 
+
+
 @import "lib/svg";
 @import "lib/footer";
 @import "lib/slider";
