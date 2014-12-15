@@ -9,6 +9,7 @@ set :images_dir, 'images'
 
 set :app_name, "Harmony Boilerplate"
 set :sponsor_name, "TODO – CHANGE THIS"
+set :clicktracker_url, "http://voxmedia.com"
 
 # These two items will be different when deploying
 # -----------------------------------------------------------
@@ -124,6 +125,8 @@ episodes = [data.index]
 (1..100).each do |index|
   episodes << data.send("episode_#{index}") if data.has_key?("episode_#{index}")
 end
+
+set :episodes, episodes 
 
 # Routes for episodes!
 activate :directory_indexes
