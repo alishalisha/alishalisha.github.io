@@ -51,12 +51,12 @@ nav, .nav__background {
 
 .nav__social__icon {
   font-size: 15px;
-  height: 1em;
-  width: 1em;
-  margin: 14px;
   fill: $nav-color;
   display: inline-block;
   text-align: right;
+  height: 1.2em;
+  width: 1.2em;
+  margin: 10px 5px 0px 20px;
 }
 
 article .nav__social {
