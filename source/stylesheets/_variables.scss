@@ -69,6 +69,15 @@ $nav-background: rgba(0,0,0,0.6);
 $sponsor-logo: "bp-invigorate-logo.png"; // white version of logo
 $byline-sponsor-logo: "bp-invigorate-logo.png"; // color version of logo
 
+// Mixins
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
 @import "lib/svg";
 @import "lib/footer";
 @import "lib/slider";

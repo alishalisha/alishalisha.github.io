@@ -119,7 +119,7 @@ figure.left {
     display: inline-block;
     width: 50%;
     position: relative;
-    vertical-align: top;
+    vertical-align: middle;
   }
   .figure-content {
     padding-left: 2em;
@@ -132,12 +132,13 @@ figure.right {
     display: inline-block;
     width: 50%;
     position: relative;
-    vertical-align: top;
+    vertical-align: middle;
   }
   img {
     float: right;
   }
   .figure-content {
+    margin-top: 5%;
     padding-right: 2em;
   }
 }
