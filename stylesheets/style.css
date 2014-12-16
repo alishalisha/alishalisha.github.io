@@ -1,6 +1,7 @@
 body {
   font-family: Georgia, 'Times New Roman', serif;
-  color: #2e2e2e; }
+  color: #2e2e2e;
+  font-size: 16px; }
 
 p, li {
   line-height: 1.4em; }
@@ -88,7 +89,8 @@ p {
   font-size: 0.9rem; }
 
 .wrapper {
-  padding: 0 2em; }
+  padding: 0 2em;
+  margin: 0 auto; }
 
 .left, .right {
   padding: 1em 0; }
@@ -103,14 +105,60 @@ p {
   display: inline-block;
   width: 60%; }
 
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box; }
-
 @media (max-width: 700px) {
   .left, .right {
     display: block;
     width: 100%; } }
+@media (max-device-width: 740px) {
+  body {
+    font-size: 18px; }
+
+  p, li {
+    line-height: 2.4em; }
+
+  li {
+    margin-bottom: 3em; }
+
+  .wrapper {
+    padding: 0 2em;
+    max-width: 100%; }
+
+  .left, .right {
+    display: block !important;
+    padding: 0;
+    width: 100%;
+    margin: 0 auto; }
+
+  .left h1 {
+    font-size: 7em; }
+
+  .right {
+    margin-top: 10em; }
+    .right h2 {
+      font-size: 4em; }
+    .right p {
+      font-size: 1.5em; }
+
+  .section {
+    margin: 6rem 0; }
+    .section.feeling img {
+      width: 100%;
+      max-width: 100%; }
+    .section.quote p {
+      font-size: 6.5rem;
+      line-height: 1.2em; }
+    .section.book img.book {
+      max-width: 100%;
+      float: none; }
+    .section.book blockquote {
+      font-size: 1.35rem;
+      line-height: 2.5em; }
+
+  footer.footer {
+    float: none; } }
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
 
 /*# sourceMappingURL=style.css.map */
