@@ -1,0 +1,32 @@
+<%
+has_link = false
+if row.link.present?
+  link = parse_link(row.link.to_s, "Read more about " + row.title.to_s + "...")
+  has_link = true
+end
+%>
+
+<%= set_section "content container" %>
+<% if has_link %>
+  <a href="<%= link.url %>">
+<% end %>
+<figure class="<%= row.kind %>">
+  <% if row.image.present? %>
+    <img class="lazy" data-src="<%= row.image %>" alt=" ">
+  <% end %>
+  <div class="figure-content">
+    <% if row.title.present? %>
+      <h3><%= row.title %></h3>
+    <% end %>
+    <% if row.text.present? %>
+      <p><%= row.text %></p>
+    <% end %>
+    <%# if has_link %>
+<!--       <div class="action">
+        <svg class="inline-icon" viewBox="0 0 100 100"><use xlink:href="#play-button"></use></svg>
+        <%#= link.title %>
+      </div> -->
+    <%# end %>
+  </div>
+</figure>
+<%= "</a>" if has_link %>

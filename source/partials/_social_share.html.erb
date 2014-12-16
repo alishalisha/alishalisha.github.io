@@ -1,0 +1,27 @@
+<% # THESE SHOULD BE PASSED IN TO THE PARTIAL!!!!
+   share_text ||= default_share_text
+   share_url ||= url_host + url_prefix
+   share_url.gsub!(/\/\/$/,'/')
+   page_title ||= app_name
+   source ||= url_host
+
+   # Note these are going to be overwritten in the javascript during run time
+   twitter_url = "https://twitter.com/share?url=#{CGI.escape(share_url)}&amp;text=#{CGI.escape(share_text)}"
+   facebook_url = "https://www.facebook.com/sharer/sharer.php?u=#{CGI.escape(share_url)}"
+   google_plus_url = "https://plus.google.com/share?url=#{CGI.escape(share_url)}"
+   linkedin_url = "http://www.linkedin.com/shareArticle?mini=true&url=#{CGI.escape(share_url)}&title=#{CGI.escape(page_title)}&summary=#{CGI.escape(share_text)}&source=#{source}"
+%>
+<div class="nav__social">
+  <a class="nav__social__link" data-share-via="twitter" data-shared="<%= app_name %>" href="<%= twitter_url %>">
+    <svg class="nav__social__icon svg-icon twitter" viewBox="0 0 100 100"><use xlink:href="#twitter"></use></svg>
+  </a>
+  <a class="nav__social__link" data-share-via="facebook" data-shared="<%= app_name %>" href="<%= facebook_url %>">
+    <svg class="nav__social__icon svg-icon facebook" viewBox="0 0 100 100"><use xlink:href="#facebook"></use></svg>
+  </a>
+  <a class="nav__social__link" data-share-via="googleplus" data-shared="<%= app_name %>" href="<%= google_plus_url %>">
+    <svg class="nav__social__icon svg-icon googleplus" viewBox="0 0 100 100"><use xlink:href="#google-plus"></use></svg>
+  </a>
+<!--   <a class="nav__social__link" data-share-via="linkedin" data-shared="<%= app_name %>" href="<%= linkedin_url %>">
+    <svg class="nav__social__icon svg-icon linkedin" viewBox="0 0 100 100"><use xlink:href="#linkedin"></use></svg>
+  </a> -->
+</div>

@@ -1,0 +1,56 @@
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html, body, article, section, figure {
+  margin: 0;
+}
+
+body {
+  background: $background;
+  color: $text;
+  font-family: $text-font;
+  font-weight: $text-weight;
+  font-size: percentage(($font-size / 1px) / 16);
+  line-height: $line-height;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  color: $primary;
+  line-height: 1;
+  font-family: $headline-font;
+  font-weight: $headline-weight;
+}
+
+h2 {
+  font-size: 2em;
+  margin-bottom: .33em;
+  @media (min-width: 50em) {
+    font-size: 2.5em;
+  }
+  @media (min-width: 60em) {
+    font-size: 3em;
+  }
+}
+
+a {
+  color: $primary;
+  text-decoration: none;
+  &:hover {
+    border-bottom: 1px solid;
+  }
+}
+
+.container {
+  padding: 0 $container-padding;
+  margin: 0 auto;
+  max-width: $max-width;
+}
+
+img {
+  display: block;
+  width: 100%;
+}

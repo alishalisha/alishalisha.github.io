@@ -1,0 +1,291 @@
+// Hamburger Menu
+ nav {
+
+ 	a:hover {
+ 		text-decoration: none;
+ 		border-bottom: none;
+ 	}
+ 	
+ 	z-index: 10001;
+	 .nav__burger {
+	    @include transition (background-color ease-in-out 0.3s);
+	    display: block;
+	    height: 44px;
+	    line-height: 50px;
+	    position: absolute;
+	    left: 0;
+	    padding: 0 15px;
+	    color: white;
+	    font-size: 1.3em;
+	    &:hover {
+	      background-color: rgba(0,0,0,0.3);
+	      text-decoration: none;
+	      border-bottom: 0;
+	    }
+	    &:active {
+	      line-height: 54px;
+	    }
+	    .nav__burger__patty {
+	    	&:first-child {
+	    		margin-top: 12px;
+	    	}
+				height: 3px;
+				width: 1em;
+				margin-bottom: 5px;
+				background-color: #fff;
+			}
+	  }
+
+	  ul.menu {
+	    transition: all ease-in-out 0.3s;
+	    position: fixed;
+	    top: 44px;
+	    bottom: 0;
+	    overflow: scroll;
+	    left: -100%;
+	    width: 25em;
+	    max-width: 100%;
+	    background-color: #1d1d1d;
+	    border-bottom: 1px solid darken($black, 10%);
+	    margin: 0;
+	    padding: 0 0 1em 0;
+	    opacity: 0;
+
+	    // Title of the app shown in the menu
+	    h1 {
+	    	font-family: $headline-font;
+	    	font-weight: 900;
+	    	font-style: italic;
+	    	color: #fff;
+	    	padding: 1em;
+	    	text-transform: uppercase;
+	    	text-align: center;
+			line-height: 1.2em;
+			font-size: 2em;
+	    }
+
+	    &.active {
+	     	left: 0;
+	     	opacity: 1;
+	    }
+
+	    ul {
+	    	margin: 0;
+	    	//padding: 0;
+	    	list-style-type: none;
+	    }
+
+	    h2.menu-subtitle {
+			text-transform: uppercase;
+			font-size: 1em;
+			letter-spacing: 0.5pt;
+			text-align: center;
+			padding: 0.5em 0;
+			color: darken(#fff,50%);
+			margin-bottom: 0;
+	    }
+
+	    // recent episodes
+	    ul.recent-eps {
+	    	a {
+	    		display: block;
+	    		padding: 2em 0;
+	    		background-size: cover;
+	    		position: relative;
+	    		text-transform: uppercase;
+	    		color: #fff;
+	    		text-align: center;
+	    		font-size: 1.6em;
+	    		font-weight: 400;
+
+	    		&:before {
+	    			content: '';
+	    			position: absolute;
+	    			top: 0;
+	    			left: 0;
+	    			right: 0;
+	    			bottom: 0;
+	    			z-index: 2;
+	    		}
+
+	    		&:hover {
+	    			opacity: 0.9;
+	    		}
+	    	}
+
+	    	a:nth-of-type(1) {
+	    		background: url("http://37.media.tumblr.com/7f22459d59c9c2e63a4d45a0d0946ac8/tumblr_n4cm4hq4Vb1st5lhmo1_1280.jpg") no-repeat 50% 50%;
+	    	}
+
+	    	a:nth-of-type(2) {
+	    		background: url("http://37.media.tumblr.com/560a35b8fb40b1c069fa18ef9f2ea179/tumblr_n4cm73ozlb1st5lhmo1_1280.jpg") no-repeat 50% 50%;
+	    	}
+
+	    	a:nth-of-type(2) {
+	    		margin-bottom: 2em;
+	    	}
+	    }
+
+	    ul.theme {
+	    	padding: 1.5em 1em;
+	    	font-size: 0.9em;
+	    	border-bottom: 1px solid #272727;
+
+	    	h2, h3, a {
+	    		color: #fff;
+	    	}
+
+			h2 {
+				text-transform: uppercase;
+				font-size: 1.5em;
+				text-align: center;
+	    	}
+
+	    	&:last-child {
+	    		margin-bottom: 2em;
+	    	}
+	    }
+
+	    // themes
+	    ul.theme:nth-child(1n) {
+	    	// background-color: shade($primary, 30%);
+	    }
+
+	    ul.theme:nth-child(2n) {
+	    	// background-color: shade($primary, 40%);
+	    }
+
+	    ul.theme:nth-child(3n) {
+	    	// background-color: shade($primary, 50%);
+	    }
+	}
+}
+
+nav ul.menu {
+  width: 33em;
+  max-width: 100%;
+  z-index: 400;
+  ul.menu-categories {
+    border-bottom: 2px solid #000;
+    padding: 0;
+    font-size: 0px;
+    @mixin bg-no-repeat {
+      background-repeat: no-repeat;
+      background-position: 50%;
+    }
+
+    li {
+      box-sizing: border-box;
+      width: 19.7%;
+      display: inline-block;
+      border-right: 2px solid #000;
+      text-align: center;
+      padding-bottom: 10px;
+      font-size: 12px;
+      @media (max-width: $break_small) {
+        font-size: 9px;
+      }
+      text-transform: uppercase;
+      letter-spacing: 0.5pt;
+      span.svg {
+        display: block;
+        width: 50%;
+        height: 40px;
+        color: lighten(#000,30%);
+        margin: 10px auto 0 auto;
+        font-size: 0.9em;
+      }
+      &:last-child {
+        border-right: 0;
+      }
+      &:hover {
+        cursor: pointer;
+        background-color: lighten(#000,20%);
+      }
+      &[data-category='latest'] > .svg {
+        background-image: image-url('icon-latest.png');
+        @include bg-no-repeat;
+      }
+      &[data-category='longform'] > .svg {
+        background-image: image-url('icon-longform.png');
+        @include bg-no-repeat;
+      }
+      &[data-category='video'] > .svg {
+        background-image: image-url('icon-video.png');
+        @include bg-no-repeat;
+      }
+      &[data-category='ama'] > .svg {
+        background-image: image-url('icon-ama.png');
+        @include bg-no-repeat;
+      }
+      &[data-category='infographic'] > .svg {
+        background-image: image-url('icon-infographic.png');
+        @include bg-no-repeat;
+      }
+    }
+  }
+  ul.menu-content {
+    padding: 0;
+    li {
+      text-transform: uppercase;
+      border-bottom: 2px solid #000;
+      padding: 10px 0 15px 0;
+      .subhead, h2 {
+        margin: 0 20px;
+
+        &.video.special {
+          display: none;
+        }
+      }
+      .subhead {
+        font-size: 0.9em;
+      }
+      h2 {
+        padding: 0;
+        margin-top: -0.2em;
+        line-height: 0.5;
+      }
+      h2 a {
+        font-size: 0.4em;
+        color: #fff;
+        font-family: $headline-font;
+        font-weight: normal;
+        line-height: 0.5;
+        -webkit-font-smoothing: antialiased;
+        letter-spacing: 0.2pt;
+      }
+      &:hover {
+        background-color: lighten(#000,20%) !important;
+      }
+    }
+  }
+}
+
+.no-bg-image {
+  background: none !important;
+}
+
+.toggled-video {
+  height: 150px;
+  position: relative;
+  padding: 0 !important;
+}
+
+.video-gradient {
+  position: absolute;
+  height: 150px;
+  width: 100%;
+  @include background-image(linear-gradient(top left, $menu-gradientcolor-1, $menu-gradientcolor-2));
+}
+
+.toggled-meta {
+  text-align: center;
+  display: block;
+  position: absolute;
+  margin: 10% auto 0 auto;
+  width: 100%;
+}
+
+.inactive-category {
+  opacity: 0.5;
+}
