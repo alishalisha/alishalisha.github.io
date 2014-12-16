@@ -111,7 +111,16 @@ p {
 
   .left, .right {
     display: block;
-    width: 100%; } }
+    width: 100%; }
+
+  img {
+    max-width: 100%; }
+
+  section.book img.book {
+    max-width: 100%;
+    width: 100%; }
+  section.feeling img {
+    max-width: 100% !important; } }
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
