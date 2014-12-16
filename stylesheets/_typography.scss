@@ -45,6 +45,35 @@ span.meta {
       margin: 0 0 0.5rem 0;
     }
   }
+  &.book {
+    img.book,
+    .book-author {
+      // display: inline-block;
+      // width: 50%;
+    }
+    img.book {
+      max-width: 200px;
+      float: left;
+      padding: 0 2em 2em 0;
+    }
+    .book-title {
+      font-size: 1rem;
+    }
+    .book-author {
+      vertical-align: top;
+      padding-left: 2em;
+    }
+    blockquote {
+      // font-style: italic;
+      margin: 2em 0;
+      font-size: 0.95rem;
+      line-height: 1.5em;
+      color: darken($gray, 20%);
+      border-left: 3px solid lighten($gray, 40%);
+      overflow: hidden;
+      padding-left: 1em;
+    }
+  }
 }
 
 .footer {

@@ -1,15 +1,16 @@
 .wrapper {
-  padding: 0 4em;
+  padding: 0 2em;
 }
 
 .left, .right {
-  padding: 1em;
+  padding: 1em 0;
 }
 
 .left {
   display: inline-block;
   width: 40%;
   vertical-align: top;
+  padding-right: 4em;
 }
 
 .right {

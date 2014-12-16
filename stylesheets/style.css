@@ -28,6 +28,23 @@ span.meta {
     font-style: italic;
     color: #806d39;
     margin: 0 0 0.5rem 0; }
+  .section.book img.book {
+    max-width: 200px;
+    float: left;
+    padding: 0 2em 2em 0; }
+  .section.book .book-title {
+    font-size: 1rem; }
+  .section.book .book-author {
+    vertical-align: top;
+    padding-left: 2em; }
+  .section.book blockquote {
+    margin: 2em 0;
+    font-size: 0.95rem;
+    line-height: 1.5em;
+    color: #535353;
+    border-left: 3px solid #ececec;
+    overflow: hidden;
+    padding-left: 1em; }
 
 .footer {
   float: right;
@@ -71,15 +88,16 @@ p {
   font-size: 0.9rem; }
 
 .wrapper {
-  padding: 0 4em; }
+  padding: 0 2em; }
 
 .left, .right {
-  padding: 1em; }
+  padding: 1em 0; }
 
 .left {
   display: inline-block;
   width: 40%;
-  vertical-align: top; }
+  vertical-align: top;
+  padding-right: 4em; }
 
 .right {
   display: inline-block;
