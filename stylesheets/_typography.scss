@@ -25,6 +25,7 @@ p, li {
 
 span.meta {
   font-size: 0.6rem;
+  color: lighten($gray, 20%);
   a {
     color: lighten($gray, 20%);
   }
@@ -54,10 +55,12 @@ span.meta {
     }
     img.book {
       max-width: 200px;
-      float: left;
+      //float: left;
       padding: 0 2em 2em 0;
     }
     .book-title {
+      display: inline-block;
+      vertical-align: top;
       font-size: 1rem;
     }
     .book-author {
@@ -131,5 +134,11 @@ p {
 .right {
   p {
     font-size: 0.9rem;
+  }
+}
+
+a#more {
+  &:hover {
+    cursor: pointer;
   }
 }
