@@ -23,7 +23,7 @@ span.meta {
   padding: 0 0 2rem 0;
   border-bottom: 1px dotted #868686; }
   .section.feeling img {
-    max-width: 300px; }
+    max-width: 100%; }
   .section.quote p {
     font-size: 2.5rem;
     font-family: 'Arapey', serif;
