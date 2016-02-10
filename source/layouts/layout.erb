@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+
+    <script src="https://use.typekit.net/skp6pvq.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title><%= current_page.data.title || "Alisha Ramos" %></title>
+
+    <%= stylesheet_link_tag :site %>
+    <%= javascript_include_tag :all %>
+  </head>
+
+  <body class="<%= page_classes %>">
+    <header class="c-nav">
+      <div class="wrapper c-nav__wrapper">
+        <h1><a href="/" class="c-nav__title">Alisha Ramos</a></h1>
+        <nav>
+          <ul class="c-nav__menu">
+            <li class="c-nav__menu-item active">
+              <a href="#">About</a>
+            </li>
+            <li class="c-nav__menu-item">
+              <a href="#">Work</a>
+            </li>
+            <li class="c-nav__menu-item">
+              <a href="#">Writing</a>
+            </li>
+            <li class="c-nav__menu-item">
+              <a href="#">Awards & Press</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="wrapper">
+      <%= yield %>
+    </div>
+
+    <footer class="c-footer">
+      c Alisha Ramos
+    </footer>
+
+  </body>
+</html>
