@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+
+    <script src="https://use.typekit.net/skp6pvq.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title><%= current_page.data.title || "Alisha Ramos" %></title>
+
+    <%= stylesheet_link_tag :site %>
+    <%= javascript_include_tag :all %>
+  </head>
+
+  <body class="<%= page_classes %>">
+    <%= partial "images/svg/symbol/svg" %>
+    <%= partial "layouts/nav" %>
+
+    <div class="wrapper">
+      <%= yield %>
+    </div>
+
+    <%= partial "layouts/footer" %>
+  </body>
+</html>
