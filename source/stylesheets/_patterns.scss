@@ -25,10 +25,13 @@ Reusable patterns
         left:0;
         right:0;
         bottom: 5px;
-        border-bottom: solid 5px $color-accent;
+        border-bottom: solid 5px $color-copy;
+      }
+      &:hover {
+        color: $color-accent;
       }
       &:hover:after {
-        border-color: $color-copy;
+        border-color: $color-accent;
       }
     }
     @media (max-width: 500px) {
