@@ -1,7 +1,7 @@
-<%# blog.articles[0...5].each do |article| %>
-  <!--<a href="<%#= article.url %>"><%#= article.title %></a></br>
-  <time><%#= article.date.strftime('%b %e %Y') %></time>-->
-<%# end %>
+<% blog.articles[0...5].each do |article| %>
+  <a href="<%= article.url %>"><%= article.title %></a></br>
+  <time><%= article.date.strftime('%b %e %Y') %></time>
+<% end %>
 
 <h2 class="p-heading--h1--blog center">Writing</h2>
 
