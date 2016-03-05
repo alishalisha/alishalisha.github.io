@@ -1,5 +1,11 @@
 <% wrap_layout :layout do %>
   <article class="blog wrapper--skinniest">
+    <h1><%= current_page.data.title %></h1>
+    <div class="center"><time><%= current_page.data.date %></time></div>
     <%= yield %>
+    <span>category: <%= current_page.data.category %></span>
   </article>
+  <div class="m-top center">
+    <a class="p-link" href="/">Back home</a> / <a class="p-link" href="/blog">Back to blog</a>
+  </div>
 <% end %>

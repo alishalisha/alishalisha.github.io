@@ -29,6 +29,7 @@ Reusable patterns
       }
       &:hover {
         color: $color-accent;
+        text-decoration: none !important;
       }
       &:hover:after {
         border-color: $color-accent;
@@ -54,13 +55,14 @@ Reusable patterns
   }
 }
 
-.p-link {
+a.p-link {
   font-weight: bold;
   color: $color-copy;
   text-decoration: none;
   border-bottom: 2px solid $color-accent;
   &:hover {
     border-color: $color-copy;
+    text-decoration: none !important;
   }
 }
 
