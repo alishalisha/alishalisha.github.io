@@ -1,0 +1,11 @@
+<div class="center">
+<h2>Tag: <%= tagname %></h2>
+<p class="quiet"><%= articles.length %> posts found</p>
+
+<% articles.each do |article| %>
+  <div class="padded">
+    <time><%= article.date.strftime('%b %e %Y') %></time><br />
+    <a href="<%= article.url %>"><%= article.title %></a>
+  </div>
+<% end %>
+</div>
