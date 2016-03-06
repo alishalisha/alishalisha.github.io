@@ -3,7 +3,11 @@
     <h1><%= current_page.data.title %></h1>
     <div class="center"><time><%= current_page.data.date %></time></div>
     <%= yield %>
-    <div class="category">Category: <%= current_page.data.category %></div>
+    <div class="category">Tags: 
+    <% current_page.data.tags.each do |tag| %>
+      <a href="<%= tag_path(tag) %>"><%= tag %></a>
+    <% end %>
+    </div>
   </article>
   <div class="m-top center">
     <a class="p-link" href="/">Back home</a> / <a class="p-link" href="/blog">Back to blog</a>

@@ -31,9 +31,12 @@ end
 
 activate :blog do |blog|
   # set options on blog
+  blog.paginate = true
   blog.permalink = "blog/{year}/{title}.html"
   blog.layout = "blog_layout"
   blog.sources = "blog/{year}-{month}-{day}-{title}.html"
+  blog.tag_template = "blog/tag.html"
+  blog.taglink = "categories/{tag}.html"
 end
 
 # Methods defined in the helpers block are available in templates
