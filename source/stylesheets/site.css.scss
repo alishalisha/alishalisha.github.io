@@ -3,6 +3,7 @@
 @import "vars";
 @import "utils";
 @import "patterns";
+@import "github";
 
 body {
   background: #fff;
@@ -20,6 +21,11 @@ a, a:link, a:visited {
 
 a:hover {
   text-decoration: underline;
+}
+
+code, p code {
+  border: 1px solid lighten($color-gray, 30%);
+  color: lighten($color-gray, 5%);
 }
 
 .content {
@@ -84,6 +90,9 @@ time {
       border-top: 3px solid $color-accent;
       transform: translateY(19px);
       transition: opacity 0.2s ease-in-out;
+    }
+    &:hover {
+      text-decoration: none !important;
     }
     &:hover:before {
       opacity: 0;
@@ -162,9 +171,8 @@ time {
       @extend .p-paragraph;
     }
     a {
-      @extend .p-link;
-      border-bottom: 0;
       font-weight: normal;
+      text-decoration: underline;
       &:hover {
         text-decoration: none;
       }
@@ -180,4 +188,10 @@ time {
       border-bottom: 0;
     }
   }
+}
+
+.category {
+  @include effra-bold;
+  font-size: 0.8em;
+  text-transform: uppercase;
 }
