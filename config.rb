@@ -33,6 +33,7 @@ activate :blog do |blog|
   # set options on blog
   blog.permalink = "blog/{year}/{title}.html"
   blog.layout = "blog_layout"
+  blog.sources = "blog/{year}-{month}-{day}-{title}.html"
 end
 
 # Methods defined in the helpers block are available in templates
@@ -41,6 +42,9 @@ end
 #     "Helping"
 #   end
 # end
+
+activate :syntax, line_numbers: true, css_class: 'codehilite'
+set :markdown_engine, :kramdown
 
 # Build-specific configuration
 configure :build do
