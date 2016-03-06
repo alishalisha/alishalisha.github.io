@@ -22,4 +22,7 @@
 
 .m-top {
   margin-top: 2em;
+  &--small {
+    margin-top: 1em;
+  }
 }

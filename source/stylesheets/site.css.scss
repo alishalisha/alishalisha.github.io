@@ -194,4 +194,15 @@ time {
   @include effra-bold;
   font-size: 0.8em;
   text-transform: uppercase;
+  a {
+    text-decoration: none !important;
+  }
+  &__link {
+    padding: 3px 5px;
+    border-radius: 5px;
+    background: $color-accent;
+    &:hover {
+      background: lighten($color-accent, 20%);
+    }
+  }
 }

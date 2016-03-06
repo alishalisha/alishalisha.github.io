@@ -3,10 +3,15 @@
     <h1><%= current_page.data.title %></h1>
     <div class="center"><time><%= current_page.data.date %></time></div>
     <%= yield %>
-    <div class="category">Tags: 
+    <div class="category">
+    <svg class="p-icon--small"><use xlink:href="#price-tag"/></svg>&nbsp;
     <% current_page.data.tags.each do |tag| %>
-      <a href="<%= tag_path(tag) %>"><%= tag %></a>
+      <a href="<%= tag_path(tag) %>" class="category__link"><%= tag %></a>&nbsp;
     <% end %>
+    </div>
+    <div class="category m-top--small">
+      <svg class="p-icon--small"><use xlink:href="#twitter"/></svg>&nbsp;
+      <a href="https://twitter.com/intent/tweet?url=http://alisharamos.com<%= current_page.url %>&text=<%= current_page.data.title.split(' ').join('+') %>&via=alishalisha">Share this post</a>
     </div>
   </article>
   <div class="m-top center">

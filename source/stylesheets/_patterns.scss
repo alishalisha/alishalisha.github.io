@@ -111,6 +111,10 @@ a.p-link {
       margin-right: 0;
     }
   }
+  &--small {
+    height: 12px;
+    width: 12px;
+  }
   &:hover {
     fill: $color-accent;
   }
