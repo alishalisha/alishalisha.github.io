@@ -72,6 +72,8 @@ time {
     flex-wrap: wrap;
     @media (max-width: 500px) {
       justify-content: center;
+      text-align: center;
+      padding: 5px 10px;
     }
   }
   &__title {
@@ -151,11 +153,6 @@ time {
   @include effra-bold;
   letter-spacing: 1pt;
   text-transform: uppercase;
-}
-.index, .work {
-  .c-footer {
-    display: none;
-  }
 }
 
 // blog layout
