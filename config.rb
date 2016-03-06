@@ -33,7 +33,7 @@ activate :blog do |blog|
   # set options on blog
   blog.permalink = "blog/{year}/{title}.html"
   blog.layout = "blog_layout"
-  blog.sources = "blog/posts/{year}-{month}-{day}-{title}.html"
+  blog.sources = "blog/{year}-{month}-{day}-{title}.html"
 end
 
 # Methods defined in the helpers block are available in templates
