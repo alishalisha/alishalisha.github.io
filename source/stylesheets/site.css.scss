@@ -70,7 +70,7 @@ time {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    @media (max-width: 500px) {
+    @media (max-width: 600px) {
       justify-content: center;
       text-align: center;
       padding: 5px 10px;
@@ -98,6 +98,11 @@ time {
     }
     &:hover:before {
       opacity: 0;
+    }
+  }
+  &__menu-wrapper {
+    @media (max-width: 600px) {
+      width: 100%;
     }
   }
   &__menu {
@@ -187,6 +192,7 @@ time {
   }
 }
 
+// tags on a blog post
 .category {
   @include effra-bold;
   font-size: 0.8em;
@@ -201,5 +207,33 @@ time {
     &:hover {
       background: lighten($color-accent, 20%);
     }
+  }
+}
+
+.flex-grid-container {
+  &__row {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+  }
+}
+
+.project {
+  flex-basis: 48%;
+  &__thumbnail {
+    width: 100%;
+    padding-top: 55%;
+    background-size: cover;
+    margin-bottom: 10px;
+    transition: 0.2s ease-in-out;
+    &:hover {
+      transform: translateY(-5px);
+    }
+  }
+  &__name {
+    text-align: center;
+    @include effra-bold;
+    text-transform: uppercase;
   }
 }
