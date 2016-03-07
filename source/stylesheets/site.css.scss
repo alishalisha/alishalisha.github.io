@@ -65,6 +65,7 @@ time {
   @include effra-bold;
   letter-spacing: 1pt;
   text-transform: uppercase;
+  padding: 20px 0;
   &__wrapper {
     display: flex;
     justify-content: space-between;
@@ -93,11 +94,11 @@ time {
       transform: translateY(19px);
       transition: opacity 0.2s ease-in-out;
     }
-    &:hover {
-      text-decoration: none !important;
-    }
     &:hover:before {
       opacity: 0;
+    }
+    & > a:hover {
+      text-decoration: none;
     }
   }
   &__menu-wrapper {

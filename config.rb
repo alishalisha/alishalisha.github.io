@@ -49,6 +49,8 @@ end
 activate :syntax, line_numbers: true, css_class: 'codehilite'
 set :markdown_engine, :kramdown
 
+activate :autoprefixer
+
 # Build-specific configuration
 configure :build do
   activate :minify_css

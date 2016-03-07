@@ -17,3 +17,4 @@ gem "middleman-blog"
 gem 'middleman-deploy', github: 'middleman-contrib/middleman-deploy', branch: 'master'
 
 gem "middleman-syntax"
+gem 'middleman-autoprefixer'

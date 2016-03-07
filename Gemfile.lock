@@ -18,6 +18,8 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.4.0)
+    autoprefixer-rails (6.3.3.1)
+      execjs
     backports (3.6.7)
     capybara (2.5.0)
       mime-types (>= 1.16)
@@ -74,6 +76,9 @@ GEM
       middleman-cli (= 4.1.1)
       middleman-core (= 4.1.1)
       sass (>= 3.4.0, < 4.0)
+    middleman-autoprefixer (2.7.0)
+      autoprefixer-rails (>= 6.3.1, < 7.0.0)
+      middleman-core (>= 3.3.3)
     middleman-blog (4.0.0)
       addressable (~> 2.4.0)
       middleman-core (>= 4.0.0)
@@ -156,6 +161,7 @@ PLATFORMS
 
 DEPENDENCIES
   middleman (>= 4.0.0)
+  middleman-autoprefixer
   middleman-blog
   middleman-compass (>= 4.0.0)
   middleman-deploy!
