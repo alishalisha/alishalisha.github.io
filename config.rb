@@ -29,6 +29,10 @@ end
 # Helpers
 ###
 
+data.projectlist.each do |project|
+  proxy "/work/#{project.slug}.html", "/work/project.html", :locals => { :project => project, :name => project.name }, :ignore => true
+end
+
 activate :blog do |blog|
   # set options on blog
   blog.paginate = true

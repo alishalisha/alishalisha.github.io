@@ -52,6 +52,7 @@ code, p code {
 h2 {
   @include filson;
   font-size: 42px;
+  margin: 0;
 }
 
 time {
@@ -213,7 +214,7 @@ time {
 
 .flex-grid-container {
   &__row {
-    flex-basis: 100%;
+    flex-wrap: wrap;
     display: flex;
     justify-content: space-between;
     margin-bottom: 50px;
@@ -222,6 +223,7 @@ time {
 
 .project {
   flex-basis: 48%;
+  margin-bottom: 40px;
   &__thumbnail {
     width: 100%;
     padding-top: 55%;

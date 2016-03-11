@@ -1,0 +1,7 @@
+- name: Vox Year in Emoji
+  slug: vox-year-in-emoji
+  thumbnail: vox-year-in-emoji.jpg
+  description: An interactive end of the year guide written in emoji.
+- name: Vox Serial Podcast Guide
+  slug: vox-serial-podcast-guide
+  thumbnail: vox-serial-podcast.jpg
