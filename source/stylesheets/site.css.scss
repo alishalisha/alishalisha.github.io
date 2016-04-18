@@ -15,7 +15,7 @@ img {
 }
 
 a, a:link, a:visited {
-  color: $color-copy;
+  color: darken($color-accent, 30%);
   text-decoration: none;
 }
 
@@ -97,6 +97,9 @@ time {
     }
     &:hover:before {
       opacity: 0;
+    }
+    a, a:link, a:visited {
+      color: $color-copy;
     }
     & > a:hover {
       text-decoration: none;

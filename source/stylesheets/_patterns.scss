@@ -14,10 +14,12 @@ Reusable patterns
     font-size: 50px;
     line-height: 1.38;
     color: $color-copy;
+    a, a:link, a:visited {
+      color: $color-copy;
+    }
     a {
       position: relative;
       display: inline-block;
-      color: $color-copy;
       text-decoration: none;
       &:after {
         content:'';
@@ -57,7 +59,7 @@ Reusable patterns
 
 a.p-link {
   font-weight: bold;
-  color: $color-copy;
+  color: $color-copy !important;
   text-decoration: none;
   border-bottom: 2px solid $color-accent;
   &:hover {
@@ -118,4 +120,8 @@ a.p-link {
   &:hover {
     fill: $color-accent;
   }
+}
+
+.category__link {
+  color: $color-copy !important;
 }
