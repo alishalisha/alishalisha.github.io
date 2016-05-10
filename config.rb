@@ -29,18 +29,28 @@ end
 # Helpers
 ###
 
-data.projectlist.each do |project|
-  proxy "/work/#{project.slug}.html", "/work/project.html", :locals => { :project => project, :name => project.name }, :ignore => true
-end
+#data.projectlist.each do |project|
+#  proxy "/work/#{project.slug}.html", "/work/project.html", :locals => { :project => project, :name => project.name }, :ignore => true
+#end
 
 activate :blog do |blog|
   # set options on blog
+  blog.name = "blog"
+  blog.prefix = "blog"
   blog.paginate = true
-  blog.permalink = "blog/{year}/{title}.html"
+  blog.permalink = "/{year}/{title}.html"
   blog.layout = "blog_layout"
-  blog.sources = "blog/{year}-{month}-{day}-{title}.html"
+  blog.sources = "/{year}-{month}-{day}-{title}.html"
   blog.tag_template = "blog/tag.html"
   blog.taglink = "categories/{tag}.html"
+end
+
+activate :blog do |blog|
+  blog.name = "work"
+  blog.prefix = "work"
+  blog.layout = "work_layout"
+  blog.permalink = "/{title}.html"
+  blog.sources = "/{year}-{month}-{day}-{title}.html"
 end
 
 # Methods defined in the helpers block are available in templates

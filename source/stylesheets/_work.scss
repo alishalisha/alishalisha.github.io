@@ -1,0 +1,36 @@
+.work {
+
+  h1, h2, h3, h4 {
+    @include effra-bold;
+  }
+
+  p {
+    margin: 1rem 0;
+    line-height: 1.4;
+  }
+
+  blockquote {
+    border-left: 2px solid $color-accent;
+    padding-left: 1rem;
+    line-height: 1.4;
+    font-size: 0.95rem;
+  }
+
+  h1 {
+
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-top: 1.8rem;
+    margin-bottom: 0.25rem;
+  }
+
+  h3 {
+
+  }
+
+  h4 {
+    color: red;
+  }
+}
