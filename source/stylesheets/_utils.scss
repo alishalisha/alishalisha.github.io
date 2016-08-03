@@ -20,11 +20,20 @@
   }
 }
 
+.well {
+  border: 1px solid #eee;
+  padding: 2em;
+}
+
 .m-top {
   margin-top: 2em;
   &--small {
     margin-top: 1em;
   }
+}
+
+.in-bl {
+  display: inline-block;
 }
 
 /* grid helper */
@@ -34,6 +43,10 @@
 
 .flex-space {
   justify-content: space-between;
+}
+
+.flex-start {
+  justify-content: flex-start;
 }
 
 .flex-center {

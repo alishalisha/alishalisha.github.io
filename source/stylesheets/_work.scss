@@ -39,9 +39,13 @@
   &__piece {
     flex-basis: 32%;
     margin-bottom: 3.5rem;
+    transition: 0.2s ease-in-out;
     @media (max-width: 700px) {
       display: block;
       flex-basis: 100%;
+    }
+    &:hover {
+      transform: translateY(-5px);
     }
   }
   &__thumbnail {
