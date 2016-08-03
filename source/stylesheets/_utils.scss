@@ -39,6 +39,10 @@
 /* grid helper */
 .flex {
   display: flex;
+  @media (max-width: 650px) {
+    display: block;
+    max-width: 100%;
+  }
 }
 
 .flex-space {
