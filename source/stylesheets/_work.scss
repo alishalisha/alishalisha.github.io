@@ -34,3 +34,29 @@
     color: red;
   }
 }
+
+.work {
+  &__piece {
+    flex-basis: 32%;
+    margin-bottom: 3.5rem;
+    @media (max-width: 700px) {
+      display: block;
+      flex-basis: 100%;
+    }
+  }
+  &__thumbnail {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  &__piece-title {
+    @include filson;
+    &:hover {
+      text-decoration: none;
+      color: darken($color-accent, 40%);
+    }
+  }
+  &__piece-org {
+    display: block;
+    font-size: 0.85rem;
+  }
+}
