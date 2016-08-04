@@ -4,7 +4,7 @@ blog: blog
 
 <h2 class="center" style="margin-bottom: 40px;">Blog Posts</h2>
 
-<div class="center">
+<div class="center mb">
   <% blog.articles[0...5].each do |article| %>
     <div class="padded">
       <time><%= article.date.strftime('%b %e %Y') %></time><br />
@@ -12,6 +12,9 @@ blog: blog
     </div>
   <% end %>
 </div>
+
+<%= partial "/partials/newsletter" %>
+
 <div class="m-top center">
   <a class="p-link" href="/">Back home</a>
 </div>

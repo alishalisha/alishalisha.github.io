@@ -9,11 +9,14 @@
       <a href="<%= tag_path(tag) %>" class="category__link"><%= tag %></a>&nbsp;
     <% end %>
     </div>
-    <div class="category m-top--small">
+    <div class="category mb m-top--small">
       <svg class="p-icon--small"><use xlink:href="#twitter"/></svg>&nbsp;
       <a href="https://twitter.com/intent/tweet?url=http://alisharamos.com<%= current_page.url %>&text=<%= current_page.data.title.split(' ').join('+') %>&via=alishalisha">Share this post</a>
     </div>
   </article>
+
+  <%= partial "/partials/newsletter" %>
+
   <div class="m-top center">
     <a class="p-link" href="/">Back home</a> / <a class="p-link" href="/blog">Back to blog</a>
   </div>
