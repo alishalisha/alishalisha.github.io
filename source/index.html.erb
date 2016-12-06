@@ -2,17 +2,17 @@
 title: Alisha Ramos
 ---
 <p class="p-heading--h1">
-  I work at the intersection of design, code, storytelling, and 💰.
+  I love design, code, product strategy, and promoting inclusivity and diversity in tech.
 </p>
 
-<p class="p-paragraph" style="width: 650px; max-width: 100%; margin-bottom: 3rem;">Hi! I'm a Design Director at Vox Media and live in Washington, D.C. At Vox, I lead a small team of front-end designers who work with engineers to build products and platforms that help tell our brand partners' stories both on- and off-platform. <a href="/about">Read more about me.</a></p>
+<p class="p-paragraph" style="width: 650px; max-width: 100%; margin-bottom: 3rem;">Hi! I'm a Designer at <a href="http://navahq.com">Nava PBC</a>. Previously, I was a Design Director at Vox Media. I live in Washington, D.C. <a href="/about">Read more about me.</a></p>
 
 <div class="center">
   <div class="flex flex-space flex-wrap padded">
   <% blog('work').articles.take(3).each do |article| %>
       <div class="work__piece">
         <a href="<%= article.url %>"><img class="work__thumbnail" src="<%= article.data.thumbnail %>" /></a>
-        <a class="work__piece-title" href="<%= article.url %>"><%= article.title %></a>
+        <!--<a class="work__piece-title" href="<%= article.url %>"><%= article.title %></a>-->
         <% if article.data.org.present? %>
         <% end %>
       </div>

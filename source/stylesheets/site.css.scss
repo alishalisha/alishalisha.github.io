@@ -8,7 +8,7 @@
 
 body {
   background: #fff;
-  @include lora;
+  @include work-sans;
 }
 
 img {
@@ -51,7 +51,7 @@ code, p code {
 
 // typography
 h2 {
-  @include filson;
+  @include work-sans;
   font-size: 42px;
   margin: 0;
 }
@@ -64,7 +64,7 @@ time {
 
 // nav component
 .c-nav {
-  @include effra-bold;
+  @include work-sans;
   letter-spacing: 1pt;
   text-transform: uppercase;
   padding: 20px 0;
@@ -161,7 +161,7 @@ time {
   padding: 20px 0;
   text-align: center;
   margin-top: 40px;
-  @include effra-bold;
+  @include work-sans;
   letter-spacing: 1pt;
   text-transform: uppercase;
 }
@@ -170,7 +170,7 @@ time {
 .blog {
   article {
     h1 {
-      @include filson;
+      @include work-sans;
       font-size: 42px;
       text-align: center;
       margin-bottom: 0;
@@ -200,7 +200,7 @@ time {
 
 // tags on a blog post
 .category {
-  @include effra-bold;
+  @include work-sans;
   font-size: 0.8em;
   text-transform: uppercase;
   a {
@@ -240,7 +240,7 @@ time {
   }
   &__name {
     text-align: center;
-    @include effra-bold;
+    @include work-sans;
     text-transform: uppercase;
   }
 }

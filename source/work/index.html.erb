@@ -10,7 +10,7 @@ blog: work
   <% blog('work').articles.each do |article| %>
       <div class="work__piece">
         <a href="<%= article.url %>"><img class="work__thumbnail" src="<%= article.data.thumbnail %>" /></a>
-        <a class="work__piece-title" href="<%= article.url %>"><%= article.title %></a>
+        <!--<a class="work__piece-title" href="<%= article.url %>"><%= article.title %></a>-->
         <% if article.data.org.present? %>
         <% end %>
       </div>

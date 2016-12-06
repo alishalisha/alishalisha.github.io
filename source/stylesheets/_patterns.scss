@@ -10,7 +10,7 @@ Reusable patterns
 .p-heading {
   &--h1 {
     margin: 40px 0;
-    @include filson;
+    @include work-sans;
     font-size: 50px;
     line-height: 1.38;
     color: $color-copy;
@@ -43,8 +43,7 @@ Reusable patterns
     }
   }
   &--h1--blog {
-    font-family: "Lora", Georgia, serif;
-    font-weight: 700;
+    @include work-sans;
     font-size: 50px;
     line-height: 1.45;
     margin: 0.3em 0;
@@ -63,13 +62,13 @@ a.p-link {
   text-decoration: none;
   border-bottom: 2px solid $color-accent;
   &:hover {
-    border-color: $color-copy;
+    border-color: $color-accent;
     text-decoration: none !important;
   }
 }
 
 .p-button {
-  @include effra-bold;
+  @include work-sans;
   letter-spacing: 1pt;
   text-transform: uppercase;
   color: $color-copy;
@@ -94,13 +93,13 @@ a.p-link {
 }
 
 .p-paragraph {
-  font-family: "Lora", Georgia, serif;
+  @include work-sans;
   font-size: 18px;
   line-height: 1.5555;
 }
 
 .p-date {
-  @include effra-bold;
+  @include work-sans;
   color: $color-gray;
 }
 

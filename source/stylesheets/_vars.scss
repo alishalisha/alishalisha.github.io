@@ -1,4 +1,4 @@
-$color-accent: #6CE0FF;
+$color-accent: #508DFF;
 $color-copy: #191919;
 $color-gray: #6E6E6E;
 $border-width: 3px;
@@ -16,4 +16,8 @@ $border-width: 3px;
 @mixin lora {
   font-family: "Lora", Georgia, serif;
   font-size: 18px;
+}
+
+@mixin work-sans {
+  font-family: "Work Sans", "Helvetica Neue", Helvetica, Arial;
 }
