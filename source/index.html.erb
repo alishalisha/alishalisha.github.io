@@ -2,26 +2,5 @@
 title: Alisha Ramos
 ---
 <p class="p-heading--h1">
-  I love design, code, product strategy, and promoting inclusivity and diversity in tech.
+  Alisha Ramos is Founder and Chief Lounger at <a href="http://girlsnightin.co">Girls' Night In</a>.
 </p>
-
-<p class="p-paragraph" style="width: 650px; max-width: 100%; margin-bottom: 3rem;">Hi! I'm a Designer at <a href="http://navahq.com">Nava PBC</a>. Previously, I was a Design Director at Vox Media. I live in Washington, D.C. <a href="/about">Read more about me.</a></p>
-
-<div class="center">
-  <div class="flex flex-space flex-wrap padded">
-  <% blog('work').articles.take(3).each do |article| %>
-      <div class="work__piece">
-        <a href="<%= article.url %>"><img class="work__thumbnail" src="<%= article.data.thumbnail %>" /></a>
-        <!--<a class="work__piece-title" href="<%= article.url %>"><%= article.title %></a>-->
-        <% if article.data.org.present? %>
-        <% end %>
-      </div>
-  <% end %>
-  </div>
-</div>
-
-<div class="center mb">
-  <a class="p-link" href="/work">View all work →</a>
-</div>
-
-<%= partial "/partials/newsletter" %>
